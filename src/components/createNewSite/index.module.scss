@@ -1,0 +1,152 @@
+.create {
+    width: 40px;
+    height: 40px;
+    background-image: url('../../images/add.png');
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    border: 0;
+    background-color: transparent;
+}
+
+.form {
+    height: 70px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.updateButton {
+    width: 55px;
+    height: 55px;
+    background-image: url('../../images/update.png');
+    border: 0;
+    background-position: center;
+    background-size: cover;
+    background-color: #35155Dbf;
+    border-radius: 100%;
+}
+
+.createForm {
+    display: flex;
+    align-items: center;
+    border: 3px solid #8CABFF;
+    border-radius: 5px;
+    width: 90%;
+    justify-content: space-around;
+    height: 100%;
+    background-color: #35155Dbf;
+}
+
+.input {
+    width: 200px;
+    height: 40px;
+    background-color: transparent;
+    color: #8CABFF;
+    border: 2px solid #8CABFF;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.input::placeholder {
+    color: #8CABFF;
+}
+
+.select {
+    width: 200px;
+    height: 40px;
+    background-color: transparent;
+    color: #8CABFF;
+    border: 2px solid #8CABFF;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+option {
+    color: black;
+}
+
+@media screen and (max-width: 3000px) and (min-width: 2400px) {
+    .form {
+        height: 100px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .createForm {
+        height: 100px;
+    }
+    .input {
+        height: 80px;
+        width: 325px;
+        font-size: 28px;
+    }
+    .select {
+        width: 325px;
+        height: 80px;
+        font-size: 28px;
+    }
+    .create {
+        width: 60px;
+        height: 60px;
+    }
+    .updateButton {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media screen and (max-width:1370px) {
+    .form {
+        width: 100%;
+    }
+    .input {
+        width: 150px;
+    }
+    .select {
+        width: 150px
+    }
+}
+
+@media screen and (max-width:1000px) {
+    .input {
+        width: 125px;
+        font-size: 18px;
+    }
+    .select {
+        width: 125px;
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .form {
+        height: auto;
+    }
+    .createForm {
+        width: 90%;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 400px;
+    }
+    .input {
+        width: 90%;
+        font-size: 20px;
+        height: 50px;
+    }
+    .select {
+        width: 90%;
+        height: 50px;
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .createForm {
+        width: 100%;
+    }
+    .form {
+        flex-direction: column;
+    }
+}

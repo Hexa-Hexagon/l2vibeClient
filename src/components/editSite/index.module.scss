@@ -1,0 +1,524 @@
+:root {
+    --imageSize: 20px;
+    --imageEdit: 40px;
+    --imageLeft: 20px;
+    --triangle: 15px;
+}
+
+.allEditForm {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.site {
+    width: 450px;
+    height: 60px;
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.createForm {
+    display: flex;
+    width: 100%;
+}
+
+.form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+}
+
+.delete {
+    width: var(--imageEdit);
+    height: var(--imageEdit);
+    background-image: url('../../images/delete.png');
+    background-color: #35155Dbf;
+    border-radius: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    border: 0;
+}
+
+.accept {
+    width: var(--imageEdit);
+    height: var(--imageEdit);
+    background-image: url('../../images/acccept.png');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    border: 0;
+}
+
+.decline {
+    width: var(--imageEdit);
+    height: var(--imageEdit);
+    background-image: url('../../images/decline.png');
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-position: center;
+    background-size: 100%;
+    border: 0;
+}
+
+.edit {
+    height: 75%;
+    width: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #35155Dbf;
+    border-radius: 15px;
+    border: 2px solid #35155D;
+}
+
+.editButton {
+    width: var(--imageEdit);
+    height: var(--imageEdit);
+    background-image: url('../../images/edit.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: #35155Dbf;
+    border: 0;
+    border: 2px solid #35155D;
+    border-radius: 10px;
+}
+
+.input {
+    width: 150px;
+    height: 40px;
+    background-color: transparent;
+    color: #5D3891;
+    border: 2px solid #8CABFF;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.input::placeholder {
+    color: #5D3891;
+}
+
+.select {
+    width: 150px;
+    height: 40px;
+    background-color: transparent;
+    color: #5D3891;
+    border: 2px solid #8CABFF;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+option {
+    color: black;
+}
+
+.editForm {
+    width: 100%;
+    display: flex;
+    height: 60px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.delEdit {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+}
+
+.triangleUp {
+    width: 0;
+    height: 0;
+    border-left: var(--triangle) solid transparent;
+    border-right: var(--triangle) solid transparent;
+    border-bottom: var(--triangle) solid #8CABFF;
+}
+
+.triangleDown {
+    width: 0;
+    height: 0;
+    border-left: var(--triangle) solid transparent;
+    border-right: var(--triangle) solid transparent;
+    border-top: var(--triangle) solid #8CABFF;
+}
+
+.center {
+    width: 100%;
+    height: 50%;
+    font-family: Arial;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%);
+    border-top: 3px solid #35155D;
+    border-bottom: 3px solid #35155D;
+    background-color: #ffffffbf;
+}
+
+.imageStatusKingVip {
+    background-image: url('../../images/kingvip.png');
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: var(--imageSize);
+    height: var(--imageSize);
+    margin-left: var(--imageLeft);
+}
+
+.imageStatusSuperVip {
+    background-image: url('../../images/supervip.png');
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: var(--imageSize);
+    height: var(--imageSize);
+    margin-left: var(--imageLeft);
+}
+
+.imageStatusVip {
+    background-image: url('../../images/vip.png');
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: var(--imageSize);
+    height: var(--imageSize);
+    margin-left: var(--imageLeft);
+}
+
+.imageStatusPremiumStandart {
+    background-image: url('../../images/premiumStandart.png');
+    background-position: center;
+    background-size: 90%;
+    background-repeat: no-repeat;
+    width: var(--imageSize);
+    height: var(--imageSize);
+    margin-left: var(--imageLeft);
+}
+
+.version {
+    height: 100%;
+    width: 60px;
+    text-align: start;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 12.5px;
+    align-items: center;
+}
+
+.difficulty {
+    height: 100%;
+    width: 55px;
+    text-align: start;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 45px;
+    font-size: 12.5px;
+}
+
+.nameSite {
+    height: 100%;
+    text-align: start;
+    width: 140px;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    text-decoration: underline;
+    font-size: 16px;
+}
+
+.date {
+    height: 100%;
+    width: 85px;
+    display: flex;
+    text-align: start;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 5px;
+    font-size: 12.5px;
+}
+
+@media screen and (max-width: 3000px) and (min-width: 2400px) {
+     :root {
+        --imageSize: 60px;
+        --imageEdit: 60px;
+        --triangle: 20px;
+    }
+    .site {
+        width: 1500px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        height: 100px;
+    }
+    .nameSite {
+        width: 200px;
+        font-size: 30px;
+    }
+    .date {
+        width: 160px;
+        font-size: 30px;
+    }
+    .version {
+        width: 130px;
+        font-size: 30px;
+    }
+    .difficulty {
+        width: 100px;
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 2000px) {
+     :root {
+        --imageSize: 30px;
+        --imageLeft: 30px
+    }
+    .site {
+        width: 850px;
+        height: 70px;
+    }
+    .createForm {
+        margin-top: 30px;
+        height: 60px;
+    }
+    .center p {
+        width: 150px;
+    }
+}
+
+@media screen and (max-width: 1370px) {
+     :root {
+        --triangle: 15px;
+        --imageEdit: 50px;
+        --imageSize: 50px;
+        --imageLeft: 50px;
+    }
+    .allEditForm {
+        height: 100px;
+    }
+    .site {
+        width: 100%;
+        height: 100%;
+    }
+    .editForm {
+        height: 100%;
+    }
+    .form {
+        width: 80%;
+    }
+    .nameSite {
+        width: 200px;
+        font-size: 25px;
+    }
+    .date {
+        width: 200px;
+        font-size: 20px;
+    }
+    .version {
+        width: 150px;
+        font-size: 20px;
+    }
+    .difficulty {
+        width: 150px;
+        font-size: 20px;
+    }
+    .input {
+        width: 175px;
+        height: 100%;
+        font-size: 25px;
+        border-radius: 10px;
+    }
+    .select {
+        width: 175px;
+        height: 100%;
+        font-size: 25px;
+        border-radius: 10px;
+    }
+    .edit {
+        width: 100px;
+        height: 100%;
+        border-radius: 10px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+     :root {
+        --imageSize: 60px;
+        --imageLeft: 40px;
+    }
+    .site {
+        width: 100%;
+    }
+    .nameSite {
+        width: 200px;
+        font-size: 25px;
+    }
+    .date {
+        width: 200px;
+        font-size: 20px;
+    }
+    .version {
+        width: 200px;
+        font-size: 20px;
+    }
+    .difficulty {
+        width: 200px;
+        font-size: 20px;
+    }
+    .createForm {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .input {
+        width: 125px;
+        font-size: 20px;
+    }
+    .select {
+        width: 125px;
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width:800px) {
+     :root {
+        --imageLeft: 10px;
+        --imageSize: 20px;
+    }
+    .allEditForm {
+        height: 150px;
+    }
+    .site {
+        width: 100%;
+        align-items: center;
+        flex-direction: column;
+    }
+    .form {
+        width: 100%;
+    }
+    .editForm {
+        height: 100%;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .delEdit {
+        width: 100%;
+        justify-content: center;
+    }
+    .nameSite {
+        width: 150px;
+        font-size: 25px;
+    }
+    .date {
+        width: 150px;
+        font-size: 20px;
+    }
+    .version {
+        width: 100px;
+        font-size: 20px;
+    }
+    .difficulty {
+        width: 100px;
+        font-size: 20px;
+    }
+    .input {
+        font-size: 17px;
+        height: 60px;
+    }
+    .select {
+        font-size: 17px;
+        height: 60px;
+    }
+    .edit {
+        height: 60px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+     :root {
+        --imageEdit: 40px;
+        --imageSize: 25px;
+        --imageLeft: 2px;
+        --triangle: 10px;
+    }
+    .allEditForm {
+        height: 125px;
+    }
+    .form {
+        width: 100%;
+    }
+    .site {
+        width: 100%;
+        flex-direction: column;
+    }
+    .nameSite {
+        width: 120px;
+        font-size: 15px;
+    }
+    .difficulty {
+        width: 50px;
+        font-size: 10px;
+    }
+    .version {
+        width: 80px;
+        font-size: 10px;
+    }
+    .date {
+        width: 120px;
+        font-size: 10px;
+    }
+    .input {
+        width: 150px;
+        height: 40px;
+        font-size: 14px;
+    }
+    .select {
+        width: 150px;
+        height: 40px;
+        font-size: 14px;
+    }
+    .edit {
+        width: 150px;
+        height: 40px;
+        justify-content: space-around;
+    }
+    .createForm {
+        display: grid;
+        grid-template-columns: 150px 150px auto;
+    }
+}
+
+@media screen and (max-width: 500px) {
+     :root {
+        --imageSize: 20px;
+        --imageEdit: 40px
+    }
+    .allEditForm {
+        height: 100px;
+    }
+    .input {
+        width: 100px;
+    }
+    .edit {
+        width: 100px;
+    }
+    .select {
+        width: 100px;
+    }
+    .createForm {
+        grid-template-columns: 100px 100px auto;
+    }
+}

@@ -1,0 +1,237 @@
+:root {
+    --imageSize: 40px;
+    --imageLeft: 40px;
+    --triangle: 10px;
+}
+
+.site {
+    width: 450px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.triangleUp {
+    width: 0;
+    height: 0;
+    border-left: var(--triangle) solid transparent;
+    border-right: var(--triangle) solid transparent;
+    border-bottom: var(--triangle) solid #8CABFF;
+}
+
+.triangleDown {
+    width: 0;
+    height: 0;
+    border-left: var(--triangle) solid transparent;
+    border-right: var(--triangle) solid transparent;
+    border-top: var(--triangle) solid #8CABFF;
+}
+
+.center {
+    width: 100%;
+    height: 100%;
+    font-family: Arial;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%);
+    border-top: 3px solid #35155D;
+    border-bottom: 3px solid #35155D;
+    background-color: #ffffffbf;
+}
+
+.imageStatusKingVip {
+    background-image: url('../../images/kingvip.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: var(--imageSize);
+    height: var(--imageSize);
+    margin-left: var(--imageLeft);
+}
+
+.imageStatusSuperVip {
+    background-image: url('../../images/supervip.png');
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: var(--imageSize);
+    height: var(--imageSize);
+    margin-left: var(--imageLeft)
+}
+
+.imageStatusVip {
+    background-image: url('../../images/vip.png');
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: var(--imageSize);
+    height: var(--imageSize);
+    margin-left: var(--imageLeft);
+}
+
+.imageStatusPremiumStandart {
+    background-image: url('../../images/premiumStandart.png');
+    background-position: center;
+    background-size: 90%;
+    background-repeat: no-repeat;
+    width: var(--imageSize);
+    height: var(--imageSize);
+    margin-left: var(--imageLeft);
+}
+
+.version {
+    height: 100%;
+    width: 60px;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 12.5px;
+    align-items: center;
+}
+
+.difficulty {
+    height: 100%;
+    width: 55px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 45px;
+    font-size: 12.5px;
+}
+
+.nameSite {
+    height: 100%;
+    width: 140px;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    text-decoration: underline;
+    font-size: 16px;
+}
+
+.date {
+    height: 100%;
+    width: 85px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 5px;
+    font-size: 12.5px;
+}
+
+@media screen and (max-width: 3000px) and (min-width: 2400px) {
+     :root {
+        --imageSize: 60px;
+        --triangle: 20px;
+    }
+    .site {
+        width: 900px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        height: 100px;
+    }
+    .nameSite {
+        width: 200px;
+        font-size: 30px;
+    }
+    .date {
+        width: 160px;
+        font-size: 30px;
+    }
+    .version {
+        width: 130px;
+        font-size: 30px;
+    }
+    .difficulty {
+        width: 100px;
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 1370px) {
+     :root {
+        --triangle: 15px;
+        --imageSize: 50px;
+        --imageLeft: 50px;
+    }
+    .site {
+        width: 80%;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        height: 50px;
+    }
+    .nameSite {
+        width: 200px;
+        font-size: 25px;
+    }
+    .date {
+        width: 200px;
+        font-size: 20px;
+    }
+    .version {
+        width: 150px;
+        font-size: 20px;
+    }
+    .difficulty {
+        width: 150px;
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+     :root {
+        --imageSize: 30px;
+        --triangle: 10px;
+    }
+    .site {
+        width: 100%;
+    }
+    .nameSite {
+        width: 150px;
+        font-size: 18px;
+    }
+    .difficulty {
+        width: 80px;
+        font-size: 18px;
+    }
+    .version {
+        width: 80px;
+        font-size: 18px;
+    }
+    .date {
+        width: 100px;
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+     :root {
+        --imageSize: 30px;
+        --imageLeft: 25px;
+        --triangle: 10px;
+    }
+    .site {
+        width: 100%;
+    }
+    .nameSite {
+        width: 150px;
+        font-size: 15px;
+    }
+    .difficulty {
+        width: 80px;
+        font-size: 10px;
+    }
+    .version {
+        width: 80px;
+        font-size: 10px;
+    }
+    .date {
+        width: 100px;
+        font-size: 10px;
+    }
+}
