@@ -16,6 +16,28 @@
     color: black;
 }
 
+.center:hover {
+    background-image: linear-gradient(#512B81bf, #35155Dbf);
+    color: #8CABFF;
+}
+
+.center:hover .nameSite {
+    text-decoration: underline;
+}
+
+.site:hover .center {
+    border-top: 2px solid #4477CE;
+    border-bottom: 2px solid #4477CE;
+}
+
+.site:hover .triangleDown {
+    border-top: var(--triangle) solid #4477CE;
+}
+
+.site:hover .triangleUp {
+    border-bottom: var(--triangle) solid #4477CE;
+}
+
 .triangleUp {
     width: 0;
     height: 0;
@@ -45,14 +67,21 @@
     background-color: #ffffffbf;
 }
 
+.infoBlock {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 7% 40% 23% 15% 20%;
+    padding: 0 10%;
+}
+
 .imageStatusKingVip {
     background-image: url('../../images/kingvip.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;
-    width: var(--imageSize);
-    height: var(--imageSize);
-    margin-left: var(--imageLeft);
+    height: 100%;
+    width: 100%;
 }
 
 .imageStatusSuperVip {
@@ -60,9 +89,8 @@
     background-position: center;
     background-size: 100%;
     background-repeat: no-repeat;
-    width: var(--imageSize);
-    height: var(--imageSize);
-    margin-left: var(--imageLeft)
+    height: 100%;
+    width: 100%;
 }
 
 .imageStatusVip {
@@ -70,58 +98,50 @@
     background-position: center;
     background-size: 100%;
     background-repeat: no-repeat;
-    width: var(--imageSize);
-    height: var(--imageSize);
-    margin-left: var(--imageLeft);
+    width: 100%;
+    height: 100%;
 }
 
 .imageStatusPremiumStandart {
     background-image: url('../../images/premiumStandart.png');
     background-position: center;
-    background-size: 90%;
+    background-size: 75%;
     background-repeat: no-repeat;
-    width: var(--imageSize);
-    height: var(--imageSize);
-    margin-left: var(--imageLeft);
+    width: 100%;
+    height: 100%;
 }
 
 .version {
     height: 100%;
-    width: 60px;
     display: flex;
     justify-content: flex-start;
-    font-size: 12.5px;
+    font-size: 10px;
     align-items: center;
 }
 
 .difficulty {
     height: 100%;
-    width: 55px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     margin-left: 45px;
-    font-size: 12.5px;
+    font-size: 10px;
 }
 
 .nameSite {
     height: 100%;
-    width: 140px;
     display: flex;
     align-items: center;
     margin-left: 5px;
-    text-decoration: underline;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .date {
     height: 100%;
-    width: 85px;
     display: flex;
-    justify-content: flex-start;
     align-items: center;
     margin-left: 5px;
-    font-size: 12.5px;
+    font-size: 10px;
 }
 
 @media screen and (max-width: 3000px) and (min-width: 2400px) {
@@ -136,20 +156,36 @@
         height: 100px;
     }
     .nameSite {
-        width: 200px;
         font-size: 30px;
     }
     .date {
-        width: 160px;
-        font-size: 30px;
+        font-size: 25px;
     }
     .version {
-        width: 130px;
-        font-size: 30px;
+        font-size: 25px;
     }
     .difficulty {
-        width: 100px;
         font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 2000px) {
+    .site {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        height: 65px;
+    }
+    .nameSite {
+        font-size: 15px;
+    }
+    .date {
+        font-size: 10px;
+    }
+    .version {
+        font-size: 10px;
+    }
+    .difficulty {
+        font-size: 10px;
     }
 }
 
@@ -161,51 +197,45 @@
     }
     .site {
         width: 80%;
-        margin-top: 30px;
-        margin-bottom: 30px;
-        height: 50px;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
     .nameSite {
-        width: 200px;
         font-size: 25px;
     }
     .date {
-        width: 200px;
         font-size: 20px;
     }
     .version {
-        width: 150px;
         font-size: 20px;
     }
     .difficulty {
-        width: 150px;
         font-size: 20px;
     }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 900px) {
      :root {
         --imageSize: 30px;
         --triangle: 10px;
     }
     .site {
         width: 100%;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        height: 65px;
     }
     .nameSite {
-        width: 150px;
-        font-size: 18px;
+        font-size: 20px;
     }
     .difficulty {
-        width: 80px;
-        font-size: 18px;
+        font-size: 15px;
     }
     .version {
-        width: 80px;
-        font-size: 18px;
+        font-size: 15px;
     }
     .date {
-        width: 100px;
-        font-size: 18px;
+        font-size: 15px;
     }
 }
 
@@ -217,21 +247,21 @@
     }
     .site {
         width: 100%;
+        height: 50px;
+    }
+    .infoBlock {
+        grid-template-columns: 5% 35% 25% 15% 20%;
     }
     .nameSite {
-        width: 150px;
-        font-size: 15px;
+        font-size: 10px;
     }
     .difficulty {
-        width: 80px;
-        font-size: 10px;
+        font-size: 8px;
     }
     .version {
-        width: 80px;
-        font-size: 10px;
+        font-size: 8px;
     }
     .date {
-        width: 100px;
-        font-size: 10px;
+        font-size: 8px;
     }
 }

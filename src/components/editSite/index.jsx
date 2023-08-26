@@ -6,7 +6,7 @@ const Edit = (props) => {
         await api.delete(`/${props.site._id}`);
     }
     let [isEdit, setIsEdit] = useState(false);
-    let [status, setStatus] = useState("King VIP");
+    let [status, setStatus] = useState(props.site.status);
     let [name, setName] = useState(props.site.nameSite);
     let [nameError, setNameError] = useState({});
     let [difficulty, setDifficulty] = useState(props.site.difficulty);
@@ -15,6 +15,13 @@ const Edit = (props) => {
     let [versionError, setVersionError] = useState({});
     let [date, setDate] = useState(props.site.dateOfStartingServer);
     let [dateError, setDateError] = useState({});
+    let [isAction, setIsAction] = useState(props.site.isAction);
+    let [isActionStyle1, setIsActionStyle1] = useState(isAction?  {backgroundColor: "#8CABFF",
+    color: "#35155D"
+    }:{})
+    let [isActionStyle2, setIsActionStyle2] = useState(!isAction?  {backgroundColor: "#8CABFF",
+    color: "#35155D"
+    }:{})
     async function update(){
                 if(name && difficulty && version && date){
                     await api.put(`/${props.site._id}`, {
@@ -60,20 +67,23 @@ const Edit = (props) => {
         <div className={classes.allEditForm}>
             {  isEdit ? 
             <div className={classes.createForm}>
-        <select className={classes.select} value={status} onChange={e=>setStatus(e.target.value)}>
-            <option value={"King VIP30"}>King VIP30</option>
-            <option value={"King VIP45"}>King VIP45</option>
-            <option value={"King VIP60"}>King VIP60</option>
-            <option value={"Super VIP"}>Super VIP</option>
-            <option value={"VIP"}>VIP</option>
-            <option value={"Premium"} >Premium</option>
-            <option value={"Standart"}>Standart</option>
-        </select>
-        <input className={classes.input} type="text" style={nameError} value={name} onChange={e => {setName(e.target.value); setNameError({})}} placeholder='Имя сайта'/>
-        <input className={classes.input} type="number" style={difficultyError} value={difficulty} onChange={e=>{setDifficulty(e.target.value); setDifficultyError({})}} placeholder='Сложность' />
-        <input className={classes.input} type="text" style={versionError} value={version} onChange={e=>{setVersion(e.target.value);setVersionError({})}} placeholder='Версия' />
-        <input className={classes.input} type="date" style={dateError} value={date} onChange={e=>{setDate(e.target.value);setDateError({})}} placeholder='Дата' />
-       
+            <select className={classes.select} value={status} onChange={e=>setStatus(e.target.value)}>
+                <option value={"King VIP30"}>King VIP30 </option>
+                <option value={"King VIP45"}>King VIP45 </option>
+                <option value={"King VIP60"}>King VIP60 </option>
+                <option value={"Super VIP"}>Super VIP</option>
+                <option value={"VIP"}>VIP</option>
+                <option value={"Premium"} >Premium</option>
+                <option value={"Standart"}>Standart</option>
+            </select>
+            <input className={classes.input} type="text" style={nameError} value={name} onChange={e => {setName(e.target.value); setNameError({})}} placeholder='Имя сайта'/>
+            <input className={classes.input} type="number" style={difficultyError} value={difficulty} onChange={e=>{setDifficulty(e.target.value); setDifficultyError({})}} placeholder='Сложность' />
+            <input className={classes.input} type="text" style={versionError} value={version} onChange={e=>{setVersion(e.target.value);setVersionError({})}} placeholder='Версия' />
+            <input className={classes.input} type="date" style={dateError} value={date} onChange={e=>{setDate(e.target.value);setDateError({})}} placeholder='Дата' />
+            <div className={classes.isAction}>
+            <input type="button" style={isActionStyle1} disabled={isAction} onClick={()=>{setIsAction(true); setIsActionStyle1(isActionStyle2); setIsActionStyle2({})}} value={"Акция"} className={classes.action} />
+            <input type="button" style={isActionStyle2} disabled={!isAction}  onClick={()=>{setIsAction(false);setIsActionStyle2(isActionStyle1); setIsActionStyle1({})}} value={"Нету акции"} className={classes.action} />
+            </div>
         <div className={classes.edit}>
                 <button className={classes.accept} onClick={()=>{setIsEdit(!isEdit); update()}} value={""} /> <button className={classes.decline} onClick={()=>setIsEdit(!isEdit)} value="" /></div>
         </div>      

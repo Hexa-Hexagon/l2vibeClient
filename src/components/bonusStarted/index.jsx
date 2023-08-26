@@ -1,7 +1,7 @@
 import React from 'react';
 import Site from '../site';
 import classes from './index.module.scss'
-const Tomorrow = (props) => {
+const Started = (props) => {
     const superVip = props.sites.filter((site)=>{
         return site.status === "Super VIP";
     })
@@ -14,10 +14,10 @@ const Tomorrow = (props) => {
     const standart = props.sites.filter((site)=>{
         return site.status === "Standart";
     })
+
     return (
-        <div className={classes.form}>      
-        
-        <h1 style={{textAlign:"center"}}>{props.starting}</h1>
+        <div className={classes.form}>
+            <h1 style={{textAlign:"center"}}>{props.starting}</h1>
             {superVip.map(site=><Site site={site} key={site._id} />)}
             {vip.map(site=><Site site={site} key={site._id} />)}
             {premium.map(site=><Site site={site} key={site._id} />)}
@@ -26,4 +26,4 @@ const Tomorrow = (props) => {
     );
 };
 
-export default Tomorrow;
+export default Started;

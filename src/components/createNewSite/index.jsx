@@ -15,6 +15,13 @@ const CreateNewSite = (props) => {
     let [versionError, setVersionError] = useState({});
     let [date, setDate] = useState("");
     let [dateError, setDateError] = useState({});
+    let [isAction, setIsAction] = useState(false);
+    let [isActionStyle1, setIsActionStyle1] = useState({
+    })
+    let [isActionStyle2, setIsActionStyle2] = useState({
+        backgroundColor: "#8CABFF",
+        color: "#35155D"
+    })
     async function post(){
                 if(name && difficulty && version && date){
                     await api.post('/', {
@@ -23,7 +30,8 @@ const CreateNewSite = (props) => {
                         difficulty: difficulty,
                         version: version,
                         dateOfStartingServer: date,
-                        dateOfEndingContract: (status==="King VIP30" || status === "Super VIP" || status === "Premium") ? new Date().setDate((new Date().getDate()  + 30)) : (status === "King VIP45")?new Date().setDate((new Date().getDate()  + 45)):(status === "King VIP60")?new Date().setDate((new Date().getDate()  + 60)):new Date().setDate((new Date().getDate()  + 15))
+                        dateOfEndingContract: (status==="King VIP30" || status === "Super VIP" || status === "Premium") ? new Date().setDate((new Date().getDate()  + 30)) : (status === "King VIP45")?new Date().setDate((new Date().getDate()  + 45)):(status === "King VIP60")?new Date().setDate((new Date().getDate()  + 60)):new Date().setDate((new Date().getDate()  + 15)),
+                        isAction: isAction
                     });
             }
             else{
@@ -67,6 +75,10 @@ const CreateNewSite = (props) => {
         <input className={classes.input} type="number" style={difficultyError} value={difficulty} onChange={e=>{setDifficulty(e.target.value); setDifficultyError({})}} placeholder='Сложность' />
         <input className={classes.input} type="text" style={versionError} value={version} onChange={e=>{setVersion(e.target.value);setVersionError({})}} placeholder='Версия' />
         <input className={classes.input} type="date" style={dateError} value={date} onChange={e=>{setDate(e.target.value);setDateError({})}} placeholder='Дата' />
+        <div className={classes.isAction}>
+        <input type="button" style={isActionStyle1} disabled={isAction} onClick={()=>{setIsAction(true); setIsActionStyle1(isActionStyle2); setIsActionStyle2({})}} value={"Акция"} className={classes.action} />
+        <input type="button" style={isActionStyle2} disabled={!isAction}  onClick={()=>{setIsAction(false);setIsActionStyle2(isActionStyle1); setIsActionStyle1({})}} value={"Нету акции"} className={classes.action} />
+        </div>
         <input type="submit" onClick={()=>{
             post(); 
             setName("");

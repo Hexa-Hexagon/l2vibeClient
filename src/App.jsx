@@ -6,13 +6,13 @@ import Edit from "./components/editSite";
 import Site from "./components/site";
 import Started from "./components/started";
 import Today from "./components/startingToday";
-import Tomorrow from "./components/startingTomorrow";
 import ThisWeek from "./components/startingThisWeek";
 import ThisMonth from "./components/startingThisMonth";
 import Later from "./components/startsLater";
 import api from "./api";
 import lan from "./languages/index";
 import BannerEdit from "./components/bannerEdit";
+import BonusStarted from "./components/bonusStarted";
 function App() {
     let [selectLan, setSelectLan] = useState(lan.EN);
     let [banners, setBanners] = useState([]);
@@ -25,10 +25,10 @@ function App() {
     let [standart, setStandart] = useState([]);
     let [started, setStarted] = useState([]);
     let [startingToday, setStartingToday] = useState([]);
-    let [startingTomorrow, setStartingTomorrow] = useState([]);
     let [startingThisWeek, setStartingThisWeek] = useState([]);
     let [startingThisMonth, setStartingThisMonth] = useState([]);
     let [startsLater, setStartsLater] = useState([]);
+    let [bonusStarted, setBonusStarted] = useState([])
     let [errorStyle, setErrorStyle] = useState({});
     const selectLanguageButton = {
         backgroundColor: "#4477CEbf",
@@ -54,13 +54,11 @@ async function get (){
             setKingVip(sites=>[...sites, res.data[i]]);
         }
        else if(date < today){
-            setStarted(sites=>[...sites, res.data[i]]);
+            if(res.data[i].isAction) setBonusStarted(sites=>[...sites,res.data[i]]);
+            else setStarted(sites=>[...sites, res.data[i]]);
         }
-        else if(date.toDateString() === today.toDateString() ){
+        else if(date.toDateString() === today.toDateString() || date.toDateString() === tomorrow ){
             setStartingToday(sites=>[...sites,res.data[i]]);    
-        }
-        else if(date.toDateString() === tomorrow){
-            setStartingTomorrow(sites=>[...sites, res.data[i]]);
         }
         else if(date < new Date().setDate(new Date().getDate() + day)){
             setStartingThisWeek(sites=>[...sites,res.data[i]]);
@@ -122,8 +120,8 @@ async function get (){
 
     async function getPassword(){
         if(password){
-            const res = await api.get('/password');
-            if(password === res.data.password){
+            const res = await api.get(`/password/${password}`);
+            if(res.data){
                 getEdit();
                 setIsEdit(!isEdit);
             }
@@ -143,11 +141,10 @@ async function get (){
     useEffect(
         ()=>{
             get();
-            getBanners();
+            getBanners();            
             setKingVip([...kingVip].sort((a,b)=>(moment(b.dateOfStartingServer, "YY.MM.DD") - moment(a.dateOfStartingServer, "YY.MM.DD"))));
             setStarted([...started].sort((a,b)=>moment(b.dateOfStartingServer,"YY.MM.DD")-moment(a.dateOfStartingServer,"YY.MM.DD")))
             setStartingToday([...startingToday].sort((a,b)=>moment(b.dateOfStartingServer,"YY.MM.DD")-moment(a.dateOfStartingServer,"YY.MM.DD")));
-            setStartingTomorrow([...startingTomorrow].sort((a,b)=>moment(b.dateOfStartingServer,"YY.MM.DD")-moment(a.dateOfStartingServer,"YY.MM.DD")));
             setStartingThisWeek([...startingThisWeek].sort((a,b)=>moment(b.dateOfStartingServer,"YY.MM.DD")-moment(a.dateOfStartingServer,"YY.MM.DD")));
             setStartingThisMonth([...startingThisMonth].sort((a,b)=>moment(b.dateOfStartingServer,"YY.MM.DD")-moment(a.dateOfStartingServer,"YY.MM.DD")));
             setStartsLater([...startsLater].sort((a,b)=>moment(b.dateOfStartingServer,"YY.MM.DD")-moment(a.dateOfStartingServer,"YY.MM.DD"))); 
@@ -160,7 +157,8 @@ async function get (){
             <p className={classes.anons}>{selectLan.Anons}</p>
             <div className={classes.line} />
             <div className={classes.nameSiteAndEditFormAndSelectLanguageForm}>
-            <p style={{textDecoration:"underline"}}  className={classes.anons} >LINEAGE II VIBE</p>
+                
+            <p className={classes.nameSite} >L2VIBE.COM</p>
             <div className={classes.editFormAndSelectLanguageForm}>
             {
                 isEdit === true?
@@ -218,13 +216,15 @@ async function get (){
             
         <main className={classes.main}>
             <div className={classes.mainServers}>
-            <Started sites={started} starting={selectLan.Started} />
-            <div className={classes.noOpened}>
+            <div className={classes.leftBlock}>
             <Today sites={startingToday} starting={selectLan.StartingToday}  />
-            <Tomorrow sites={startingTomorrow} starting={selectLan.StartingTomorrow} />
             <ThisWeek sites={startingThisWeek} starting={selectLan.StartingThisWeek} />
             <ThisMonth sites={startingThisMonth} starting={selectLan.StartingThisMonth} />
+            </div>
+            <div className={classes.rightBlock}>
             <Later sites={startsLater} starting={selectLan.StartsLater} />
+            <Started sites={started} starting={selectLan.Started} />
+            <BonusStarted sites={bonusStarted} starting={selectLan.BonusStarted} />
             </div>
             </div>
             <div className={classes.bannerMain}>

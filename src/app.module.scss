@@ -1,11 +1,17 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Manrope';
 }
 
 @font-face {
-    font-family: 'Font';
-    src: url('./fonts/Font.ttf');
+    font-family: "ManropeBold";
+    src: url('./fonts/static/Manrope-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('./fonts/Manrope-VariableFont_wght.ttf');
 }
 
 body {
@@ -43,9 +49,9 @@ a {
 .anons {
     color: #8CABFF;
     text-align: center;
-    font-size: 30px;
+    font-size: 24px;
     width: 450px;
-    font-family: 'Font';
+    font-family: 'ManropeBold';
 }
 
 .line {
@@ -55,6 +61,13 @@ a {
     width: 3px;
     border-radius: 100%;
     rotate: 50deg;
+}
+
+.nameSite {
+    font-size: 24px;
+    font-family: 'ManropeBold';
+    color: #8CABFF;
+    text-shadow: 0 0 10px #512B81, 0 0 10px #512B81, 0 0 10px #512B81, 0 0 1px #512B81, 0 0 0px #512B81, 0 0 0px #512B81, 0 0 0px #512B81, 0 0 10px #512B81;
 }
 
 .editButton {
@@ -81,17 +94,17 @@ a {
     height: 40px;
     width: 85%;
     color: #8CABFF;
-    background-color: #ffffff00;
+    background-color: transparent;
     border: 3px solid #8CABFF;
     border-radius: 10px;
-    font-size: 30px;
+    font-size: 24px;
 }
 
 .editInput::placeholder {
     color: #8CABFF;
     text-align: center;
     font-size: x-large;
-    font-family: 'Font';
+    font-family: 'ManropeBold';
 }
 
 .editForm {
@@ -106,22 +119,23 @@ a {
     background-image: url('./images/home.png');
     background-position: center;
     background-size: cover;
-    background-color: #35155D00;
+    background-color: transparent;
     border: 0;
 }
 
 .selectLanguageForm {
     display: flex;
+    margin-right: 10px;
 }
 
 .languageButton {
     width: 30px;
     height: 30px;
-    background-color: #35155D00;
+    background-color: transparent;
     color: #8CABFF;
     border: 2px solid #8CABFF;
     display: flex;
-    font-size: 12.5px;
+    font-size: 8.5px;
     position: relative;
     align-items: center;
     justify-content: center;
@@ -130,11 +144,11 @@ a {
 .languageButtonL {
     width: 30px;
     height: 30px;
-    background-color: #35155D00;
+    background-color: transparent;
     color: #8CABFF;
     border: 2px solid #8CABFF;
     display: flex;
-    font-size: 12.5px;
+    font-size: 8.5px;
     position: relative;
     align-items: center;
     justify-content: center;
@@ -145,7 +159,7 @@ a {
 .languageButtonR {
     width: 30px;
     height: 30px;
-    font-size: 12.5px;
+    font-size: 8.5px;
     background-color: transparent;
     color: #8CABFF;
     border: 2px solid #8CABFF;
@@ -166,7 +180,7 @@ a {
 
 .main {
     background-color: #ffffffbf;
-    width: 90%;
+    width: 95%;
     border-radius: 15px;
     display: flex;
 }
@@ -176,8 +190,18 @@ a {
     width: 80%;
 }
 
-.noOpened {
+.leftBlock {
     width: 50%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rightBlock {
+    width: 50%;
+    height: auto;
+    min-height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -222,7 +246,7 @@ a {
     flex-direction: column;
     justify-content: space-between;
     margin-top: 100px;
-    font-size: 13px;
+    font-size: 9px;
 }
 
 .contacts {
@@ -336,17 +360,17 @@ a {
 
 @media screen and (max-width: 3000px) {
     .anons {
-        font-size: 40px;
+        font-size: 36px;
     }
     .editFormAndSelectLanguageForm {
         width: 800px;
     }
     .editInput {
         height: 50px;
-        font-size: 30px;
+        font-size: 24px;
     }
     .editInput::placeholder {
-        font-size: 30px;
+        font-size: 24px;
     }
     .editButton {
         height: 55px;
@@ -355,17 +379,17 @@ a {
     .languageButton {
         width: 50px;
         height: 50px;
-        font-size: 30px;
+        font-size: 24px;
     }
     .languageButtonR {
         width: 50px;
         height: 50px;
-        font-size: 30px;
+        font-size: 24px;
     }
     .languageButtonL {
         width: 50px;
         height: 50px;
-        font-size: 30px;
+        font-size: 24px;
     }
     .homeButton {
         width: 60px;
@@ -376,7 +400,7 @@ a {
         justify-content: space-between;
     }
     .main {
-        font-size: 35px;
+        font-size: 31px;
     }
     .bannerMain {
         align-items: flex-end;
@@ -403,42 +427,51 @@ a {
         height: 50px;
     }
     .footer {
-        font-size: 25px;
+        font-size: 21px;
     }
 }
 
 @media screen and (max-width:2000px) {
     .footer {
-        font-size: 20px;
+        font-size: 16px;
+    }
+    .anons {
+        font-size: 24px;
     }
     .editFormAndSelectLanguageForm {
         width: 500px;
     }
     .editInput {
         height: 40px;
-        font-size: 25px;
+        font-size: 21px;
     }
     .editInput::placeholder {
-        font-size: 25px;
+        font-size: 21px;
     }
     .editButton {
         height: 45px;
         width: 45px;
     }
+    .main * {
+        font-size: 16px;
+    }
     .languageButton {
         width: 35px;
         height: 35px;
-        font-size: 20px;
+        font-size: 16px;
     }
     .languageButtonR {
         width: 35px;
         height: 35px;
-        font-size: 20px;
+        font-size: 16px;
     }
     .languageButtonL {
         width: 35px;
         height: 35px;
-        font-size: 20px;
+        font-size: 16px;
+    }
+    .footer {
+        font-size: 11px;
     }
 }
 
@@ -523,7 +556,10 @@ a {
         flex-direction: column;
         width: 100%;
     }
-    .noOpened {
+    .leftBlock {
+        width: 100%;
+    }
+    .rightBlock {
         width: 100%;
     }
     .bannerMain {
