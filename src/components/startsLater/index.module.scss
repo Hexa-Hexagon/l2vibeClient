@@ -6,3 +6,7 @@
     align-items: center;
     min-height: 200px;
 }
+
+.form h1 {
+    font-size: calc(15px + 10 * (100vw / 1280));
+}

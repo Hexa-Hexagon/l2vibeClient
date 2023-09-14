@@ -49,7 +49,7 @@ a {
 .anons {
     color: #8CABFF;
     text-align: center;
-    font-size: 24px;
+    font-size: calc(14px + 16 * (100vw / 1280));
     width: 450px;
     font-family: 'ManropeBold';
 }
@@ -64,7 +64,7 @@ a {
 }
 
 .nameSite {
-    font-size: 24px;
+    font-size: calc(14px + 16 * (100vw / 1280));
     font-family: 'ManropeBold';
     color: #8CABFF;
     text-shadow: 0 0 10px #512B81, 0 0 10px #512B81, 0 0 10px #512B81, 0 0 1px #512B81, 0 0 0px #512B81, 0 0 0px #512B81, 0 0 0px #512B81, 0 0 10px #512B81;
@@ -97,13 +97,13 @@ a {
     background-color: transparent;
     border: 3px solid #8CABFF;
     border-radius: 10px;
-    font-size: 24px;
+    font-size: calc(14px + 16 * (100vw / 1280));
 }
 
 .editInput::placeholder {
     color: #8CABFF;
     text-align: center;
-    font-size: x-large;
+    font-size: calc(14px + 16 * (100vw / 1280));
     font-family: 'ManropeBold';
 }
 
@@ -135,7 +135,7 @@ a {
     color: #8CABFF;
     border: 2px solid #8CABFF;
     display: flex;
-    font-size: 8.5px;
+    font-size: calc(14px + 1 * (100vw / 1280));
     position: relative;
     align-items: center;
     justify-content: center;
@@ -148,7 +148,7 @@ a {
     color: #8CABFF;
     border: 2px solid #8CABFF;
     display: flex;
-    font-size: 8.5px;
+    font-size: calc(14px + 1 * (100vw / 1280));
     position: relative;
     align-items: center;
     justify-content: center;
@@ -159,7 +159,7 @@ a {
 .languageButtonR {
     width: 30px;
     height: 30px;
-    font-size: 8.5px;
+    font-size: calc(14px + 1 * (100vw / 1280));
     background-color: transparent;
     color: #8CABFF;
     border: 2px solid #8CABFF;
@@ -246,7 +246,7 @@ a {
     flex-direction: column;
     justify-content: space-between;
     margin-top: 100px;
-    font-size: 9px;
+    font-size: calc(14px + 1 * (100vw / 1280));
 }
 
 .contacts {
@@ -359,18 +359,11 @@ a {
 }
 
 @media screen and (max-width: 3000px) {
-    .anons {
-        font-size: 36px;
-    }
     .editFormAndSelectLanguageForm {
         width: 800px;
     }
     .editInput {
         height: 50px;
-        font-size: 24px;
-    }
-    .editInput::placeholder {
-        font-size: 24px;
     }
     .editButton {
         height: 55px;
@@ -379,17 +372,17 @@ a {
     .languageButton {
         width: 50px;
         height: 50px;
-        font-size: 24px;
+        font-size: calc(20px + 5 * (100vw/1280));
     }
     .languageButtonR {
         width: 50px;
         height: 50px;
-        font-size: 24px;
+        font-size: calc(20px + 5 * (100vw/1280));
     }
     .languageButtonL {
         width: 50px;
         height: 50px;
-        font-size: 24px;
+        font-size: calc(20px + 5 * (100vw/1280));
     }
     .homeButton {
         width: 60px;
@@ -398,9 +391,6 @@ a {
     .editBlockForm {
         width: 90%;
         justify-content: space-between;
-    }
-    .main {
-        font-size: 31px;
     }
     .bannerMain {
         align-items: flex-end;
@@ -426,52 +416,63 @@ a {
         width: 50px;
         height: 50px;
     }
+}
+
+@media screen and (max-width: 2000px) and (orientation: portrait) {
+    .main {
+        width: 100%;
+        flex-direction: column;
+    }
+    .mainServers {
+        width: 100%;
+        flex-direction: column;
+    }
+    .leftBlock {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+    .rightBlock {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+    .bannerMain {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        background-image: linear-gradient(transparent, #512B81bf);
+    }
     .footer {
-        font-size: 21px;
+        margin-top: 25vh;
     }
 }
 
 @media screen and (max-width:2000px) {
-    .footer {
-        font-size: 16px;
-    }
-    .anons {
-        font-size: 24px;
-    }
     .editFormAndSelectLanguageForm {
         width: 500px;
     }
     .editInput {
         height: 40px;
-        font-size: 21px;
-    }
-    .editInput::placeholder {
-        font-size: 21px;
     }
     .editButton {
         height: 45px;
         width: 45px;
     }
-    .main * {
-        font-size: 16px;
-    }
     .languageButton {
         width: 35px;
         height: 35px;
-        font-size: 16px;
+        font-size: calc(15px + 1 * (100vw/1280));
     }
     .languageButtonR {
         width: 35px;
         height: 35px;
-        font-size: 16px;
+        font-size: calc(15px + 1 * (100vw/1280));
     }
     .languageButtonL {
         width: 35px;
         height: 35px;
-        font-size: 16px;
-    }
-    .footer {
-        font-size: 11px;
+        font-size: calc(15px + 1 * (100vw/1280));
     }
 }
 
@@ -481,7 +482,6 @@ a {
         height: 250px;
     }
     .anons {
-        font-size: 40px;
         width: 100%;
     }
     .line {
@@ -508,10 +508,8 @@ a {
         height: 35px;
         width: 60%;
         border-radius: 5px;
-        font-size: 30px;
     }
     .editInput::placeholder {
-        font-size: 30px;
         text-align: center;
     }
     .editButton {
@@ -526,17 +524,14 @@ a {
     .languageButton {
         width: 40px;
         height: 40px;
-        font-size: 20px;
     }
     .languageButtonL {
         width: 40px;
         height: 40px;
-        font-size: 20px;
     }
     .languageButtonR {
         width: 40px;
         height: 40px;
-        font-size: 20px;
     }
     .homeButton {
         width: 60px;
@@ -561,15 +556,6 @@ a {
     }
     .rightBlock {
         width: 100%;
-    }
-    .bannerMain {
-        width: 100%;
-        flex-direction: row;
-        justify-content: space-between;
-        background-image: linear-gradient(transparent, #512B81bf);
-    }
-    .footer {
-        font-size: 20px;
     }
     .contacts {
         width: 100%;
@@ -637,30 +623,21 @@ a {
 }
 
 @media screen and (max-width: 1000px) {
-    .anons {
-        font-size: 35px;
-    }
     .languageButton {
         width: 35px;
         height: 35px;
-        font-size: 19px;
     }
     .languageButtonL {
         width: 35px;
         height: 35px;
-        font-size: 19px;
     }
     .languageButtonR {
         width: 35px;
         height: 35px;
-        font-size: 19px;
     }
     .homeButton {
         width: 50px;
         height: 50px;
-    }
-    .main {
-        font-size: 25px;
     }
     .bannerMain {
         width: 100%;
@@ -680,20 +657,14 @@ a {
     .languageButton {
         width: 30px;
         height: 30px;
-        font-size: 15px;
     }
     .languageButtonL {
         width: 30px;
         height: 30px;
-        font-size: 15px;
     }
     .languageButtonR {
         width: 30px;
         height: 30px;
-        font-size: 15px;
-    }
-    .main {
-        font-size: 20px;
     }
     .bannerMain {
         width: 100%;
@@ -713,17 +684,11 @@ a {
 }
 
 @media screen and (max-width: 500px) {
-    .anons {
-        font-size: 25px;
-    }
     .line {
         height: 3px;
     }
     .editInput {
         height: 30px;
-    }
-    .editInput::placeholder {
-        font-size: 20px;
     }
     .editButton {
         width: 30px;
@@ -735,20 +700,14 @@ a {
     .languageButton {
         width: 25px;
         height: 25px;
-        font-size: 12px;
     }
     .languageButtonL {
         width: 25px;
         height: 25px;
-        font-size: 12px;
     }
     .languageButtonR {
         width: 25px;
         height: 25px;
-        font-size: 12px;
-    }
-    .main {
-        font-size: 17px;
     }
     .bannerMain {
         width: 100%;
@@ -775,8 +734,5 @@ a {
     .discordImage {
         width: 40px;
         height: 40px;
-    }
-    .footer {
-        font-size: 12px;
     }
 }

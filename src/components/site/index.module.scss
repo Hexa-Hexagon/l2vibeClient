@@ -115,8 +115,9 @@
     height: 100%;
     display: flex;
     justify-content: flex-start;
-    font-size: 10px;
+    font-size: calc(10px + 1 * (100vw / 1280));
     align-items: center;
+    word-wrap: break-word;
 }
 
 .difficulty {
@@ -125,7 +126,8 @@
     justify-content: flex-start;
     align-items: center;
     margin-left: 45px;
-    font-size: 10px;
+    font-size: calc(10px + 1 * (100vw / 1280));
+    word-wrap: break-word;
 }
 
 .nameSite {
@@ -133,7 +135,8 @@
     display: flex;
     align-items: center;
     margin-left: 5px;
-    font-size: 15px;
+    font-size: calc(15px + 1 * (100vw / 1280));
+    word-wrap: break-word;
 }
 
 .date {
@@ -141,7 +144,8 @@
     display: flex;
     align-items: center;
     margin-left: 5px;
-    font-size: 10px;
+    font-size: calc(10px + 1 * (100vw / 1280));
+    word-wrap: break-word;
 }
 
 @media screen and (max-width: 3000px) and (min-width: 2400px) {
@@ -155,18 +159,6 @@
         margin-bottom: 30px;
         height: 100px;
     }
-    .nameSite {
-        font-size: 30px;
-    }
-    .date {
-        font-size: 25px;
-    }
-    .version {
-        font-size: 25px;
-    }
-    .difficulty {
-        font-size: 25px;
-    }
 }
 
 @media screen and (max-width: 2000px) {
@@ -175,17 +167,33 @@
         margin-bottom: 5px;
         height: 65px;
     }
-    .nameSite {
-        font-size: 15px;
+}
+
+@media screen and (max-width: 2000px) and (orientation: portrait) {
+    .site {
+        width: 100%;
+        height: 125px;
     }
-    .date {
-        font-size: 10px;
+     :root {
+        --triangle: 25px;
     }
-    .version {
-        font-size: 10px;
+    .site * {
+        font-size: calc(35px + 1 * (100vh / 1280));
     }
-    .difficulty {
-        font-size: 10px;
+    .site .nameSite {
+        font-size: calc(40px + 1 * (100vh / 1280));
+    }
+}
+
+@media screen and (max-width: 1500px) and (orientation: portrait) {
+    .site {
+        height: 80px;
+    }
+    .site * {
+        font-size: calc(20px + 1 * (100vh / 1280));
+    }
+    .site .nameSite {
+        font-size: calc(25px + 1 * (100vh / 1280));
     }
 }
 
@@ -200,18 +208,6 @@
         margin-top: 10px;
         margin-bottom: 10px;
     }
-    .nameSite {
-        font-size: 25px;
-    }
-    .date {
-        font-size: 20px;
-    }
-    .version {
-        font-size: 20px;
-    }
-    .difficulty {
-        font-size: 20px;
-    }
 }
 
 @media screen and (max-width: 900px) {
@@ -224,18 +220,6 @@
         margin-top: 5px;
         margin-bottom: 5px;
         height: 65px;
-    }
-    .nameSite {
-        font-size: 20px;
-    }
-    .difficulty {
-        font-size: 15px;
-    }
-    .version {
-        font-size: 15px;
-    }
-    .date {
-        font-size: 15px;
     }
 }
 
@@ -252,16 +236,49 @@
     .infoBlock {
         grid-template-columns: 5% 35% 25% 15% 20%;
     }
-    .nameSite {
-        font-size: 10px;
+}
+
+@media screen and (max-width: 800px) and (orientation: portrait) {
+    .site {
+        height: 70px;
     }
-    .difficulty {
-        font-size: 8px;
+    .infoBlock {
+        grid-template-columns: 5% 30% 25% 20% 20%;
     }
-    .version {
-        font-size: 8px;
+    .site * {
+        font-size: calc(15px + 1 * (100vh / 1280));
     }
-    .date {
-        font-size: 8px;
+    .site .nameSite {
+        font-size: calc(20px + 1 * (100vh / 1280));
+    }
+}
+
+@media screen and (max-width: 600px) and (orientation: portrait) {
+    .site {
+        height: 50px;
+    }
+    .infoBlock {
+        grid-template-columns: 5% 30% 25% 20% 20%;
+    }
+    .site * {
+        font-size: calc(10px + 1 * (100vh / 1280));
+    }
+    .site .nameSite {
+        font-size: calc(15px + 1 * (100vh / 1280));
+    }
+}
+
+@media screen and (max-width: 400px) and (orientation: portrait) {
+    .site {
+        height: 50px;
+    }
+    .infoBlock {
+        grid-template-columns: 5% 30% 25% 20% 20%;
+    }
+    .site * {
+        font-size: calc(8px + 1 * (100vh / 1280));
+    }
+    .site .nameSite {
+        font-size: calc(13px + 1 * (100vh / 1280));
     }
 }
