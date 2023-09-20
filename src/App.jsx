@@ -156,20 +156,17 @@ async function get (){
         <header className={classes.header}>            
             <p className={classes.anons}>{selectLan.Anons}</p>
             <div className={classes.line} />
-            <div className={classes.nameSiteAndEditFormAndSelectLanguageForm}>
+            <div className={classes.nameSiteAndSelectLanguageForm}>
                 
-            <p className={classes.nameSite} >L2VIBE.COM</p>
-            <div className={classes.editFormAndSelectLanguageForm}>
+            <p className={classes.nameSite}>L2VIBE.COM</p>
+            <div className={classes.homeButtonAndSelectLanguageForm}>
             {
                 isEdit === true?
                 <div>
                     <input type={"submit"} onClick={()=>{ window.location.reload()}} value={""} className={classes.homeButton}/>
                 </div>
                 :
-                <div className={classes.editForm}>
-                <button onClick={()=>{getPassword(); setPassword("")}} className={classes.editButton} />
-                <input className={classes.editInput} style={errorStyle} type="password" value={password} onChange={e=>{setPassword(e.target.value); setErrorStyle({})}} placeholder="PASSWORD" />
-                </div>
+                <div/>
             }
             <div className={classes.selectLanguageForm}>
                 <button className={classes.languageButtonL} style={lb1}
@@ -234,6 +231,8 @@ async function get (){
             </div>
             </main>
         <footer className={classes.footer}>
+            <div className={classes.contactsForm}>
+            <p className={classes.contactsText}>{selectLan.FooterDetails}</p>
             <div className={classes.contacts}>
             <a href="https://t.me/l2vibe" className={classes.telegramBlock}>
                 <div className={classes.telegramImage} />
@@ -245,7 +244,7 @@ async function get (){
             <div className={classes.emailImage} />
             </a>
             </div>
-            <p>{selectLan.FooterDetails} <a href="https://t.me/l2vibe" style={{textDecoration:"underline"}}>Telegram</a></p>
+            </div>
             
             <div style={{width:"100%",borderBottom:"2px solid #ffffff", margin:"15px 0 25px 0"}} />
             <div className={classes.prices}>
@@ -261,7 +260,6 @@ async function get (){
             <div style={{width:"100%",borderBottom:"2px solid #ffffff", margin:"15px 0 25px 0"}} />
             <div className={classes.prices}>
                 <div className={classes.noStandart}>
-
                 <div className={classes.serverPrice}>
                     <h3>L2VIBE.COM – KING–VIP – {selectLan.Status}:</h3>
                     <p>{selectLan.KingVipDescription}</p>
@@ -299,6 +297,10 @@ async function get (){
                 <p>
                 {selectLan.Price} 💲???
                 </p>
+                </div>
+                <div className={classes.editForm}>
+                <button onClick={()=>{getPassword(); setPassword("")}} className={classes.editButton} />
+                <input className={classes.editInput} style={errorStyle} type="password" value={password} onChange={e=>{setPassword(e.target.value); setErrorStyle({})}} placeholder="PASSWORD" />
                 </div>
             </div>
         </footer>

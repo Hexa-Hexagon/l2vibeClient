@@ -180,7 +180,7 @@
     .site * {
         font-size: calc(35px + 1 * (100vh / 1280));
     }
-    .site .nameSite {
+    .nameSite {
         font-size: calc(40px + 1 * (100vh / 1280));
     }
 }
@@ -202,6 +202,9 @@
         --triangle: 15px;
         --imageSize: 50px;
         --imageLeft: 50px;
+    }
+    .infoBlock {
+        grid-template-columns: 4% 40% 25% 15% 20%;
     }
     .site {
         width: 80%;
