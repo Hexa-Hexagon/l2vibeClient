@@ -299,8 +299,8 @@ async function get (){
                 </p>
                 </div>
                 <div className={classes.editForm}>
-                <button onClick={()=>{getPassword(); setPassword("")}} className={classes.editButton} />
                 <input className={classes.editInput} style={errorStyle} type="password" value={password} onChange={e=>{setPassword(e.target.value); setErrorStyle({})}} placeholder="PASSWORD" />
+                <button onClick={()=>{getPassword(); setPassword("")}} className={classes.editButton} />
                 </div>
             </div>
         </footer>
