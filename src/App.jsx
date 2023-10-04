@@ -10,7 +10,7 @@ import ThisWeek from "./components/startingThisWeek";
 import ThisMonth from "./components/startingThisMonth";
 import Later from "./components/startsLater";
 import api from "./api";
-import lan from "./languages/index";
+import lan, { prices } from "./languages/index";
 import BannerEdit from "./components/bannerEdit";
 import BonusStarted from "./components/bonusStarted";
 function App() {
@@ -252,7 +252,7 @@ async function get (){
                     <h3>{selectLan.BannerAdvertising}</h3>
                     <div className={classes.bannerFooterSize}><p>{selectLan.BannerDetailsSize} (px): 240х400</p> <p>{selectLan.BannerDetailsPossibleExtensions}: gif, png, jpg</p><p>{selectLan.BannerDetailsWeightLimit}: 100 kb </p><p>{selectLan.BannerDetailsBannersInRotation}: {selectLan.BannerDetailsUpTo} 5</p><p>{selectLan.BannerDetailsRotationTypeText}: {selectLan.BannerDetailsRotationType}</p></div>
                         <p>{selectLan.AccommodationCost} (30 {selectLan.Days}):</p>
-                        <p>{selectLan.Price} 💲 ???</p>
+                        <p>{selectLan.Price} {prices.BannerPrice}</p>
                         <p style={{marginTop:"15px"}}>{selectLan.BannerDetailsBannerDescription}
                         </p>
                 </div>
@@ -264,25 +264,25 @@ async function get (){
                     <h3>L2VIBE.COM – KING–VIP – {selectLan.Status}:</h3>
                     <p>{selectLan.KingVipDescription}</p>
                     <p>{selectLan.AccommodationCost} (30 {selectLan.Days}):</p>
-                    <p>{selectLan.Price} 💲???</p>
+                    <p>{selectLan.Price} {prices.KingVipPrice}</p>
                 </div>
                 <div className={classes.serverPrice}>
                 <h3>L2VIBE.COM – SUPER–VIP – {selectLan.Status}:</h3>
                 <p>{selectLan.SuperVipDescription}</p>
                 <p>{selectLan.AccommodationCost} (30 {selectLan.Days}):</p>
-                <p>{selectLan.Price} 💲???</p> 
+                <p>{selectLan.Price} {prices.SuperVipPrice}</p> 
                 </div>
                 <div className={classes.serverPrice}>
                 <h3>L2VIBE.COM – VIP – {selectLan.Status}:</h3>
             <p>{selectLan.VipDescription}</p>
             <p>{selectLan.AccommodationCost} (15 {selectLan.Days}):</p>
-                <p>{selectLan.Price} 💲???</p>
+                <p>{selectLan.Price} {prices.VipPrice}</p>
                 </div>
                 <div className={classes.serverPrice}>
                 <h3>L2VIBE.COM – {selectLan.Premium} – {selectLan.Status}</h3>
                 <p>{selectLan.Status} – {selectLan.Premium}: {selectLan.PremiumDescription} </p>             
                 <p>{selectLan.AccommodationCost} (30 {selectLan.Days}):</p>
-                <p>{selectLan.Price} 💲???</p>
+                <p>{selectLan.Price} {prices.PremiumPrice}</p>
                 </div>
         </div>
                 <div className={classes.serverPriceStandart}>
@@ -295,8 +295,7 @@ async function get (){
                     {selectLan.AccommodationCost} (15 {selectLan.Days}):
                 </p>
                 <p>
-                {selectLan.Price} 💲???
-                </p>
+                {selectLan.Price} {prices.StandardPrice}</p>
                 </div>
                 <div className={classes.editForm}>
                 <input className={classes.editInput} style={errorStyle} type="password" value={password} onChange={e=>{setPassword(e.target.value); setErrorStyle({})}} placeholder="PASSWORD" />

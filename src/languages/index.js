@@ -1,4 +1,4 @@
-const lan = {
+export const lan = {
     UK: {
         Anons: "ТОП СЕРВЕРІВ LINEAGE II ГРАЙ ІЗ ЗАДОВОЛЕННЯМ",
         Started: "Перевірені часом",
@@ -96,5 +96,11 @@ const lan = {
         StandardDdescriptionSecond: "При установке любых видов редиректов (перенаправлений) пользователей на сайте сервера и нарушений условий 'Стандартного' размещения - для сервера аннулируются все платные сервисы, и он помещается в черный список без возврата средств."
     }
 }
-
-export default lan;
+export const prices = {
+    BannerPrice: "?",
+    KingVipPrice: "?",
+    SuperVipPrice: "?",
+    VipPrice: "?",
+    PremiumPrice: "?",
+    StandardPrice: "?"
+}
