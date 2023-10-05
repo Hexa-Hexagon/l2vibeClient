@@ -72,7 +72,7 @@ const CreateNewSite = (props) => {
             <option value={"Standart"}>Standart</option>
         </select>
         <input className={classes.input} type="text" style={nameError} value={name} onChange={e => {setName(e.target.value); setNameError({})}} placeholder='Имя сайта'/>
-        <input className={classes.input} type="number" style={difficultyError} value={difficulty} onChange={e=>{setDifficulty(e.target.value); setDifficultyError({})}} placeholder='Сложность' />
+        <input className={classes.input} type="text" style={difficultyError} value={difficulty} onChange={e=>{setDifficulty(e.target.value); setDifficultyError({})}} placeholder='Сложность' />
         <input className={classes.input} type="text" style={versionError} value={version} onChange={e=>{setVersion(e.target.value);setVersionError({})}} placeholder='Версия' />
         <input className={classes.input} type="date" style={dateError} value={date} onChange={e=>{setDate(e.target.value);setDateError({})}} placeholder='Дата' />
         <div className={classes.isAction}>
