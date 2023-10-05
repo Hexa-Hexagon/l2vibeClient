@@ -7,7 +7,6 @@ import Site from "./components/site";
 import Started from "./components/started";
 import Today from "./components/startingToday";
 import ThisWeek from "./components/startingThisWeek";
-import ThisMonth from "./components/justOpened";
 import Later from "./components/startsLater";
 import api from "./api";
 import {lan, prices } from "./languages/index";
