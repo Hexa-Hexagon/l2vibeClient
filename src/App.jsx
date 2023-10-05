@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import Edit from "./components/editSite";
 import Site from "./components/site";
 import Started from "./components/started";
-import Today from "./components/startingToday";
 import ThisWeek from "./components/startingThisWeek";
 import Later from "./components/startsLater";
 import api from "./api";
@@ -13,6 +12,7 @@ import {lan, prices } from "./languages/index";
 import BannerEdit from "./components/bannerEdit";
 import BonusStarted from "./components/bonusStarted";
 import JustOpened from "./components/justOpened";
+import ThisMonth from './components/startingThisMonth/index';
 function App() {
     let [selectLan, setSelectLan] = useState(lan.EN);
     let [banners, setBanners] = useState([]);
@@ -24,7 +24,7 @@ function App() {
     let [premium, setPremium] = useState([]);
     let [standart, setStandart] = useState([]);
     let [started, setStarted] = useState([]);
-    let [startingToday, setStartingToday] = useState([]);
+    let [startingThisMonth, setStartingThisMonth] = useState([]);
     let [startingThisWeek, setStartingThisWeek] = useState([]);
     let [justOpened, setJustOpened] = useState([]);
     let [startsLater, setStartsLater] = useState([]);
@@ -40,13 +40,10 @@ function App() {
 async function get (){
     const res = await api.get('/');
     let  today = new Date();
-    let tomorrow = new Date();
+    let dayInMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 0).getDate() - new Date().getDate();
     let day = 7 - new Date().getDay();
     let day45 = new Date().setDate(new Date().getDate() - 45);
-    tomorrow.setDate(tomorrow.getDate()+1);
     today.setHours(0,0,0,0);
-    tomorrow.setHours(0,0,0,0);
-    tomorrow = tomorrow.toDateString();
     for(let i = 0 ; i< res.data.length;++i){
         let date = (new Date(res.data[i].dateOfStartingServer));
         date.setHours(0,0,0,0);
@@ -61,11 +58,11 @@ async function get (){
             if(res.data[i].isAction) setBonusStarted(sites=>[...sites,res.data[i]]);
             else setStarted(sites=>[...sites, res.data[i]]);
         }
-        else if(date.toDateString() === today.toDateString() ){
-            setStartingToday(sites=>[...sites,res.data[i]]);    
-        }
         else if(date < new Date().setDate(new Date().getDate() + day)){
             setStartingThisWeek(sites=>[...sites,res.data[i]]);
+        }
+        else if(date < new Date().setDate(new Date().getDate() + dayInMonth)){
+            setStartingThisMonth(sites=>[...sites, res.data[i]]);
         }
         else{
             setStartsLater(sites=>[...sites, res.data[i]]);
@@ -145,7 +142,7 @@ async function get (){
             getBanners();            
             setKingVip([...kingVip].sort((a,b)=>(moment(b.dateOfStartingServer, "YY.MM.DD") - moment(a.dateOfStartingServer, "YY.MM.DD"))));
             setStarted([...started].sort((a,b)=>moment(b.dateOfStartingServer,"YY.MM.DD")-moment(a.dateOfStartingServer,"YY.MM.DD")))
-            setStartingToday([...startingToday].sort((a,b)=>moment(b.dateOfStartingServer,"YY.MM.DD")-moment(a.dateOfStartingServer,"YY.MM.DD")));
+            setStartingThisMonth([...startingThisMonth].sort((a,b)=>moment(b.dateOfStartingServer,"YY.MM.DD")-moment(a.dateOfStartingServer,"YY.MM.DD")));
             setStartingThisWeek([...startingThisWeek].sort((a,b)=>moment(b.dateOfStartingServer,"YY.MM.DD")-moment(a.dateOfStartingServer,"YY.MM.DD")));
             setJustOpened([...justOpened].sort((a,b)=>moment(b.dateOfStartingServer,"YY.MM.DD")-moment(a.dateOfStartingServer,"YY.MM.DD")));
             setStartsLater([...startsLater].sort((a,b)=>moment(b.dateOfStartingServer,"YY.MM.DD")-moment(a.dateOfStartingServer,"YY.MM.DD"))); 
@@ -215,8 +212,8 @@ async function get (){
         <main className={classes.main}>
             <div className={classes.mainServers}>
             <div className={classes.leftBlock}>
-            <Today sites={startingToday} starting={selectLan.StartingToday}  />
             <ThisWeek sites={startingThisWeek} starting={selectLan.StartingThisWeek} />
+            <ThisMonth sites={startingThisMonth} starting={selectLan.StartingThisMonth}  />
             <Later sites={startsLater} starting={selectLan.StartsLater} />
             </div>
             <div className={classes.rightBlock}>
@@ -265,25 +262,25 @@ async function get (){
                     <h3>L2VIBE.COM – KING–VIP – {selectLan.Status}:</h3>
                     <p>{selectLan.KingVipDescription}</p>
                     <p>{selectLan.AccommodationCost} (30 {selectLan.Days}):</p>
-                    <p>{selectLan.Price} {prices.KingVipPrice}</p>
+                    <p>{selectLan.Price}: {prices.KingVipPrice}</p>
                 </div>
                 <div className={classes.serverPrice}>
                 <h3>L2VIBE.COM – SUPER–VIP – {selectLan.Status}:</h3>
                 <p>{selectLan.SuperVipDescription}</p>
                 <p>{selectLan.AccommodationCost} (30 {selectLan.Days}):</p>
-                <p>{selectLan.Price} {prices.SuperVipPrice}</p> 
+                <p>{selectLan.Price}: {prices.SuperVipPrice}</p> 
                 </div>
                 <div className={classes.serverPrice}>
                 <h3>L2VIBE.COM – VIP – {selectLan.Status}:</h3>
             <p>{selectLan.VipDescription}</p>
             <p>{selectLan.AccommodationCost} (15 {selectLan.Days}):</p>
-                <p>{selectLan.Price} {prices.VipPrice}</p>
+                <p>{selectLan.Price}: {prices.VipPrice}</p>
                 </div>
                 <div className={classes.serverPrice}>
                 <h3>L2VIBE.COM – {selectLan.Premium} – {selectLan.Status}</h3>
                 <p>{selectLan.Status} – {selectLan.Premium}: {selectLan.PremiumDescription} </p>             
                 <p>{selectLan.AccommodationCost} (30 {selectLan.Days}):</p>
-                <p>{selectLan.Price} {prices.PremiumPrice}</p>
+                <p>{selectLan.Price}: {prices.PremiumPrice}</p>
                 </div>
         </div>
                 <div className={classes.serverPriceStandart}>
@@ -296,7 +293,7 @@ async function get (){
                     {selectLan.AccommodationCost} (15 {selectLan.Days}):
                 </p>
                 <p>
-                {selectLan.Price} {prices.StandardPrice}</p>
+                {selectLan.Price}: {prices.StandardPrice}</p>
                 </div>
                 <div className={classes.editForm}>
                 <input className={classes.editInput} style={errorStyle} type="password" value={password} onChange={e=>{setPassword(e.target.value); setErrorStyle({})}} placeholder="PASSWORD" />
