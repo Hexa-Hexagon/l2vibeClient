@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: "http:///"
+    baseURL: "https://serverexpress.l2vibe.com/"
 })
 
 export default api;

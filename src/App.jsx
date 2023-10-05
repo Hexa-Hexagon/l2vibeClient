@@ -7,12 +7,13 @@ import Site from "./components/site";
 import Started from "./components/started";
 import Today from "./components/startingToday";
 import ThisWeek from "./components/startingThisWeek";
-import ThisMonth from "./components/startingThisMonth";
+import ThisMonth from "./components/justOpened";
 import Later from "./components/startsLater";
 import api from "./api";
-import lan, { prices } from "./languages/index";
+import {lan, prices } from "./languages/index";
 import BannerEdit from "./components/bannerEdit";
 import BonusStarted from "./components/bonusStarted";
+import JustOpened from "./components/justOpened";
 function App() {
     let [selectLan, setSelectLan] = useState(lan.EN);
     let [banners, setBanners] = useState([]);
@@ -26,7 +27,7 @@ function App() {
     let [started, setStarted] = useState([]);
     let [startingToday, setStartingToday] = useState([]);
     let [startingThisWeek, setStartingThisWeek] = useState([]);
-    let [startingThisMonth, setStartingThisMonth] = useState([]);
+    let [justOpened, setJustOpened] = useState([]);
     let [startsLater, setStartsLater] = useState([]);
     let [bonusStarted, setBonusStarted] = useState([])
     let [errorStyle, setErrorStyle] = useState({});
@@ -42,7 +43,7 @@ async function get (){
     let  today = new Date();
     let tomorrow = new Date();
     let day = 7 - new Date().getDay();
-    let dayInMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 0).getDate() - new Date().getDate();
+    let day45 = new Date().setDate(new Date().getDate() - 45);
     tomorrow.setDate(tomorrow.getDate()+1);
     today.setHours(0,0,0,0);
     tomorrow.setHours(0,0,0,0);
@@ -53,18 +54,19 @@ async function get (){
         if(res.data[i].status === "King VIP"){
             setKingVip(sites=>[...sites, res.data[i]]);
         }
-       else if(date < today){
+        else if(date < today){
+            if(res.data[i].isAction) setBonusStarted(sites=>[...sites,res.data[i]]);
+            else setJustOpened(sites=>[...sites, res.data[i]]);
+        }
+       else if(date < day45){
             if(res.data[i].isAction) setBonusStarted(sites=>[...sites,res.data[i]]);
             else setStarted(sites=>[...sites, res.data[i]]);
         }
-        else if(date.toDateString() === today.toDateString() || date.toDateString() === tomorrow ){
+        else if(date.toDateString() === today.toDateString() ){
             setStartingToday(sites=>[...sites,res.data[i]]);    
         }
         else if(date < new Date().setDate(new Date().getDate() + day)){
             setStartingThisWeek(sites=>[...sites,res.data[i]]);
-        }
-        else if(date  < new Date().setDate(new Date().getDate() + dayInMonth)){
-            setStartingThisMonth(sites=>[...sites, res.data[i]]);
         }
         else{
             setStartsLater(sites=>[...sites, res.data[i]]);
@@ -146,7 +148,7 @@ async function get (){
             setStarted([...started].sort((a,b)=>moment(b.dateOfStartingServer,"YY.MM.DD")-moment(a.dateOfStartingServer,"YY.MM.DD")))
             setStartingToday([...startingToday].sort((a,b)=>moment(b.dateOfStartingServer,"YY.MM.DD")-moment(a.dateOfStartingServer,"YY.MM.DD")));
             setStartingThisWeek([...startingThisWeek].sort((a,b)=>moment(b.dateOfStartingServer,"YY.MM.DD")-moment(a.dateOfStartingServer,"YY.MM.DD")));
-            setStartingThisMonth([...startingThisMonth].sort((a,b)=>moment(b.dateOfStartingServer,"YY.MM.DD")-moment(a.dateOfStartingServer,"YY.MM.DD")));
+            setJustOpened([...justOpened].sort((a,b)=>moment(b.dateOfStartingServer,"YY.MM.DD")-moment(a.dateOfStartingServer,"YY.MM.DD")));
             setStartsLater([...startsLater].sort((a,b)=>moment(b.dateOfStartingServer,"YY.MM.DD")-moment(a.dateOfStartingServer,"YY.MM.DD"))); 
             // eslint-disable-next-line react-hooks/exhaustive-deps
         },[]
@@ -216,10 +218,10 @@ async function get (){
             <div className={classes.leftBlock}>
             <Today sites={startingToday} starting={selectLan.StartingToday}  />
             <ThisWeek sites={startingThisWeek} starting={selectLan.StartingThisWeek} />
-            <ThisMonth sites={startingThisMonth} starting={selectLan.StartingThisMonth} />
+            <Later sites={startsLater} starting={selectLan.StartsLater} />
             </div>
             <div className={classes.rightBlock}>
-            <Later sites={startsLater} starting={selectLan.StartsLater} />
+            <JustOpened sites={justOpened} starting={selectLan.JustOpened} />
             <Started sites={started} starting={selectLan.Started} />
             <BonusStarted sites={bonusStarted} starting={selectLan.BonusStarted} />
             </div>
