@@ -7,6 +7,7 @@
     background-repeat: no-repeat;
     border: 0;
     background-color: transparent;
+    cursor: pointer;
 }
 
 .form {
@@ -27,6 +28,7 @@
     background-size: cover;
     background-color: #35155Dbf;
     border-radius: 100%;
+    cursor: pointer;
 }
 
 .createForm {
@@ -34,7 +36,7 @@
     align-items: center;
     border: 3px solid #8CABFF;
     border-radius: 5px;
-    width: 90%;
+    width: 93%;
     justify-content: space-around;
     height: 100%;
     background-color: #35155Dbf;
@@ -82,6 +84,9 @@ option {
     border: 1px solid #8CABFF;
     border-radius: 5px;
     color: #8CABFF;
+    cursor: pointer;
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
 
 @media screen and (max-width: 3000px) and (min-width: 2400px) {

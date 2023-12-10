@@ -57,7 +57,7 @@
 .center {
     width: 100%;
     height: 100%;
-    font-family: Arial;
+    font-family: Arial,sans-serif;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -76,7 +76,7 @@
 }
 
 .imageStatusKingVip {
-    background-image: url('../../images/kingvip.png');
+    background-image: url('../../images/kingVip.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -94,7 +94,7 @@
 }
 
 .imageStatusVip {
-    background-image: url('../../images/vip.png');
+    background-image: url('../../images/premium.png');
     background-position: center;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -103,7 +103,7 @@
 }
 
 .imageStatusPremiumStandart {
-    background-image: url('../../images/premiumStandart.png');
+    background-image: url('../../images/standart.png');
     background-position: center;
     background-size: 75%;
     background-repeat: no-repeat;
