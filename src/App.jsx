@@ -3,7 +3,7 @@ import * as moment from "moment";
 import React, {useEffect, useState} from "react";
 import Site from "./components/site/Site";
 import api from "./api";
-import {lan} from "./languages/index";
+import {lan} from "./languages";
 import Header from "./components/header/Header";
 import EditBlockForm from "./components/editBlockForm/EditBlockForm";
 import Main from "./components/main/Main";
@@ -26,7 +26,6 @@ function App() {
     const [startsLater, setStartsLater] = useState([]);
     const [bonusStarted, setBonusStarted] = useState([]);
     const [errorStyle, setErrorStyle] = useState({});
-
 
     async function get() {
         const res = await api.get("/");

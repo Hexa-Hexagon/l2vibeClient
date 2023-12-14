@@ -12,7 +12,7 @@
 
 .form {
     height: 70px;
-    width: 80%;
+    width: 87%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -43,7 +43,7 @@
 }
 
 .input {
-    width: 200px;
+    width: 180px;
     height: 40px;
     background-color: transparent;
     color: #8CABFF;
@@ -57,7 +57,7 @@
 }
 
 .select {
-    width: 200px;
+    width: 180px;
     height: 40px;
     background-color: transparent;
     color: #8CABFF;
@@ -119,6 +119,14 @@ option {
 }
 
 @media screen and (max-width:1370px) {
+    .updateButton {
+        margin-right: 15px;
+    }
+
+    .createForm {
+        margin-left: 15px;
+        width: 90%;
+    }
     .form {
         width: 100%;
     }
@@ -130,7 +138,7 @@ option {
     }
 }
 
-@media screen and (max-width:1000px) {
+@media screen and (max-width:1100px) {
     .input {
         width: 125px;
         font-size: 18px;
@@ -141,12 +149,20 @@ option {
     }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 940px) {
+    .updateButton {
+        margin-top: 30px;
+    }
+
     .form {
         height: auto;
+        flex-direction: column;
     }
     .createForm {
-        width: 90%;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        margin: 0 auto;
+        width: 96%;
         flex-direction: column;
         justify-content: space-between;
         height: 500px;
@@ -174,11 +190,16 @@ option {
     }
 }
 
-@media screen and (max-width: 500px) {
-    .createForm {
-        width: 100%;
+@media screen and (max-width: 400px) {
+    .action {
+        width: 45%;
+        font-size: 16px;
     }
-    .form {
-        flex-direction: column;
+
+    .isAction {
+        width: 95%;
+        flex-direction: row;
+        justify-content: space-around;
+        height: 100px;
     }
 }
