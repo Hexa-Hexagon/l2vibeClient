@@ -3,7 +3,8 @@ import classes from "../../app.module.scss";
 import {prices} from "../../languages";
 import api from "../../api";
 import kingVip from "../../images/kingVip.png";
-import superVip from "../../images/supervip.png";
+import vip from "../../images/vip.png";
+import superVip from "../../images/superVip.png";
 import premium from "../../images/premium.png";
 import standart from "../../images/standart.png";
 
@@ -102,7 +103,7 @@ const Footer = ({...props}) => {
                     </div>
                     <div className={classes.serverPrice}>
                         <div className={classes.imgForm}>
-                            <img src={premium} className={classes.kingVipForm} alt="kingvip"/>
+                            <img src={vip} className={classes.kingVipForm} alt="kingvip"/>
                         </div>
                         <h3 className={classes.serverText}>L2VIBE.COM – VIP
                             – {props.selectLan.Status}:</h3>
@@ -112,9 +113,11 @@ const Footer = ({...props}) => {
                             <p>{props.selectLan.Price}: {prices.VipPrice}</p>
                         </div>
                     </div>
-                    <div className={classes.serverPrice}>
-                        <div className={classes.imgForm}>
-                            <img src={standart} className={classes.kingVipForm} alt="kingvip"/>
+                </div>
+                <div className={classes.serverPriceStandart}>
+                    <div className={classes.standartPrice}>
+                        <div className={classes.imgSecondForm}>
+                            <img src={premium} className={classes.kingVipForm} alt="kingvip"/>
                         </div>
                         <h3 className={classes.serverText}>L2VIBE.COM
                             – {props.selectLan.Premium} – {props.selectLan.Status}</h3>
@@ -124,24 +127,24 @@ const Footer = ({...props}) => {
                             <p>{props.selectLan.Price}: {prices.PremiumPrice}</p>
                         </div>
                     </div>
-                </div>
-                <div className={classes.serverPriceStandart}>
-                    <div className={classes.standartForm}>
-                        <img src={premium} className={classes.standartForm} alt="kingvip"/>
-                    </div>
-                    <h3 className={classes.serverText}>L2VIBE.COM
-                        – {props.selectLan.Standard} – {props.selectLan.Status}</h3>
-                    <div className={classes.serverText}>
-                        <p>{props.selectLan.StandardDdescriptionFirst}</p>
-                        <p>
-                            {props.selectLan.StandardDdescriptionSecond}
-                        </p>
-                        <p>
-                            {props.selectLan.AccommodationCost} (15 {props.selectLan.Days}):
-                        </p>
-                        <p>{props.selectLan.Price}: {prices.StandardPrice}</p>
-                    </div>
 
+                    <div className={classes.standartPrice}>
+                        <div className={classes.imgThirdForm}>
+                            <img src={standart} className={classes.kingVipForm} alt="kingvip"/>
+                        </div>
+                        <h3 className={classes.serverText}>L2VIBE.COM
+                            – {props.selectLan.Standard} – {props.selectLan.Status}</h3>
+                        <div className={classes.serverText}>
+                            <p>{props.selectLan.StandardDdescriptionFirst}</p>
+                            <p>
+                                {props.selectLan.StandardDdescriptionSecond}
+                            </p>
+                            <p>
+                                {props.selectLan.AccommodationCost} (15 {props.selectLan.Days}):
+                            </p>
+                            <p>{props.selectLan.Price}: {prices.StandardPrice}</p>
+                        </div>
+                    </div>
                 </div>
                 <div className={classes.editForm}>
                     <input className={classes.editInput} style={props.errorStyle}

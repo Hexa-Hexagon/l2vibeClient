@@ -57,7 +57,7 @@
     .line {
         background: #4477CE;
         text-align: center;
-        height: 245px;
+        height: 233px;
         width: 3px;
         border-radius: 100%;
         rotate: 50deg;
@@ -96,6 +96,7 @@
         border: 3px solid white;
         border-radius: 10px;
         font-size: calc(20px + 1 * (100vw / 1280));
+        margin-right: 7px;
     }
     
     .editInput::placeholder {
@@ -110,6 +111,7 @@
         width: 100%;
         align-items: center;
         margin-top: 50px;
+        padding-left: 150px;
     }
     
     .homeButton {
@@ -177,6 +179,17 @@
     .imgForm {
         width: 100%;
     }
+
+    .imgSecondForm {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .imgThirdForm {
+        padding-top: 122px;
+        width: 70%;
+        margin: 0 auto;
+    }
     
     .kingVipForm {
         display: flex;
@@ -185,12 +198,12 @@
         margin-bottom: 5vh;
     }
 
-    .standartForm {
-        display: flex;
-        width: 70%;
-        justify-content: space-evenly;
-        margin-bottom: 5vh;
-    }
+    //.standartForm {
+    //    display: flex;
+    //    width: 70%;
+    //    justify-content: space-evenly;
+    //    margin-bottom: 5vh;
+    //}
     
     .main {
         background-color: #ffffffbf;
@@ -292,7 +305,7 @@
     .noStandart {
         display: flex;
         width: 100%;
-        justify-content: space-between;
+        justify-content: space-around;
     }
     
     .prices h3 {
@@ -320,12 +333,18 @@
         flex-direction: column;
         align-items: flex-start;
     }
-    
-    .serverPriceStandart {
-        width: 50%;
+
+    .standartPrice {
+        width: 30%;
         display: flex;
         flex-direction: column;
-        align-items: flex-start
+        align-items: flex-start;
+    }
+    
+    .serverPriceStandart {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
     }
     
     .telegramBlock {
@@ -526,6 +545,7 @@
         }
         .editForm {
             justify-content: center;
+            padding-left: 0;
         }
         .editInput {
             height: 35px;
@@ -563,10 +583,16 @@
             margin-left: 35px;
         }
 
-        .imgForm {
+        .imgForm,
+        .imgSecondForm,
+        .imgThirdForm
+        {
             width: 50%;
             margin: 0 auto;
+        }
 
+        .imgThirdForm {
+            margin-bottom: 40px;
         }
         .kingVipForm {
             flex-direction: column;
@@ -581,12 +607,12 @@
             margin: 0 auto;
         }
 
-        .standartForm {
-            display: flex;
-            width: 50%;
-            justify-content: center;
-            margin: 0 auto;
-        }
+        //.standartForm {
+        //    display: flex;
+        //    width: 50%;
+        //    justify-content: center;
+        //    margin: 0 auto;
+        //}
         .main {
             flex-direction: column;
             width: 100%;
@@ -641,6 +667,11 @@
             justify-content: center;
         }
         .serverPriceStandart {
+            width: 100%;
+            flex-direction: column;
+        }
+
+        .standartPrice {
             width: 100%;
         }
         .editSite {
