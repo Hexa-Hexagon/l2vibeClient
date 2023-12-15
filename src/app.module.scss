@@ -596,7 +596,7 @@
         }
         .kingVipForm {
             flex-direction: column;
-            width: 88%;
+            width: 60%;
             justify-content: center;
             align-items: center;
             margin: 0 auto;
@@ -646,8 +646,11 @@
             height: 50px;
         }
         .bannerFooter {
-            width: 100%;
+            width: 97%;
+            text-align: center;
+
         }
+
         .bannerFooterSize {
             flex-direction: column;
         }
@@ -680,7 +683,9 @@
         .editBannerForm {
             width: 100%;
             flex-direction: row;
-            justify-content: space-between;
+            justify-content: center;
+            display: grid;
+            grid-template-columns: 400px 400px auto;
             background-image: linear-gradient(transparent, #512B81bf);
         }
     }
@@ -695,8 +700,7 @@
         .editBannerForm {
             width: 100%;
             display: grid;
-            grid-template-columns: 250px 250px 250px auto;
-            background-image: linear-gradient(transparent, #512B81bf);
+            grid-template-columns: 400px auto;
         }
     }
     
@@ -723,12 +727,7 @@
             grid-template-columns: 250px 250px auto;
             background-image: linear-gradient(transparent, #512B81bf);
         }
-        .editBannerForm {
-            width: 100%;
-            display: grid;
-            grid-template-columns: 250px 250px auto;
-            background-image: linear-gradient(transparent, #512B81bf);
-        }
+
     }
     
     @media screen and (max-width: 750px) {
@@ -753,8 +752,17 @@
         .editBannerForm {
             width: 100%;
             display: grid;
-            grid-template-columns: 250px auto;
+            grid-template-columns: 300px auto;
             background-image: linear-gradient(transparent, #512B81bf);
+        }
+    }
+
+    @media screen and (max-width: 620px) {
+        .editBannerForm {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
     }
     
@@ -795,13 +803,7 @@
             align-items: center;
             background-image: linear-gradient(transparent, #512B81bf);
         }
-        .editBannerForm {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-image: linear-gradient(transparent, #512B81bf);
-        }
+
         .emailImage {
             width: 40px;
             height: 40px;
@@ -815,3 +817,4 @@
             height: 40px;
         }
     }
+

@@ -116,3 +116,18 @@
         background-image: linear-gradient(transparent, #35155dbf);
     }
 }
+
+@media screen and (max-width: 300px) {
+    .editBanner {
+        width: 180px;
+    }
+
+    .input {
+        width: 75%;
+        height: 8%;
+    }
+
+    .input::placeholder {
+        font-size: 10px;
+    }
+}
