@@ -8,11 +8,15 @@ const Header = ({...props}) => {
         color: "#35155D"
     };
 
-    const [lb1, setLB1] = useState(localStorage.getItem("language") === "uk" ? selectLanguageButton : {});
+    const [lb1, setLB1] = useState(
+        localStorage.getItem("language") === "uk" ? selectLanguageButton : {});
 
     const [lb2, setLB2] = useState(
-        localStorage.getItem("language") === "en" ? selectLanguageButton : {});
-    const [lb3, setLB3] = useState(localStorage.getItem("language") === "ru" ? selectLanguageButton : {});
+        localStorage.getItem("language") === "en" ? selectLanguageButton :
+            localStorage.getItem("language") === null ? selectLanguageButton : {}
+    );
+    const [lb3, setLB3] = useState(
+        localStorage.getItem("language") === "ru" ? selectLanguageButton : {});
 
 
     return (
