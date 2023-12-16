@@ -10,6 +10,7 @@ import Main from "./components/main/Main";
 import Footer from "./components/footer/Footer";
 
 function App() {
+    const [languages, setLanguages] = useState(localStorage.getItem("language") ||"en");
     const [selectLan, setSelectLan] = useState(lan.EN);
     const [banners, setBanners] = useState([]);
     const [isEdit, setIsEdit] = useState(false);
@@ -83,34 +84,45 @@ function App() {
         }
     }
 
-    useEffect(
-        () => {
-            get();
-            getBanners();
-            setKingVip([...kingVip].sort(
-                (a, b) => (moment(b.dateOfStartingServer, "YY.MM.DD") - moment(
-                    a.dateOfStartingServer, "YY.MM.DD"))));
-            setStarted([...started].sort(
-                (a, b) => moment(b.dateOfStartingServer, "YY.MM.DD") - moment(
-                    a.dateOfStartingServer, "YY.MM.DD")));
-            setStartingThisMonth([...startingThisMonth].sort(
-                (a, b) => moment(b.dateOfStartingServer, "YY.MM.DD") - moment(
-                    a.dateOfStartingServer, "YY.MM.DD")));
-            setStartingThisWeek([...startingThisWeek].sort(
-                (a, b) => moment(b.dateOfStartingServer, "YY.MM.DD") - moment(
-                    a.dateOfStartingServer, "YY.MM.DD")));
-            setJustOpened([...justOpened].sort(
-                (a, b) => moment(b.dateOfStartingServer, "YY.MM.DD") - moment(
-                    a.dateOfStartingServer, "YY.MM.DD")));
-            setStartsLater([...startsLater].sort(
-                (a, b) => moment(b.dateOfStartingServer, "YY.MM.DD") - moment(
-                    a.dateOfStartingServer, "YY.MM.DD")));
-            // eslint-disable-next-line react-hooks/exhaustive-deps
-        }, []
-    );
+    useEffect(() => {
+        get();
+        getBanners();
+        setKingVip([...kingVip].sort(
+            (a, b) => (moment(b.dateOfStartingServer, "YY.MM.DD") - moment(
+                a.dateOfStartingServer, "YY.MM.DD"))));
+        setStarted([...started].sort(
+            (a, b) => moment(b.dateOfStartingServer, "YY.MM.DD") - moment(
+                a.dateOfStartingServer, "YY.MM.DD")));
+        setStartingThisMonth([...startingThisMonth].sort(
+            (a, b) => moment(b.dateOfStartingServer, "YY.MM.DD") - moment(
+                a.dateOfStartingServer, "YY.MM.DD")));
+        setStartingThisWeek([...startingThisWeek].sort(
+            (a, b) => moment(b.dateOfStartingServer, "YY.MM.DD") - moment(
+                a.dateOfStartingServer, "YY.MM.DD")));
+        setJustOpened([...justOpened].sort(
+            (a, b) => moment(b.dateOfStartingServer, "YY.MM.DD") - moment(
+                a.dateOfStartingServer, "YY.MM.DD")));
+        setStartsLater([...startsLater].sort(
+            (a, b) => moment(b.dateOfStartingServer, "YY.MM.DD") - moment(
+                a.dateOfStartingServer, "YY.MM.DD")));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("language", languages);
+        if (localStorage.getItem("language") === "uk") {
+            setSelectLan(lan.UK);
+        } else if (localStorage.getItem("language") === "en") {
+            setSelectLan(lan.EN);
+        } else if (localStorage.getItem("language") === "ru") {
+            setSelectLan(lan.RU);
+        }
+    }, [languages]);
     return (
         <div className={classes.App}>
             <Header
+                languages={languages}
+                setLanguages={setLanguages}
                 isEdit={isEdit}
                 setIsEdit={setIsEdit}
                 selectLan={selectLan}

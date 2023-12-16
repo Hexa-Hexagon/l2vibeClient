@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import classes from "../../app.module.scss";
-import {lan} from "../../languages";
 
 const Header = ({...props}) => {
 
@@ -9,9 +8,13 @@ const Header = ({...props}) => {
         color: "#35155D"
     };
 
-    const [lb1, setLB1] = useState({});
-    const [lb2, setLB2] = useState(selectLanguageButton);
-    const [lb3, setLB3] = useState({});
+    const [lb1, setLB1] = useState(localStorage.getItem("language") === "uk" ? selectLanguageButton : {});
+
+    const [lb2, setLB2] = useState(
+        localStorage.getItem("language") === "en" ? selectLanguageButton : {});
+    const [lb3, setLB3] = useState(localStorage.getItem("language") === "ru" ? selectLanguageButton : {});
+
+
     return (
         <header className={classes.header}>
             <p className={classes.anons}>{props.selectLan.Anons}</p>
@@ -36,7 +39,7 @@ const Header = ({...props}) => {
                                     setLB1(selectLanguageButton);
                                     setLB2({});
                                     setLB3({});
-                                    props.setSelectLan(lan.UK);
+                                    props.setLanguages("uk");
                                 }}
                         >УК
                         </button>
@@ -44,14 +47,14 @@ const Header = ({...props}) => {
                             setLB2(selectLanguageButton);
                             setLB1({});
                             setLB3({});
-                            props.setSelectLan(lan.EN);
+                            props.setLanguages("en");
                         }}>EN
                         </button>
                         <button className={classes.languageButtonR} style={lb3} onClick={() => {
                             setLB3(selectLanguageButton);
                             setLB1({});
                             setLB2({});
-                            props.setSelectLan(lan.RU);
+                            props.setLanguages("ru");
                         }}>РУ
                         </button>
                     </div>
