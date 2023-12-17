@@ -108,10 +108,11 @@
     
     .editForm {
         display: flex;
-        width: 100%;
         align-items: center;
+        justify-content: center;
         margin-top: 50px;
         padding-left: 150px;
+        overflow-x: hidden;
     }
     
     .homeButton {
@@ -596,7 +597,6 @@
         }
         .kingVipForm {
             flex-direction: column;
-            width: 60%;
             justify-content: center;
             align-items: center;
             margin: 0 auto;
