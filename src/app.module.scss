@@ -1,820 +1,880 @@
-    * {
-        margin: 0;
-        padding: 0;
-        font-family: 'Manrope',sans-serif;
-    }
-    
-    @font-face {
-        font-family: "ManropeBold";
-        src: url('./fonts/static/Manrope-Bold.ttf');
-    }
-    
-    @font-face {
-        font-family: 'Manrope';
-        src: url('./fonts/Manrope-VariableFont_wght.ttf');
-    }
-    
-    body {
-        background-image: url('./images/background.png');
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        width: 100%;
-        height: 100%;
-    }
-    
-    a {
-        text-decoration: none;
-    }
-    
-    .header {
-        height: 150px;
-        width: 100%;
-        background-color: #35155dbf;
-        display: flex;
-        border-bottom: 3px solid #8CABFF;
-        align-items: center;
-        justify-content: space-around;
-    }
-    
-    .nameSiteAndAndSelectLanguageForm {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .anons {
-        color: #8CABFF;
-        text-align: center;
-        font-size: calc(14px + 16 * (100vw / 1280));
-        width: 450px;
-        font-family: 'ManropeBold',sans-serif;
-    }
-    
-    .line {
-        background: #4477CE;
-        text-align: center;
-        height: 233px;
-        width: 3px;
-        border-radius: 100%;
-        rotate: 50deg;
-    }
-    
-    .nameSite {
-        font-size: calc(14px + 16 * (100vw / 1280));
-        font-family: 'ManropeBold',sans-serif;
-        color: #8CABFF;
-        text-shadow: 0 0 10px #512B81, 0 0 10px #512B81, 0 0 10px #512B81, 0 0 1px #512B81, 0 0 0 #512B81, 0 0 0 #512B81, 0 0 0 #512B81, 0 0 10px #512B81;
-    }
-    
-    .editButton {
-        width: 40px;
-        height: 40px;
-        background-color: transparent;
-        border: 0;
-        border-radius: 5px;
-        background-image: url('./images/edit.png');
-        background-position: center;
-        background-size: cover;
-        cursor: pointer;
-    }
-    
-    .homeButtonAndSelectLanguageForm {
-        width: 500px;
-        display: flex;
-        justify-content: space-between;
-    }
-    
-    .editInput {
-        height: 40px;
-        width: 30%;
-        color: white;
-        background-color: transparent;
-        border: 3px solid white;
-        border-radius: 10px;
-        font-size: calc(20px + 1 * (100vw / 1280));
-        margin-right: 7px;
-    }
-    
-    .editInput::placeholder {
-        color: white;
-        text-align: center;
-        font-size: calc(20px + 1 * (100vw / 1280));
-        font-family: 'ManropeBold',sans-serif;
-    }
-    
-    .editForm {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 50px;
-        padding-left: 150px;
-        overflow-x: hidden;
-    }
-    
-    .homeButton {
-        width: 40px;
-        height: 40px;
-        background-image: url('./images/home.png');
-        background-position: center;
-        background-size: cover;
-        background-color: transparent;
-        border: 0;
-        cursor: pointer;
-    }
-    
-    .selectLanguageForm {
-        display: flex;
-        margin-right: 10px;
-    }
-    
-    .languageButton {
-        width: 30px;
-        height: 30px;
-        background-color: transparent;
-        color: #8CABFF;
-        border: 2px solid #8CABFF;
-        display: flex;
-        font-size: calc(14px + 1 * (100vw / 1280));
-        position: relative;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-    }
-    
-    .languageButtonL {
-        width: 30px;
-        height: 30px;
-        background-color: transparent;
-        color: #8CABFF;
-        border: 2px solid #8CABFF;
-        display: flex;
-        font-size: calc(14px + 1 * (100vw / 1280));
-        position: relative;
-        align-items: center;
-        justify-content: center;
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px;
-        cursor: pointer;
-    }
-    
-    .languageButtonR {
-        width: 30px;
-        height: 30px;
-        font-size: calc(14px + 1 * (100vw / 1280));
-        background-color: transparent;
-        color: #8CABFF;
-        border: 2px solid #8CABFF;
-        display: flex;
-        position: relative;
-        align-items: center;
-        justify-content: center;
-        border-top-right-radius: 20px;
-        border-bottom-right-radius: 20px;
-        cursor: pointer;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Manrope', sans-serif;
+}
 
-    .imgForm {
-        width: 100%;
-    }
+@font-face {
+  font-family: "ManropeBold";
+  src: url('./fonts/static/Manrope-Bold.ttf');
+}
 
-    .imgSecondForm {
-        width: 80%;
-        margin: 0 auto;
-    }
+@font-face {
+  font-family: 'Manrope';
+  src: url('./fonts/Manrope-VariableFont_wght.ttf');
+}
 
-    .imgThirdForm {
-        padding-top: 122px;
-        width: 70%;
-        margin: 0 auto;
-    }
-    
-    .kingVipForm {
-        display: flex;
-        width: 100%;
-        justify-content: space-evenly;
-        margin-bottom: 5vh;
-    }
+body {
+  background-image: url('./images/background.png');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
 
-    //.standartForm {
-    //    display: flex;
-    //    width: 70%;
-    //    justify-content: space-evenly;
-    //    margin-bottom: 5vh;
-    //}
-    
-    .main {
-        background-color: #ffffffbf;
-        width: 95%;
-        border-radius: 15px;
-        display: flex;
-    }
-    
-    .mainServers {
-        display: flex;
-        width: 80%;
-        padding-top: 40px;
-    }
-    
-    .leftBlock {
-        width: 50%;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .rightBlock {
-        width: 50%;
-        height: auto;
-        min-height: 400px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .bannerImage {
-        width: 240px;
-        height: 400px;
-        border-radius: 10px;
-    }
-    
-    .editSite {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .editBannerForm {
-        width: 20%;
-        border-radius: 15px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-image: linear-gradient(90deg, #ffffff00, #512B81bf);
-    }
-    
-    .bannerMain {
-        width: 20%;
-        border-radius: 15px;
-        display: flex;
-        flex-direction: column;
-        background-image: linear-gradient(90deg, #ffffff00, #512B81bf);
-    }
-    
-    .footer {
-        background-color: #000000d9;
-        width: 100%;
-        bottom: 0;
-        left: 0;
-        color: #ffffff;
-        position: static;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        margin-top: 100px;
-        font-size: calc(14px + 1 * (100vw / 1280));
-        align-items: center;
-        padding-bottom: 40px;
-    }
-    
-    .contactsForm {
-        width: 95%;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-    }
-    
-    .contactsText {
-        width: 20%;
-    }
-    
-    .contacts {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-evenly;
-        width: 60%;
-        height: 60px;
-    }
-    
-    .prices {
-        width: 95%;
-    }
-    
-    .noStandart {
-        display: flex;
-        width: 100%;
-        justify-content: space-around;
-    }
-    
-    .prices h3 {
-        margin-bottom: 20px;
-        margin-top: 15px;
-    }
-    
-    .bannerFooter {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 90%;
-    }
-    
-    .bannerFooterSize {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-        margin-bottom: 10px;
-    }
-    
-    .serverPrice {
-        width: 20%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
+a {
+  text-decoration: none;
+}
 
-    .standartPrice {
-        width: 30%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .serverPriceStandart {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-    }
-    
-    .telegramBlock {
-        display: flex;
-        align-items: center;
-    }
-    
-    .telegramImage {
-        width: 30px;
-        height: 30px;
-        background-image: url('./images/telegram.png');
-        background-position: center;
-        background-size: 80%;
-        background-repeat: no-repeat;
-    }
-    
-    .discordBlock {
-        display: flex;
-        align-items: center;
-    }
-    
-    .discordImage {
-        width: 30px;
-        height: 30px;
-        background-image: url('./images/discord.png');
-        background-position: center;
-        background-size: cover;
-    }
-    
-    .emailBlock {
-        display: flex;
-        align-items: center;
-    }
-    
-    .emailImage {
-        width: 30px;
-        height: 30px;
-        background-image: url('./images/email.png');
-        background-position: center;
-        background-size: 80%;
-        background-repeat: no-repeat;
-    }
-    
-    .editBlockFormAndCreateNewSite {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .editBlockForm {
-        margin-top: 30px;
-        background-color: #ffffffbf;
-        width: 80%;
-        display: flex;
-        justify-content: flex-end;
-        border-radius: 15px;
-    }
-    
-    .footer a {
-        color: white;
-    }
-    
-    @media screen and (max-width: 3000px) {
-        .anons {
-            font-size: calc(20px + 5 * (100vw/1280));
-        }
-        .editInput {
-            height: 50px;
-        }
-        .editButton {
-            height: 55px;
-            width: 55px;
-        }
-        .languageButton {
-            width: 50px;
-            height: 50px;
-            font-size: calc(20px + 5 * (100vw/1280));
-        }
-        .languageButtonR {
-            width: 50px;
-            height: 50px;
-            font-size: calc(20px + 5 * (100vw/1280));
-        }
-        .languageButtonL {
-            width: 50px;
-            height: 50px;
-            font-size: calc(20px + 5 * (100vw/1280));
-        }
-        .homeButton {
-            width: 60px;
-            height: 60px;
-        }
-        .editBlockForm {
-            width: 90%;
-            justify-content: space-between;
-        }
-        .bannerMain {
-            align-items: flex-end;
-        }
-        .emailImage {
-            width: 50px;
-            height: 50px;
-        }
-        .telegramImage {
-            width: 50px;
-            height: 50px;
-        }
-        .bannerFooter {
-            width: 80%;
-        }
-        .bannerFooterSize {
-            width: 100%;
-        }
-        .discordImage {
-            width: 50px;
-            height: 50px;
-        }
-    }
-    
-    @media screen and (max-width: 2000px) and (orientation: portrait) {
-        .main {
-            width: 100%;
-            flex-direction: column;
-        }
-        .mainServers {
-            width: 100%;
-            flex-direction: column;
-        }
-        .leftBlock {
-            width: 100%;
-            flex-direction: column;
-            align-items: center;
-        }
-        .rightBlock {
-            width: 100%;
-            flex-direction: column;
-            align-items: center;
-        }
-        .bannerMain {
-            width: 100%;
-            flex-direction: row;
-            justify-content: space-between;
-            background-image: linear-gradient(transparent, #512B81bf);
-        }
-        .footer {
-            margin-top: 25vh;
-        }
-    }
-    
-    @media screen and (max-width:2000px) {
-        .editInput {
-            height: 40px;
-        }
-        .editButton {
-            height: 45px;
-            width: 45px;
-        }
-        .languageButton {
-            width: 35px;
-            height: 35px;
-            font-size: calc(15px + 1 * (100vw/1280));
-        }
-        .languageButtonR {
-            width: 35px;
-            height: 35px;
-            font-size: calc(15px + 1 * (100vw/1280));
-        }
-        .languageButtonL {
-            width: 35px;
-            height: 35px;
-            font-size: calc(15px + 1 * (100vw/1280));
-        }
-    }
-    
-    @media screen and (max-width: 1370px) {
-        .header {
-            flex-direction: column;
-            height: 250px;
-        }
-        .anons {
-            width: 100%;
-        }
-        .line {
-            height: 5px;
-            width: 100%;
-            rotate: 0deg;
-            border-radius: 0;
-        }
-        .nameSiteAndSelectLanguageForm {
-            width: 100%;
-        }
-        .nameSite {
-            text-align: center;
-        }
-        .homeButtonAndSelectLanguageForm {
-            width: 100%;
-        }
-        .editForm {
-            justify-content: center;
-            padding-left: 0;
-        }
-        .editInput {
-            height: 35px;
-            width: 80%;
-            border-radius: 5px;
-        }
-        .editInput::placeholder {
-            text-align: center;
-        }
-        .editButton {
-            width: 40px;
-            height: 40px;
-        }
-        .selectLanguageForm {
-            width: 100%;
-            justify-content: flex-end;
-            margin-bottom: 30px;
-            margin-right: 35px;
-        }
-        .languageButton {
-            width: 40px;
-            height: 40px;
-        }
-        .languageButtonL {
-            width: 40px;
-            height: 40px;
-        }
-        .languageButtonR {
-            width: 40px;
-            height: 40px;
-        }
-        .homeButton {
-            width: 60px;
-            height: 60px;
-            margin-left: 35px;
-        }
+.header {
+  height: 150px;
+  width: 100%;
+  background-color: #35155dbf;
+  display: flex;
+  border-bottom: 3px solid #8CABFF;
+  align-items: center;
+  justify-content: space-around;
+}
 
-        .imgForm,
-        .imgSecondForm,
-        .imgThirdForm
-        {
-            width: 50%;
-            margin: 0 auto;
-        }
+.nameSiteAndAndSelectLanguageForm {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
 
-        .imgThirdForm {
-            margin-bottom: 40px;
-        }
-        .kingVipForm {
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto;
-        }
+.anons {
+  color: #8CABFF;
+  text-align: center;
+  font-size: calc(14px + 16 * (100vw / 1280));
+  width: 450px;
+  font-family: 'ManropeBold', sans-serif;
+}
 
-        .serverText {
-            width: 70%;
-            margin: 0 auto;
-        }
+.line {
+  background: #4477CE;
+  text-align: center;
+  height: 233px;
+  width: 3px;
+  border-radius: 100%;
+  rotate: 50deg;
+}
 
-        .main {
-            flex-direction: column;
-            width: 100%;
-            border-radius: 0;
-        }
-        .mainServers {
-            flex-direction: column;
-            width: 100%;
-        }
-        .leftBlock {
-            width: 100%;
-        }
-        .rightBlock {
-            width: 100%;
-        }
-        .contactsForm {
-            flex-direction: column;
-            align-items: center;
-        }
-        .contactsText {
-            text-align: center;
-            width: 100%;
-        }
-        .contacts {
-            width: 100%;
-        }
-        .emailImage {
-            width: 50px;
-            height: 50px;
-        }
-        .telegramImage {
-            width: 50px;
-            height: 50px;
-        }
-        .discordImage {
-            width: 50px;
-            height: 50px;
-        }
-        .bannerFooter {
-            width: 97%;
-            text-align: center;
+.nameSite {
+  font-size: calc(14px + 16 * (100vw / 1280));
+  font-family: 'ManropeBold', sans-serif;
+  color: #8CABFF;
+  text-shadow: 0 0 10px #512B81, 0 0 10px #512B81, 0 0 10px #512B81, 0 0 1px #512B81, 0 0 0 #512B81, 0 0 0 #512B81, 0 0 0 #512B81, 0 0 10px #512B81;
+}
 
-        }
+.editButton {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: 0;
+  border-radius: 5px;
+  background-image: url('./images/edit.png');
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+}
 
-        .bannerFooterSize {
-            flex-direction: column;
-        }
-        .noStandart {
-            flex-direction: column;
-        }
-        .serverPrice {
-            width: 100%;
-            margin-top: 30px;
-            margin-bottom: 30px;
-            justify-content: center;
-        }
-        .serverPriceStandart {
-            width: 100%;
-            flex-direction: column;
-        }
+.homeButtonAndSelectLanguageForm {
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+}
 
-        .standartPrice {
-            width: 100%;
-        }
-        .editSite {
-            width: 100%;
-        }
-        .editBlockForm {
-            width: 100%;
-            flex-direction: column;
-            align-items: center;
-            border-radius: 0;
-        }
-        .editBannerForm {
-            width: 100%;
-            flex-direction: row;
-            justify-content: center;
-            display: grid;
-            grid-template-columns: 400px 400px auto;
-            background-image: linear-gradient(transparent, #512B81bf);
-        }
-    }
-    
-    @media screen and (max-width: 1250px) {
-        .bannerMain {
-            width: 100%;
-            display: grid;
-            grid-template-columns: 250px 250px 250px auto;
-            background-image: linear-gradient(transparent, #512B81bf);
-        }
-        .editBannerForm {
-            width: 100%;
-            display: grid;
-            grid-template-columns: 400px auto;
-        }
-    }
-    
-    @media screen and (max-width: 1000px) {
-        .languageButton {
-            width: 35px;
-            height: 35px;
-        }
-        .languageButtonL {
-            width: 35px;
-            height: 35px;
-        }
-        .languageButtonR {
-            width: 35px;
-            height: 35px;
-        }
-        .homeButton {
-            width: 50px;
-            height: 50px;
-        }
-        .bannerMain {
-            width: 100%;
-            display: grid;
-            grid-template-columns: 250px 250px auto;
-            background-image: linear-gradient(transparent, #512B81bf);
-        }
+.editInput {
+  height: 40px;
+  width: 30%;
+  color: white;
+  background-color: transparent;
+  border: 3px solid white;
+  border-radius: 10px;
+  font-size: calc(20px + 1 * (100vw / 1280));
+  margin-right: 7px;
+}
 
-    }
-    
-    @media screen and (max-width: 750px) {
-        .languageButton {
-            width: 30px;
-            height: 30px;
-        }
-        .languageButtonL {
-            width: 30px;
-            height: 30px;
-        }
-        .languageButtonR {
-            width: 30px;
-            height: 30px;
-        }
-        .bannerMain {
-            width: 100%;
-            display: grid;
-            grid-template-columns: 250px auto;
-            background-image: linear-gradient(transparent, #512B81bf);
-        }
-        .editBannerForm {
-            width: 100%;
-            display: grid;
-            grid-template-columns: 300px auto;
-            background-image: linear-gradient(transparent, #512B81bf);
-        }
-    }
+.editInput::placeholder {
+  color: white;
+  text-align: center;
+  font-size: calc(20px + 1 * (100vw / 1280));
+  font-family: 'ManropeBold', sans-serif;
+}
 
-    @media screen and (max-width: 620px) {
-        .editBannerForm {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-    }
-    
-    @media screen and (max-width: 500px) {
+.editForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  padding-left: 150px;
+  overflow-x: hidden;
+}
 
-        .kingVipForm {
-            width: 95%;
-        }
-        .line {
-            height: 3px;
-        }
-        .editInput {
-            height: 30px;
-        }
-        .editButton {
-            width: 30px;
-            height: 30px;
-        }
-        .selectLanguageForm {
-            margin-top: 15px;
-        }
-        .languageButton {
-            width: 25px;
-            height: 25px;
-        }
-        .languageButtonL {
-            width: 25px;
-            height: 25px;
-        }
-        .languageButtonR {
-            width: 25px;
-            height: 25px;
-        }
-        .bannerMain {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-image: linear-gradient(transparent, #512B81bf);
-        }
+.homeButton {
+  width: 40px;
+  height: 40px;
+  background-image: url('./images/home.png');
+  background-position: center;
+  background-size: cover;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
 
-        .emailImage {
-            width: 40px;
-            height: 40px;
-        }
-        .telegramImage {
-            width: 40px;
-            height: 40px;
-        }
-        .discordImage {
-            width: 40px;
-            height: 40px;
-        }
-    }
+.selectLanguageForm {
+  display: flex;
+  margin-right: 10px;
+}
+
+.languageButton {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  color: #8CABFF;
+  border: 2px solid #8CABFF;
+  display: flex;
+  font-size: calc(14px + 1 * (100vw / 1280));
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.languageButtonL {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  color: #8CABFF;
+  border: 2px solid #8CABFF;
+  display: flex;
+  font-size: calc(14px + 1 * (100vw / 1280));
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  cursor: pointer;
+}
+
+.languageButtonR {
+  width: 30px;
+  height: 30px;
+  font-size: calc(14px + 1 * (100vw / 1280));
+  background-color: transparent;
+  color: #8CABFF;
+  border: 2px solid #8CABFF;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  cursor: pointer;
+}
+
+.imgForm {
+  width: 100%;
+}
+
+.imgSecondForm {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.imgThirdForm {
+  padding-top: 122px;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.kingVipForm {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  margin-bottom: 5vh;
+}
+
+.main {
+  background-color: #ffffffbf;
+  width: 95%;
+  border-radius: 15px;
+  display: flex;
+}
+
+.mainServers {
+  display: flex;
+  width: 80%;
+  padding-top: 40px;
+}
+
+.leftBlock {
+  width: 50%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rightBlock {
+  width: 50%;
+  height: auto;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bannerImage {
+  width: 240px;
+  height: 400px;
+  border-radius: 10px;
+}
+
+.editSite {
+  display: flex;
+  flex-direction: column;
+}
+
+.editBannerForm {
+  width: 20%;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: linear-gradient(90deg, #ffffff00, #512B81bf);
+}
+
+.editor {
+  width: 95%;
+  margin: 20px auto;
+  overflow: hidden;
+  min-height: 400px;
+}
+.bannerMain {
+  width: 20%;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(90deg, #ffffff00, #512B81bf);
+}
+
+.footer {
+  background-color: #000000d9;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  color: #ffffff;
+  position: static;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 100px;
+  font-size: calc(14px + 1 * (100vw / 1280));
+  align-items: center;
+  padding-bottom: 40px;
+}
+
+.contactsForm {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.contactsText {
+  width: 20%;
+}
+
+.contacts {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  width: 60%;
+  height: 60px;
+}
+
+.prices {
+  width: 95%;
+}
+
+.noStandart {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.prices h3 {
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+
+.bannerFooter {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.bannerFooterSize {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.serverPrice {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.standartPrice {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.serverPriceStandart {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.telegramBlock {
+  display: flex;
+  align-items: center;
+}
+
+.telegramImage {
+  width: 30px;
+  height: 30px;
+  background-image: url('./images/telegram.png');
+  background-position: center;
+  background-size: 80%;
+  background-repeat: no-repeat;
+}
+
+.discordBlock {
+  display: flex;
+  align-items: center;
+}
+
+.discordImage {
+  width: 30px;
+  height: 30px;
+  background-image: url('./images/discord.png');
+  background-position: center;
+  background-size: cover;
+}
+
+.emailBlock {
+  display: flex;
+  align-items: center;
+}
+
+.emailImage {
+  width: 30px;
+  height: 30px;
+  background-image: url('./images/email.png');
+  background-position: center;
+  background-size: 80%;
+  background-repeat: no-repeat;
+}
+
+.editBlockFormAndCreateNewSite {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.editBlockForm {
+  margin-top: 30px;
+  background-color: #ffffffbf;
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
+  border-radius: 15px;
+}
+
+.footer a {
+  color: white;
+}
+
+@media screen and (max-width: 3000px) {
+  .anons {
+    font-size: calc(20px + 5 * (100vw / 1280));
+  }
+  .editInput {
+    height: 50px;
+  }
+  .editButton {
+    height: 55px;
+    width: 55px;
+  }
+  .languageButton {
+    width: 50px;
+    height: 50px;
+    font-size: calc(20px + 5 * (100vw / 1280));
+  }
+  .languageButtonR {
+    width: 50px;
+    height: 50px;
+    font-size: calc(20px + 5 * (100vw / 1280));
+  }
+  .languageButtonL {
+    width: 50px;
+    height: 50px;
+    font-size: calc(20px + 5 * (100vw / 1280));
+  }
+  .homeButton {
+    width: 60px;
+    height: 60px;
+  }
+  .editBlockForm {
+    width: 90%;
+    justify-content: space-between;
+  }
+  .bannerMain {
+    align-items: flex-end;
+  }
+  .emailImage {
+    width: 50px;
+    height: 50px;
+  }
+  .telegramImage {
+    width: 50px;
+    height: 50px;
+  }
+  .bannerFooter {
+    width: 80%;
+  }
+  .bannerFooterSize {
+    width: 100%;
+  }
+  .discordImage {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.statements {
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-left: 20px;
+  display: grid;
+  grid-template-columns: 400px 400px 400px;
+}
+
+.statementsMain {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-left: 30px;
+}
+
+.statementImage {
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+}
+
+.statementLink {
+  font-family: "Manrope", sans-serif;
+  color: #000;
+  text-decoration: none;
+}
+
+.statementLink:hover {
+  color: #ff8503;
+}
+
+
+@media screen and (max-width: 2000px) and (orientation: portrait) {
+  .main {
+    width: 100%;
+    flex-direction: column;
+  }
+  .mainServers {
+    width: 100%;
+    flex-direction: column;
+  }
+  .leftBlock {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+  .rightBlock {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+  .bannerMain {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    background-image: linear-gradient(transparent, #512B81bf);
+  }
+  .footer {
+    margin-top: 25vh;
+  }
+}
+
+@media screen and (max-width: 2000px) {
+  .editInput {
+    height: 40px;
+  }
+  .editButton {
+    height: 45px;
+    width: 45px;
+  }
+  .languageButton {
+    width: 35px;
+    height: 35px;
+    font-size: calc(15px + 1 * (100vw / 1280));
+  }
+  .languageButtonR {
+    width: 35px;
+    height: 35px;
+    font-size: calc(15px + 1 * (100vw / 1280));
+  }
+  .languageButtonL {
+    width: 35px;
+    height: 35px;
+    font-size: calc(15px + 1 * (100vw / 1280));
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .statements {
+    grid-template-columns: 400px 400px;
+  }
+}
+
+@media screen and (max-width: 1370px) {
+  .header {
+    flex-direction: column;
+    height: 250px;
+  }
+  .anons {
+    width: 100%;
+  }
+  .line {
+    height: 5px;
+    width: 100%;
+    rotate: 0deg;
+    border-radius: 0;
+  }
+  .nameSiteAndSelectLanguageForm {
+    width: 100%;
+  }
+  .nameSite {
+    text-align: center;
+  }
+  .homeButtonAndSelectLanguageForm {
+    width: 100%;
+  }
+  .editForm {
+    justify-content: center;
+    padding-left: 0;
+  }
+  .editInput {
+    height: 35px;
+    width: 80%;
+    border-radius: 5px;
+  }
+  .editInput::placeholder {
+    text-align: center;
+  }
+  .editButton {
+    width: 40px;
+    height: 40px;
+  }
+  .selectLanguageForm {
+    width: 100%;
+    justify-content: flex-end;
+    margin-bottom: 30px;
+    margin-right: 35px;
+  }
+  .languageButton {
+    width: 40px;
+    height: 40px;
+  }
+  .languageButtonL {
+    width: 40px;
+    height: 40px;
+  }
+  .languageButtonR {
+    width: 40px;
+    height: 40px;
+  }
+  .homeButton {
+    width: 60px;
+    height: 60px;
+    margin-left: 35px;
+  }
+
+  .imgForm,
+  .imgSecondForm,
+  .imgThirdForm {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  .imgThirdForm {
+    margin-bottom: 40px;
+  }
+  .kingVipForm {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .serverText {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .main {
+    flex-direction: column;
+    width: 100%;
+    border-radius: 0;
+  }
+  .mainServers {
+    flex-direction: column;
+    width: 100%;
+  }
+  .leftBlock {
+    width: 100%;
+  }
+  .rightBlock {
+    width: 100%;
+  }
+  .contactsForm {
+    flex-direction: column;
+    align-items: center;
+  }
+  .contactsText {
+    text-align: center;
+    width: 100%;
+  }
+  .contacts {
+    width: 100%;
+  }
+  .emailImage {
+    width: 50px;
+    height: 50px;
+  }
+  .telegramImage {
+    width: 50px;
+    height: 50px;
+  }
+  .discordImage {
+    width: 50px;
+    height: 50px;
+  }
+  .bannerFooter {
+    width: 97%;
+    text-align: center;
+
+  }
+
+  .bannerFooterSize {
+    flex-direction: column;
+  }
+  .noStandart {
+    flex-direction: column;
+  }
+  .serverPrice {
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    justify-content: center;
+  }
+  .serverPriceStandart {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .standartPrice {
+    width: 100%;
+  }
+  .editSite {
+    width: 100%;
+  }
+  .editBlockForm {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0;
+  }
+  .editBannerForm {
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 400px 400px auto;
+    background-image: linear-gradient(transparent, #512B81bf);
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .bannerMain {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 250px 250px 250px auto;
+    background-image: linear-gradient(transparent, #512B81bf);
+  }
+  .editBannerForm {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 400px auto;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .languageButton {
+    width: 35px;
+    height: 35px;
+  }
+  .languageButtonL {
+    width: 35px;
+    height: 35px;
+  }
+  .languageButtonR {
+    width: 35px;
+    height: 35px;
+  }
+  .homeButton {
+    width: 50px;
+    height: 50px;
+  }
+  .bannerMain {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 250px 250px auto;
+    background-image: linear-gradient(transparent, #512B81bf);
+  }
+
+}
+
+@media screen and (max-width: 870px) {
+  .statements {
+    grid-template-columns: 600px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .languageButton {
+    width: 30px;
+    height: 30px;
+  }
+  .languageButtonL {
+    width: 30px;
+    height: 30px;
+  }
+  .languageButtonR {
+    width: 30px;
+    height: 30px;
+  }
+  .bannerMain {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 250px auto;
+    background-image: linear-gradient(transparent, #512B81bf);
+  }
+  .editBannerForm {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 300px auto;
+    background-image: linear-gradient(transparent, #512B81bf);
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .statements {
+    grid-template-columns: 400px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .editBannerForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 500px) {
+
+  .kingVipForm {
+    width: 95%;
+  }
+  .line {
+    height: 3px;
+  }
+  .editInput {
+    height: 30px;
+  }
+  .editButton {
+    width: 30px;
+    height: 30px;
+  }
+  .selectLanguageForm {
+    margin-top: 15px;
+  }
+  .languageButton {
+    width: 25px;
+    height: 25px;
+  }
+  .languageButtonL {
+    width: 25px;
+    height: 25px;
+  }
+  .languageButtonR {
+    width: 25px;
+    height: 25px;
+  }
+  .bannerMain {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: linear-gradient(transparent, #512B81bf);
+  }
+
+  .emailImage {
+    width: 40px;
+    height: 40px;
+  }
+  .telegramImage {
+    width: 40px;
+    height: 40px;
+  }
+  .discordImage {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .statements {
+    grid-template-columns: 250px;
+    padding-left: 0;
+  }
+  .statementsMain {
+    margin-left: 0;
+  }
+}
 
