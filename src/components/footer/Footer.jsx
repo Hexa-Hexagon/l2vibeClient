@@ -37,7 +37,7 @@ const Footer = ({...props}) => {
                     <a href="https://t.me/l2vibe" className={classes.telegramBlock}>
                         <div className={classes.telegramImage}/>
                     </a>
-                    <a href="https://discord.gg/JSDxFKVq"
+                    <a href="https://discord.gg/YXNwBdVgH9"
                        className={classes.discordBlock}>
                         <div className={classes.discordImage}/>
                     </a>

@@ -8,6 +8,8 @@ import Header from "./components/header/Header";
 import EditBlockForm from "./components/editBlockForm/EditBlockForm";
 import Main from "./components/main/Main";
 import Footer from "./components/footer/Footer";
+import {Route, Routes} from "react-router-dom";
+import CreateStatements from "./components/textEditor/CreateStatements";
 
 function App() {
     const [languages, setLanguages] = useState(localStorage.getItem("language") ||"en");
@@ -120,6 +122,7 @@ function App() {
     }, [languages]);
     return (
         <div className={classes.App}>
+
             <Header
                 languages={languages}
                 setLanguages={setLanguages}
