@@ -15,7 +15,6 @@ const Footer = ({...props}) => {
         if (props.password) {
             const res = await api.get(`/password/${props.password}`);
             if (res.data) {
-                props.getEdit();
                 props.setIsEdit(!props.isEdit);
             } else {
                 props.setErrorStyle({

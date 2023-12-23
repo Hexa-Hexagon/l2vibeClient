@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./site.module.scss";
 
-const Site = (props) => {
+const Site = ({...props}) => {
 
     return (
         <a className={classes.site} href={`https://${props.site.nameSite}`}>

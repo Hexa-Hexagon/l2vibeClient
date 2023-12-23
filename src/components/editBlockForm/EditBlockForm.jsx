@@ -20,25 +20,13 @@ const EditBlockForm = ({...props}) => {
     const removeKingVip = (site) => {
         props.setKingVip(props.kingVip.filter(s => s._id !== site._id));
     };
-    const removeSuperVip = (site) => {
-        props.setSuperVip(props.superVip.filter(s => s._id !== site._id));
-    };
-    const removeVip = (site) => {
-        props.setVip(props.vip.filter(s => s._id !== site._id));
-    };
-    const removePremium = (site) => {
-        props.setPremium(props.premium.filter(s => s._id !== site._id));
-    };
-    const removeStandart = (site) => {
-        props.setStandart(props.standart.filter(s => s._id !== site._id));
-    };
 
     const [createActive, setCreateActive] = useState(false);
 
     return (
         <div className={classes.editBlockFormAndCreateNewSite}>
 
-            <CreateNewSite addSite={props.getEdit}/>
+            <CreateNewSite/>
             <div className={classes.editBlockForm}>
                 {/*<EditServer*/}
                 {/*    removeKingVip={removeKingVip}*/}
@@ -53,7 +41,7 @@ const EditBlockForm = ({...props}) => {
                 {/*    standart={props.standart}*/}
                 {/*    banners={props.banners}*/}
                 {/*/>*/}
-                <Statements createActive={createActive} setCreateActive={setCreateActive}/>
+                <Statements articles={props.articles} createActive={createActive} setCreateActive={setCreateActive}/>
             </div>
         </div>
 
