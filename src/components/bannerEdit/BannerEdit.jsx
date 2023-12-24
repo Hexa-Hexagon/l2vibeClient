@@ -50,7 +50,7 @@ const BannerEdit = (props) => {
         <div className={classes.editBanner}>
             {
                 banner === "" || banner === null ? "" :
-                    <img src={banner} className={classes.image} alt="banner"/>
+                    <img src={banner} className={classes.image} alt=""/>
             }
             <div className={classes.choseForm}>
                 <input className={classes.choseFormInput} type="file" onChange={convertTo64Base}/>

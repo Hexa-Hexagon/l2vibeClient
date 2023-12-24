@@ -13,6 +13,7 @@ import EditServer from "../editServer/EditServer";
 import CreateStatements from "../textEditor/CreateStatements";
 import {Link, Route, Routes} from "react-router-dom";
 import Statements from "../statements/Statements";
+import EditStatements from "../editStatements/EditStatements";
 
 const EditBlockForm = ({...props}) => {
 
@@ -28,24 +29,35 @@ const EditBlockForm = ({...props}) => {
 
             <CreateNewSite/>
             <div className={classes.editBlockForm}>
-                {/*<EditServer*/}
-                {/*    removeKingVip={removeKingVip}*/}
-                {/*    removeSuperVip={removeSuperVip}*/}
-                {/*    removeVip={removeVip}*/}
-                {/*    removePremium={removePremium}*/}
-                {/*    removeStandart={removeStandart}*/}
-                {/*    kingVip={props.kingVip}*/}
-                {/*    superVip={props.superVip}*/}
-                {/*    vip={props.vip}*/}
-                {/*    premium={props.premium}*/}
-                {/*    standart={props.standart}*/}
-                {/*    banners={props.banners}*/}
-                {/*/>*/}
-                <Statements articles={props.articles} createActive={createActive} setCreateActive={setCreateActive}/>
+                {
+                    props.statements === true ?
+                        <EditServer
+                            removeKingVip={removeKingVip}
+                            kingVip={props.kingVip}
+                            superVip={props.superVip}
+                            vip={props.vip}
+                            premium={props.premium}
+                            standart={props.standart}
+                            banners={props.banners}
+                        />
+                        :
+                        <Statements
+                            articles={props.articles}
+                            createActive={createActive}
+                            setCreateActive={setCreateActive}
+                            setEditStatements={props.setEditStatements}
+                            editStatements={props.editStatements}
+                        />
+                }
+                <EditStatements
+                    setEditStatements={props.setEditStatements}
+                    editStatements={props.editStatements}
+                />
             </div>
         </div>
 
-    );
+    )
+        ;
 };
 
 export default EditBlockForm;

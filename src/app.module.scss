@@ -301,7 +301,9 @@ a {
   font-size: 16px;
 }
 
-.formButton {
+.formButton,
+.accept
+{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -315,10 +317,24 @@ a {
   cursor: pointer;
 }
 
+.accept {
+  margin-left: 10px;
+  width: 45px;
+  height: 45px;
+}
+
 .statementWrapper {
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+
+.editStatements {
+  display: block;
+}
+
+.disableWrapper {
+  display: none;
 }
 
 .statementForm {

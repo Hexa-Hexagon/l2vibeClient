@@ -31,6 +31,8 @@ function App() {
         {id: "6", name: "Test"}
     ]);
     const [isEdit, setIsEdit] = useState(false);
+    const [statements, setStatements] = useState(false);
+    const [editStatements, setEditStatements] = useState(false);
     const [password, setPassword] = useState("");
     const [kingVip, setKingVip] = useState([
         {id: "1", nameSite: "Test"},
@@ -81,10 +83,13 @@ function App() {
             {
                 isEdit === true ?
                     <EditBlockForm
+                        statements={statements}
                         kingVip={kingVip}
                         banners={banners}
                         setBanners={setBanners}
                         articles={articles}
+                        editStatements={editStatements}
+                        setEditStatements={setEditStatements}
                     />
                     :
                     <div style={{
@@ -117,6 +122,8 @@ function App() {
                             bonusStarted={bonusStarted}
                             banners={banners}
                             articles={articles}
+                            setStatements={setStatements}
+                            statements={statements}
                         />
 
                         <Footer
@@ -127,6 +134,7 @@ function App() {
                             setPassword={setPassword}
                             isEdit={isEdit}
                             setIsEdit={setIsEdit}
+                            statements={statements}
                         />
                     </div>
             }

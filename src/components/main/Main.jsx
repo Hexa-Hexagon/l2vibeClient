@@ -10,6 +10,7 @@ import Servers from "../servers/Servers";
 import {Link, Route, Routes} from "react-router-dom";
 import MainStatements from "../mainStatements/MainStatements";
 import StatementText from "../statementText/StatementText";
+import EditStatements from "../editStatements/EditStatements";
 
 const Main = ({...props}) => {
     return (
@@ -17,21 +18,24 @@ const Main = ({...props}) => {
             <Routes>
                 <Route path="/" element={
                     <Servers
-                    startingThisWeek={props.startingThisWeek}
-                    selectLan={props.selectLan}
-                    startingThisMonth={props.startingThisMonth}
-                    startsLater={props.startsLater}
-                    justOpened={props.justOpened}
-                    started={props.started}
-                    bonusStarted={props.bonusStarted}
-                    banners={props.banners}
-                />}/>
+                        startingThisWeek={props.startingThisWeek}
+                        selectLan={props.selectLan}
+                        startingThisMonth={props.startingThisMonth}
+                        startsLater={props.startsLater}
+                        justOpened={props.justOpened}
+                        started={props.started}
+                        bonusStarted={props.bonusStarted}
+                        banners={props.banners}
+                    />}/>
                 <Route path="/statements" element={
-                   <MainStatements articles={props.articles}/>
+                    <MainStatements articles={props.articles} setStatements={props.setStatements}
+                                    statements={props.statements}/>
                 }/>
                 <Route path="/statements/:id" element={
                     <StatementText articles={props.articles}/>
                 }/>
+
+
             </Routes>
         </main>
     );

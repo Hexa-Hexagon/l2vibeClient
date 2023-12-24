@@ -1,21 +1,10 @@
-import React, {useState} from "react";
+import React from "react";
 import classes from "../../app.module.scss";
-import {Editor} from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import EditorState from "draft-js/lib/EditorState";
 import {useFormik} from "formik";
 import * as yup from "yup";
 
 const CreateStatements = ({...props}) => {
-    // const [editorState, setEditorState] = useState(
-    //     EditorState.createEmpty()
-    // );
-    // const onEditorStateChange = (editorState) => {
-    //     setEditorState(editorState, {
-    //         allowUndo: true,
-    //     });
-    // };
-
 
     const createSchema = yup.object().shape({
         name: yup.string().required("name required"),
@@ -33,30 +22,7 @@ const CreateStatements = ({...props}) => {
     });
     return (
         <div className={props.createActive ? classes.createStatements : classes.disableStatements}>
-            {/*<div className={classes.editor}>*/}
-            {/*    <Editor*/}
-            {/*        editorState={editorState}*/}
-            {/*        onEditorStateChange={onEditorStateChange}*/}
-            {/*        toolbar={{*/}
-            {/*            image: {*/}
-            {/*                className: undefined,*/}
-            {/*                component: undefined,*/}
-            {/*                popupClassName: undefined,*/}
-            {/*                urlEnabled: true,*/}
-            {/*                uploadEnabled: true,*/}
-            {/*                alignmentEnabled: true,*/}
-            {/*                uploadCallback: undefined,*/}
-            {/*                previewImage: true,*/}
-            {/*                inputAccept: 'image/gif,image/jpeg,image/jpg,image/png,image/svg',*/}
-            {/*                alt: { present: false, mandatory: false },*/}
-            {/*                defaultSize: {*/}
-            {/*                    height: 'auto',*/}
-            {/*                    width: 'auto',*/}
-            {/*                },*/}
-            {/*            },*/}
-            {/*        }}*/}
-            {/*    />*/}
-            {/*</div>*/}
+
             <form onSubmit={handleSubmit} className={classes.inputWrapper} autoComplete="off">
                 <div>
                     <div className={classes.form}>
