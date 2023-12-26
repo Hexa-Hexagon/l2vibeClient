@@ -2,26 +2,14 @@ import React from "react";
 import classes from "./startingThisWeek.module.scss";
 import Site from "../site/Site";
 
-const ThisWeek = (props) => {
-    const superVip = props.sites.filter((site) => {
-        return site.status === "Super VIP";
-    });
-    const vip = props.sites.filter((site) => {
-        return site.status === "VIP";
-    });
-    const premium = props.sites.filter((site) => {
-        return site.status === "Premium";
-    });
-    const standart = props.sites.filter((site) => {
-        return site.status === "Standart";
-    });
+const ThisWeek = ({ ...props }) => {
     return (
         <div className={classes.form}>
             <h1 style={{textAlign: "center"}}>{props.starting}</h1>
-            {superVip.map(site => <Site site={site} key={site._id}/>)}
-            {vip.map(site => <Site site={site} key={site._id}/>)}
-            {premium.map(site => <Site site={site} key={site._id}/>)}
-            {standart.map(site => <Site site={site} key={site._id}/>)}
+            {props.superVip ? props.superVip.map(site => <Site site={site} key={site._id}/>) : null }
+            {props.vip ? props.vip.map(site => <Site site={site} key={site._id}/>) : null}
+            {props.premium ? props.premium.map(site => <Site site={site} key={site._id}/>):null}
+            {props.standart ? props.standart.map(site => <Site site={site} key={site._id}/>):null}
         </div>
     );
 };

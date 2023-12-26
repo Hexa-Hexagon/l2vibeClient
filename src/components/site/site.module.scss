@@ -126,6 +126,7 @@
     font-size: calc(13px + 1 * (100vw / 1280));
     align-items: center;
     word-wrap: break-word;
+    font-family: 'Manrope';
 }
 
 .difficulty {
@@ -136,6 +137,7 @@
     margin-left: 35px;
     font-size: calc(13px + 1 * (100vw / 1280));
     word-wrap: break-word;
+    font-family: 'Manrope';
 }
 
 .nameSite {
@@ -154,6 +156,7 @@
     margin-right: 5px;
     font-size: calc(13px + 1 * (100vw / 1280));
     word-wrap: break-word;
+    font-family: 'Manrope';
 }
 
 @media screen and (max-width: 3000px) and (min-width: 2400px) {

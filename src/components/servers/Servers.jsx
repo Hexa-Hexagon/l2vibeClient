@@ -8,7 +8,7 @@ import BonusStarted from "../bonusStarted/BonusStarted";
 import Started from "../started/Started";
 import {Link} from "react-router-dom";
 
-const Servers = ({...props}) => {
+const Servers = ({ ...props }) => {
     return (
         <>
             <div className={classes.mainServers}>
@@ -43,8 +43,8 @@ const Servers = ({...props}) => {
             </div>
             <div className={classes.bannerMain}>
                 {
-                    props.banners.map(banner => <Link key={banner._id} to="/statements">
-                            <input type="image" src={banner.banner}
+                    props.banners.map(banner => <Link key={banner._id} to={banner.bannerLink}>
+                            <input type="image" src={`http://localhost:5000/banners/images/${banner.bannerFileName}`}
                             className={classes.bannerImage} alt="banner"/></Link>)
                 }
             </div>

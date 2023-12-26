@@ -1,20 +1,21 @@
 import React from "react";
 import classes from "../../app.module.scss";
 import {prices} from "../../languages";
-import api from "../../api";
 import kingVip from "../../images/kingVip.png";
 import vip from "../../images/vip.png";
 import superVip from "../../images/superVip.png";
 import premium from "../../images/premium.png";
 import standart from "../../images/standart.png";
+import { postPassword } from "../../api";
 
 
 const Footer = ({...props}) => {
 
-    async function getPassword() {
+    async function login() {
         if (props.password) {
-            const res = await api.get(`/password/${props.password}`);
-            if (res.data) {
+            const res = await postPassword(props.password);
+            console.log(res.status);
+            if (res.status > 199 && res.status < 300) {
                 props.setIsEdit(!props.isEdit);
             } else {
                 props.setErrorStyle({
@@ -145,17 +146,18 @@ const Footer = ({...props}) => {
                         </div>
                     </div>
                 </div>
-                <div className={classes.editForm}>
+                <form className={classes.editForm} onSubmit={(e) => {
+                        e.preventDefault();
+                        login();
+                        props.setPassword("");
+                    }}>
                     <input className={classes.editInput} style={props.errorStyle}
                            type="password" value={props.password} onChange={e => {
                         props.setPassword(e.target.value);
                         props.setErrorStyle({});
                     }} placeholder="PASSWORD"/>
-                    <button onClick={() => {
-                        getPassword();
-                        props.setPassword("");
-                    }} className={classes.editButton}/>
-                </div>
+                    <input type="submit" value={''} className={classes.editButton}/>
+                </form>
             </div>
         </footer>
     );

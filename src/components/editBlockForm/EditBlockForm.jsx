@@ -1,17 +1,8 @@
 import React, {useState} from "react";
 import classes from "../../app.module.scss";
-import inputClass from "../createNewSite/createNewSite.module.scss";
-import buttonClass from "../editSite/editSite.module.scss";
 import CreateNewSite from "../createNewSite/CreateNewSite";
-import Edit from "../editSite/EditSite";
-import BannerEdit from "../bannerEdit/BannerEdit";
-import {Editor} from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import EditorState from "draft-js/lib/EditorState";
-import accept from "../../images/acccept.png";
 import EditServer from "../editServer/EditServer";
-import CreateStatements from "../textEditor/CreateStatements";
-import {Link, Route, Routes} from "react-router-dom";
 import Statements from "../statements/Statements";
 import EditStatements from "../editStatements/EditStatements";
 
@@ -23,14 +14,15 @@ const EditBlockForm = ({...props}) => {
     };
 
     const [createActive, setCreateActive] = useState(false);
-
+    const [articleId, setArticleId] = useState("");
+ 
     return (
         <div className={classes.editBlockFormAndCreateNewSite}>
 
-            <CreateNewSite/>
+            { !props.statements ? <CreateNewSite update={props.update} /> : null}
             <div className={classes.editBlockForm}>
                 {
-                    props.statements === true ?
+                    props.statements !== true ?
                         <EditServer
                             removeKingVip={removeKingVip}
                             kingVip={props.kingVip}
@@ -39,6 +31,7 @@ const EditBlockForm = ({...props}) => {
                             premium={props.premium}
                             standart={props.standart}
                             banners={props.banners}
+                            update={props.update}
                         />
                         :
                         <Statements
@@ -47,11 +40,14 @@ const EditBlockForm = ({...props}) => {
                             setCreateActive={setCreateActive}
                             setEditStatements={props.setEditStatements}
                             editStatements={props.editStatements}
+                            setArticleId={setArticleId}
+                            update={props.update}
                         />
                 }
                 <EditStatements
                     setEditStatements={props.setEditStatements}
                     editStatements={props.editStatements}
+                    id={articleId}
                 />
             </div>
         </div>

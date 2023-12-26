@@ -1,21 +1,22 @@
 import React, {useState} from "react";
 import classes from "./editSite.module.scss";
-import api from "../../api";
+import { deleteServer, editServer } from "../../api";
 
 const Edit = (props) => {
     async function del() {
-        await api.delete(`/${props.site._id}`);
+        await deleteServer(props.site._id);
+        props.update();
     }
 
     const [isEdit, setIsEdit] = useState(false);
     const [status, setStatus] = useState(props.site.status);
-    const [name, setName] = useState(props.site.nameSite);
+    const [name, setName] = useState(props.site.serverName);
     const [nameError, setNameError] = useState({});
     const [difficulty, setDifficulty] = useState(props.site.difficulty);
     const [difficultyError, setDifficultyError] = useState({});
     const [version, setVersion] = useState(props.site.version);
     const [versionError, setVersionError] = useState({});
-    const [date, setDate] = useState(props.site.dateOfStartingServer);
+    const [date, setDate] = useState(props.site.dateOfStartingServer.split('T')[0]);
     const [dateError, setDateError] = useState({});
     const [isAction, setIsAction] = useState(props.site.isAction);
     const [isActionStyle1, setIsActionStyle1] = useState(isAction ? {
@@ -29,14 +30,14 @@ const Edit = (props) => {
 
     async function update() {
         if (name && difficulty && version && date) {
-            await api.put(`/${props.site._id}`, {
-                nameSite: name,
+            await editServer({
+                serverName: name,
                 status: (status === "King VIP30" || status === "King VIP45" || status === "King VIP60") ? "King VIP" : status,
                 difficulty: difficulty,
                 version: version,
                 dateOfStartingServer: date,
                 dateOfEndingContract: props.site.dateOfEndingContract
-            });
+            }, props.site._id);
 
             setName("");
             setDifficulty(0);
@@ -135,16 +136,15 @@ const Edit = (props) => {
                                     className={classes.imageStatusSuperVip}/> : props.site.status === "VIP" ?
                                     <div className={classes.imageStatusVip}/> :
                                     <div className={classes.imageStatusPremiumStandart}/>}
-                            <p className={classes.nameSite}>{props.site.nameSite}</p>
+                            <p className={classes.nameSite}>{String(props.site.serverName.split("//")[1]).split('.')[0]}</p>
                             <p className={classes.difficulty}>x{props.site.difficulty}</p>
                             <p className={classes.version}>{props.site.version}</p>
-                            <p className={classes.date}>{props.site.dateOfStartingServer}</p>
+                            <p className={classes.date}>{props.site.dateOfStartingServer.split('T')[0]}</p>
                         </div>
                         <div className={classes.triangleDown}/>
                     </div>
                     <div className={classes.delEdit}>
                         <button className={classes.delete} value={""} onClick={() => {
-                            props.removeSite(props.site);
                             del();
                         }}/>
                         <button onClick={() => setIsEdit(!isEdit)} className={classes.editButton}/>

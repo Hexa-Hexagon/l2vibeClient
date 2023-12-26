@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import api from "../../api";
 import classes from "./createNewSite.module.scss";
+import { createServer } from "../../api";
 
 
 const CreateNewSite = (props) => {
@@ -24,18 +24,19 @@ const CreateNewSite = (props) => {
 
     async function post() {
         if (name && difficulty && version && date) {
-            await api.post("/", {
-                nameSite: name,
+            await createServer({
+                serverName: name,
                 status: (status === "King VIP30" || status === "King VIP45" || status === "King VIP60") ? "King VIP" : status,
                 difficulty: difficulty,
                 version: version,
-                dateOfStartingServer: date,
+                dateOfStartingServer: Date.parse(date),
                 dateOfEndingContract: (status === "King VIP30" || status === "Super VIP" || status === "Premium") ? new Date().setDate(
                     (new Date().getDate() + 30)) : (status === "King VIP45") ? new Date().setDate(
                     (new Date().getDate() + 45)) : (status === "King VIP60") ? new Date().setDate(
                     (new Date().getDate() + 60)) : new Date().setDate((new Date().getDate() + 15)),
                 isAction: isAction
             });
+            props.update();
         } else {
             if (!name) {
                 setNameError({
@@ -115,13 +116,7 @@ const CreateNewSite = (props) => {
                     setDate("");
                 }} value={""} className={classes.create}/>
             </div>
-            <button className={classes.updateButton} onClick={() => {
-                props.addSite();
-                setNameError({});
-                setDifficultyError({});
-                setVersionError({});
-                setDateError({});
-            }}/>
+            
         </div>
     );
 };

@@ -1,59 +1,48 @@
 import React, {useState} from "react";
 import classes from "./bannerEdit.module.scss";
-import api from "../../api";
+import { createBanner, deleteBanner, editBanner, editLinkBanner } from "../../api";
 
-const BannerEdit = (props) => {
+const BannerEdit = ({...props}) => {
     let [bannerExists, setBannerExists] = useState(props.banner ? true : false);
-    let [link, setLink] = useState(bannerExists ? props.banner.link : "");
-    let [banner, setBanner] = useState(bannerExists ? props.banner.banner : "");
+    let [link, setLink] = useState(bannerExists ? props.banner.bannerLink ? props.banner.bannerLink : "" : "");
+    let [banner, setBanner] = useState(bannerExists ? props.banner.bannerFileName ? props.banner.bannerFileName : null : null);
 
     async function postOrPut() {
+        const data = new FormData();
+        data.append('avatar', banner);
+        data.append('link', link);
         if (bannerExists) {
             if (banner && link) {
-                await api.put(`/banners/${props.banner._id}`,
-                    {
-                        banner: banner,
-                        link: link,
-                        dateOfEndingContract: new Date().setDate((new Date().getDate() + 30))
-                    });
+                await editBanner(data, props.banner._id);
+            } else if (link) {
+                await editLinkBanner({
+                    link: link
+                }, props.banner._id);
             }
         } else {
             if (banner && link) {
-                await api.post("/banners", {
-                    banner: banner,
-                    link: link,
-                    dateOfEndingContract: new Date().setDate((new Date().getDate() + 30))
-                });
+                await createBanner(data);
             }
         }
+        await props.update();
     }
 
     async function del() {
         setBannerExists(false);
-        setBanner("");
+        setBanner(null);
         setLink("");
-        await api.delete(`/banners/${props.banner._id}`);
-    }
-
-    function convertTo64Base(e) {
-        const reader = new FileReader();
-        reader.readAsDataURL(e.target.files[0]);
-        reader.onload = () => {
-            setBanner(reader.result);
-        };
-        reader.onerror = error => {
-            console.log(error);
-        };
+        await deleteBanner(props.banner._id);
+        props.update();
     }
 
     return (
         <div className={classes.editBanner}>
             {
                 banner === "" || banner === null ? "" :
-                    <img src={banner} className={classes.image} alt=""/>
+                    <img src={bannerExists ? `http://localhost:5000/banners/images/${banner}` : banner} className={classes.image} alt=""/>
             }
             <div className={classes.choseForm}>
-                <input className={classes.choseFormInput} type="file" onChange={convertTo64Base}/>
+                <input className={classes.choseFormInput} type="file" onChange={e => setBanner(e.target.files[0])}/>
                 <span>Выберете файл</span>
             </div>
             <input type="text" className={classes.input} placeholder="Введите полную ссылку"
