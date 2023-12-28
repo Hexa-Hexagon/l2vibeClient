@@ -44,7 +44,7 @@ const Servers = ({ ...props }) => {
             <div className={classes.bannerMain}>
                 {
                     props.banners.map(banner => <Link key={banner._id} to={banner.bannerLink}>
-                            <input type="image" src={`http://localhost:5000/banners/images/${banner.bannerFileName}`}
+                            <input type="image" src={`https://api.l2vibe.com/banners/images/${banner.bannerFileName}`}
                             className={classes.bannerImage} alt="banner"/></Link>)
                 }
             </div>

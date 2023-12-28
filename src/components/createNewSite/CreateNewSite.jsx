@@ -36,7 +36,7 @@ const CreateNewSite = (props) => {
                     (new Date().getDate() + 60)) : new Date().setDate((new Date().getDate() + 15)),
                 isAction: isAction
             });
-            props.update();
+            // props.update();
         } else {
             if (!name) {
                 setNameError({

@@ -35,7 +35,6 @@ const EditBlockForm = ({...props}) => {
                         />
                         :
                         <Statements
-                            articles={props.articles}
                             createActive={createActive}
                             setCreateActive={setCreateActive}
                             setEditStatements={props.setEditStatements}

@@ -26,7 +26,7 @@ const Statements = ({...props}) => {
                 <CreateStatements
                     createActive={props.createActive}
                     setCreateActive={props.setCreateActive}
-                    update={props.update}
+                    // update={props.update}
                 />
             </div>
 

@@ -6,23 +6,34 @@ import vip from "../../images/vip.png";
 import superVip from "../../images/superVip.png";
 import premium from "../../images/premium.png";
 import standart from "../../images/standart.png";
-import { postPassword } from "../../api";
+import {postPassword, setAuthHeader} from "../../api";
 
 
 const Footer = ({...props}) => {
+    let message = "";
 
     async function login() {
-        if (props.password) {
-            const res = await postPassword(props.password);
-            console.log(res.status);
-            if (res.status > 199 && res.status < 300) {
-                props.setIsEdit(!props.isEdit);
+        try {
+            if (props.password) {
+                const res = await postPassword(props.password);
+                if (res.status > 199 && res.status < 300) {
+                    props.setIsEdit(!props.isEdit);
+                    setAuthHeader(res.data.token);
+                    return res.data;
+                } else {
+                    props.setErrorStyle({
+                        border: "3px solid #660000"
+                    });
+                }
             } else {
                 props.setErrorStyle({
                     border: "3px solid #660000"
                 });
             }
-        } else {
+        } catch (e) {
+            message = e.response.data.msg;
+        }
+        if (message === "Password is incorrect") {
             props.setErrorStyle({
                 border: "3px solid #660000"
             });
@@ -147,16 +158,16 @@ const Footer = ({...props}) => {
                     </div>
                 </div>
                 <form className={classes.editForm} onSubmit={(e) => {
-                        e.preventDefault();
-                        login();
-                        props.setPassword("");
-                    }}>
+                    e.preventDefault();
+                    login();
+                    props.setPassword("");
+                }}>
                     <input className={classes.editInput} style={props.errorStyle}
                            type="password" value={props.password} onChange={e => {
                         props.setPassword(e.target.value);
                         props.setErrorStyle({});
                     }} placeholder="PASSWORD"/>
-                    <input type="submit" value={''} className={classes.editButton}/>
+                    <input type="submit" value={""} className={classes.editButton}/>
                 </form>
             </div>
         </footer>

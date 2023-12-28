@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import classes from "./editSite.module.scss";
-import { deleteServer, editServer } from "../../api";
+import {deleteServer, editServer} from "../../api";
 
 const Edit = (props) => {
     async function del() {
@@ -16,7 +16,7 @@ const Edit = (props) => {
     const [difficultyError, setDifficultyError] = useState({});
     const [version, setVersion] = useState(props.site.version);
     const [versionError, setVersionError] = useState({});
-    const [date, setDate] = useState(props.site.dateOfStartingServer.split('T')[0]);
+    const [date, setDate] = useState(props.site.dateOfStartingServer.split("T")[0]);
     const [dateError, setDateError] = useState({});
     const [isAction, setIsAction] = useState(props.site.isAction);
     const [isActionStyle1, setIsActionStyle1] = useState(isAction ? {
@@ -136,10 +136,14 @@ const Edit = (props) => {
                                     className={classes.imageStatusSuperVip}/> : props.site.status === "VIP" ?
                                     <div className={classes.imageStatusVip}/> :
                                     <div className={classes.imageStatusPremiumStandart}/>}
-                            <p className={classes.nameSite}>{String(props.site.serverName.split("//")[1]).split('.')[0]}</p>
+                            <p className={classes.nameSite}>{props.site.serverName.includes(
+                                "//") ? String(
+                                props.site.serverName.split("//")[1])
+                                .split(".")[0] : props.site.serverName}</p>
                             <p className={classes.difficulty}>x{props.site.difficulty}</p>
                             <p className={classes.version}>{props.site.version}</p>
-                            <p className={classes.date}>{props.site.dateOfStartingServer.split('T')[0]}</p>
+                            <p className={classes.date}>{props.site.dateOfStartingServer.split(
+                                "T")[0]}</p>
                         </div>
                         <div className={classes.triangleDown}/>
                     </div>

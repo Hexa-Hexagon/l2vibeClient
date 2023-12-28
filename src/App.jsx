@@ -1,7 +1,7 @@
 import classes from "./app.module.scss";
 import * as moment from "moment";
 import {getArticles, getBanners, getServers} from "./api";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useLayoutEffect, useState} from "react";
 import Site from "./components/site/Site";
 import {lan} from "./languages";
 import Header from "./components/header/Header";
@@ -13,53 +13,57 @@ function App() {
     const [languages, setLanguages] = useState(localStorage.getItem("language") || "en");
     const [selectLan, setSelectLan] = useState(lan.EN);
     const [banners, setBanners] = useState([]);
-    const [articles, setArticles] = useState([
-        {
-            id: "1",
-            name: "Test",
-            text: "Test asfasdfsf fdsgggsdgsd gsdfg dfgdsfg fggfhdfhdfh gfhdfgh"
-        },
-        {id: "2", name: "Test"},
-        {id: "3", name: "Test"},
-        {id: "4", name: "Test"},
-        {id: "5", name: "Test"},
-        {id: "6", name: "Test"}
-    ]);
+    const [articles, setArticles] = useState([]);
     const [isEdit, setIsEdit] = useState(false);
     const [statements, setStatements] = useState(false);
     const [editStatements, setEditStatements] = useState(false);
     const [password, setPassword] = useState("");
     const [kingVip, setKingVip] = useState([]);
-    const [started, setStarted] = useState({});
-    const [startingThisMonth, setStartingThisMonth] = useState({});
-    const [startingThisWeek, setStartingThisWeek] = useState({});
-    const [justOpened, setJustOpened] = useState({});
-    const [startsLater, setStartsLater] = useState({});
-    const [bonusStarted, setBonusStarted] = useState({});
+    const [superVip, setSuperVip] = useState([]);
+    const [vip, setVip] = useState({});
+    const [premium, setPremium] = useState({});
+    const [standart, setStandart] = useState({});
+    const [started, setStarted] = useState([]);
+    const [startingThisMonth, setStartingThisMonth] = useState([]);
+    const [startingThisWeek, setStartingThisWeek] = useState([]);
+    const [justOpened, setJustOpened] = useState([]);
+    const [startsLater, setStartsLater] = useState([]);
+    const [bonusStarted, setBonusStarted] = useState([]);
     const [errorStyle, setErrorStyle] = useState({});
     const [loading, setLoading] = useState(true);
 
     const get = async () => {
-        try {
-            const servers = await getServers();
-            setKingVip(servers.kingVip || []);
-            setJustOpened(servers.justOpened || {});
-            setStarted(servers.timeTested || {});
-            setStartingThisWeek(servers.thisWeek || {});
-            setStartingThisMonth(servers.thisMonth || {});
-            setStartsLater(servers.startLater || {});
-            setBonusStarted(servers.bonusStarted || {});
-            setBanners((await getBanners()).data || []);
-            setArticles((await getArticles()).data || []);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        } finally {
-            setLoading(false);
-        }
+            try {
+                const servers = await getServers();
+                setKingVip(servers.kingVip || []);
+                setSuperVip([servers.superVip || []]);
+                setVip([...vip, servers.vip || []]);
+                setPremium([...premium, servers.premium || []]);
+                setStandart([...standart, servers.standart || []]);
+                setJustOpened({
+                    superVip: [...servers.justOpened.superVip],
+                    vip: servers.justOpened.vip,
+                    premium: servers.justOpened.premium,
+                    standart: servers.justOpened.standart,
+                });
+                setStarted(servers.timeTested || []);
+                setStartingThisWeek(servers.thisWeek || {});
+                setStartingThisMonth(servers.thisMonth || {});
+                setStartsLater(servers.startLater || {});
+                setBonusStarted(servers.bonusStarted || {});
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            } finally {
+                setLoading(false);
+            }
+
+
     };
-    
-     useEffect(() => {
+
+    useEffect(() => {
         get();
+        getBanners().then(res => setBanners(res.data));
+        getArticles().then(res => setArticles(res.data));
     }, []);
 
     useEffect(() => {
@@ -73,8 +77,8 @@ function App() {
         }
     }, [languages]);
 
-    if(loading) {
-        return (<h1>Loading...</h1>)
+    if (loading) {
+        return (<h1>Loading...</h1>);
     }
 
     return (
@@ -94,11 +98,12 @@ function App() {
                         statements={statements}
                         kingVip={kingVip}
                         banners={banners}
+                        setKingVip={setKingVip}
                         setBanners={setBanners}
                         articles={articles}
                         editStatements={editStatements}
                         setEditStatements={setEditStatements}
-                        update = {get}
+                        update={get}
                     />
                     :
                     <div style={{
@@ -127,6 +132,14 @@ function App() {
                             startingThisMonth={startingThisMonth}
                             startsLater={startsLater}
                             justOpened={justOpened}
+                            superVip={superVip}
+                            setSuperVip={setSuperVip}
+                            vip={vip}
+                            setVip={setVip}
+                            premium={premium}
+                            setPremium={setPremium}
+                            standart={standart}
+                            setStandart={setStandart}
                             started={started}
                             bonusStarted={bonusStarted}
                             banners={banners}

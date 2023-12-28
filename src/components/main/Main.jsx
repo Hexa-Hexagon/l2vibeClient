@@ -19,6 +19,14 @@ const Main = ({ ...props }) => {
                         started={props.started}
                         bonusStarted={props.bonusStarted}
                         banners={props.banners}
+                        superVip={props.superVip}
+                        setSuperVip={props.setSuperVip}
+                        vip={props.vip}
+                        setVip={props.setVip}
+                        premium={props.premium}
+                        setPremium={props.setPremium}
+                        standart={props.standart}
+                        setStandart={props.setStandart}
                     />}/>
                 <Route path="/statements" element={
                     <MainStatements articles={props.articles} setStatements={props.setStatements}
