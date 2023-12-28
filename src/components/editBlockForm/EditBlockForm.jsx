@@ -8,11 +8,6 @@ import EditStatements from "../editStatements/EditStatements";
 
 const EditBlockForm = ({...props}) => {
 
-
-    const removeKingVip = (site) => {
-        props.setKingVip(props.kingVip.filter(s => s._id !== site._id));
-    };
-
     const [createActive, setCreateActive] = useState(false);
     const [articleId, setArticleId] = useState("");
  
@@ -24,17 +19,20 @@ const EditBlockForm = ({...props}) => {
                 {
                     props.statements !== true ?
                         <EditServer
-                            removeKingVip={removeKingVip}
                             kingVip={props.kingVip}
-                            superVip={props.superVip}
-                            vip={props.vip}
-                            premium={props.premium}
-                            standart={props.standart}
+                            startingThisWeek={props.startingThisWeek}
+                            selectLan={props.selectLan}
+                            startingThisMonth={props.startingThisMonth}
+                            startsLater={props.startsLater}
+                            justOpened={props.justOpened}
+                            started={props.started}
+                            bonusStarted={props.bonusStarted}
                             banners={props.banners}
                             update={props.update}
                         />
                         :
                         <Statements
+                            articles={props.articles}
                             createActive={createActive}
                             setCreateActive={setCreateActive}
                             setEditStatements={props.setEditStatements}
@@ -44,6 +42,8 @@ const EditBlockForm = ({...props}) => {
                         />
                 }
                 <EditStatements
+                    update={props.update}
+                    articles={props.articles}
                     setEditStatements={props.setEditStatements}
                     editStatements={props.editStatements}
                     id={articleId}

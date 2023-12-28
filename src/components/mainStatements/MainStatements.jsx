@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import classes from "../../app.module.scss";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 const MainStatements = ({...props}) => {
 
@@ -18,10 +19,11 @@ const MainStatements = ({...props}) => {
                 {props.articles.map((article) =>
                     <div className={classes.statementsMain} key={article._id}>
                         <Link className={classes.statementLink}
-                              to={`/statements/${article._id}`}>{article.articleName}</Link>
+                              to={`/statements/${ article._id}`}>{article.articleName}</Link>
                     </div>
                 )
                 }
+
             </div>
         </div>
     );

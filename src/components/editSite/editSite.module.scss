@@ -212,7 +212,7 @@ option {
 }
 
 .imageStatusSuperVip {
-    background-image: url('../../images/vip.png');
+    background-image: url('../../images/superVip.png');
     background-position: center;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -222,7 +222,7 @@ option {
 }
 
 .imageStatusVip {
-    background-image: url('../../images/premium.png');
+    background-image: url('../../images/vip.png');
     background-position: center;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -231,7 +231,17 @@ option {
     margin-left: var(--imageLeft);
 }
 
-.imageStatusPremiumStandart {
+.imageStatusPremium {
+    background-image: url('../../images/premium.png');
+    background-position: center;
+    background-size: 90%;
+    background-repeat: no-repeat;
+    width: var(--imageSize);
+    height: var(--imageSize);
+    margin-left: var(--imageLeft);
+}
+
+.imageStatusStandart {
     background-image: url('../../images/standart.png');
     background-position: center;
     background-size: 90%;

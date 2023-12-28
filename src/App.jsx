@@ -19,10 +19,6 @@ function App() {
     const [editStatements, setEditStatements] = useState(false);
     const [password, setPassword] = useState("");
     const [kingVip, setKingVip] = useState([]);
-    const [superVip, setSuperVip] = useState([]);
-    const [vip, setVip] = useState({});
-    const [premium, setPremium] = useState({});
-    const [standart, setStandart] = useState({});
     const [started, setStarted] = useState([]);
     const [startingThisMonth, setStartingThisMonth] = useState([]);
     const [startingThisWeek, setStartingThisWeek] = useState([]);
@@ -33,37 +29,30 @@ function App() {
     const [loading, setLoading] = useState(true);
 
     const get = async () => {
-            try {
-                const servers = await getServers();
-                setKingVip(servers.kingVip || []);
-                setSuperVip([servers.superVip || []]);
-                setVip([...vip, servers.vip || []]);
-                setPremium([...premium, servers.premium || []]);
-                setStandart([...standart, servers.standart || []]);
-                setJustOpened({
-                    superVip: [...servers.justOpened.superVip],
-                    vip: servers.justOpened.vip,
-                    premium: servers.justOpened.premium,
-                    standart: servers.justOpened.standart,
-                });
-                setStarted(servers.timeTested || []);
-                setStartingThisWeek(servers.thisWeek || {});
-                setStartingThisMonth(servers.thisMonth || {});
-                setStartsLater(servers.startLater || {});
-                setBonusStarted(servers.bonusStarted || {});
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            } finally {
-                setLoading(false);
-            }
+        try {
+            const servers = await getServers();
+            setKingVip(servers.kingVip || []);
+            console.log(servers);
+            setJustOpened([servers.justOpened]);
+            console.log([servers.thisWeek]);
+            setStarted([servers.timeTested]);
+            setStartingThisWeek([servers.thisWeek]);
+            setStartingThisMonth([servers.thisMonth]);
+            setStartsLater([servers.startLater]);
+            setBonusStarted([servers.bonusStarted]);
+            getBanners().then(res => setBanners(res.data));
+            getArticles().then(res => setArticles(res.data));
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        } finally {
+            setLoading(false);
+        }
 
 
     };
 
     useEffect(() => {
         get();
-        getBanners().then(res => setBanners(res.data));
-        getArticles().then(res => setArticles(res.data));
     }, []);
 
     useEffect(() => {
@@ -99,6 +88,13 @@ function App() {
                         kingVip={kingVip}
                         banners={banners}
                         setKingVip={setKingVip}
+                        selectLan={selectLan}
+                        startingThisWeek={startingThisWeek}
+                        startingThisMonth={startingThisMonth}
+                        startsLater={startsLater}
+                        justOpened={justOpened}
+                        started={started}
+                        bonusStarted={bonusStarted}
                         setBanners={setBanners}
                         articles={articles}
                         editStatements={editStatements}
@@ -132,14 +128,6 @@ function App() {
                             startingThisMonth={startingThisMonth}
                             startsLater={startsLater}
                             justOpened={justOpened}
-                            superVip={superVip}
-                            setSuperVip={setSuperVip}
-                            vip={vip}
-                            setVip={setVip}
-                            premium={premium}
-                            setPremium={setPremium}
-                            standart={standart}
-                            setStandart={setStandart}
                             started={started}
                             bonusStarted={bonusStarted}
                             banners={banners}

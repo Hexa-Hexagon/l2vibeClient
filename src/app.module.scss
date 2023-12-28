@@ -336,6 +336,13 @@ a {
   display: none;
 }
 
+.editStatementForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
 .statementForm {
   display: flex;
   flex-direction: column;

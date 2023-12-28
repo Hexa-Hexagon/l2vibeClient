@@ -38,7 +38,7 @@ const Edit = (props) => {
                 dateOfStartingServer: date,
                 dateOfEndingContract: props.site.dateOfEndingContract
             }, props.site._id);
-
+            props.update();
             setName("");
             setDifficulty(0);
             setVersion("");
@@ -134,8 +134,10 @@ const Edit = (props) => {
                                 className={classes.imageStatusKingVip}/> : props.site.status === "Super VIP" ?
                                 <div
                                     className={classes.imageStatusSuperVip}/> : props.site.status === "VIP" ?
-                                    <div className={classes.imageStatusVip}/> :
-                                    <div className={classes.imageStatusPremiumStandart}/>}
+                                    <div
+                                        className={classes.imageStatusVip}/> : props.site.status === "Premium" ?
+                                        <div className={classes.imageStatusPremium}/> :
+                                        <div className={classes.imageStatusStandart}/>}
                             <p className={classes.nameSite}>{props.site.serverName.includes(
                                 "//") ? String(
                                 props.site.serverName.split("//")[1])

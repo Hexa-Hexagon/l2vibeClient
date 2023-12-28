@@ -12,6 +12,7 @@ const EditStatements = ({...props}) => {
         EditorState.createEmpty()
     );
     const [name, setName] = useState("");
+    const [text, setText] = useState("");
     const onEditorStateChange = (editorState) => {
         setEditorState(editorState, {
             allowUndo: true,
@@ -20,32 +21,35 @@ const EditStatements = ({...props}) => {
 
     const get = async () => {
         await getArticle(props.id).then(response => {
-            const articleHtml = response.data.articleHtml;
-
-            if (articleHtml) {
-                const contentBlocks = convertFromHTML(articleHtml);
-
-                if (contentBlocks) {
-                    const contentState = ContentState.createFromBlockArray(contentBlocks);
-                    setEditorState(EditorState.createWithContent(contentState));
-                } else {
-                    console.error("Error converting HTML to content blocks");
-                }
-            } else {
-                console.error("No articleHtml in the response data");
-            }
-
+            setText(response.data.articleHtml);
             setName(response.data.articleName);
         });
     };
 
     useEffect(() => {
         get();
+        if (text) {
+            const contentBlocks = convertFromHTML(text);
+
+            if (contentBlocks) {
+                const contentState = ContentState.createFromBlockArray(contentBlocks);
+                setEditorState(EditorState.createWithContent(contentState));
+            } else {
+                console.error("Error converting HTML to content blocks");
+            }
+        } else {
+            console.error("No articleHtml in the response data");
+        }
     }, []);
 
     return (
         <div className={props.editStatements ? classes.editStatements : classes.disableWrapper}>
-            <input value={name} onChange={e => setName(e.target.value)}/>
+            <div className={classes.editStatementForm}>
+                    <input value={props.articles[0].articleName} onChange={e =>
+                        setName(e.target.value)} className={classes.input}/>
+                
+
+            </div>
             <div className={classes.editor}>
                 <Editor
                     editorState={editorState}

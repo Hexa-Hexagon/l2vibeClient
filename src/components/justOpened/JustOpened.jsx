@@ -2,16 +2,21 @@ import React from "react";
 import Site from "../site/Site";
 import classes from "./justOpened.module.scss";
 
-const ThisMonth = ({ ...props }) => {
+const JustOpened = ({...props}) => {
+    console.log({...props});
     return (
         <div className={classes.form}>
             <h1 style={{textAlign: "center"}}>{props.starting}</h1>
-            {props[0] ? props[0].map(site => <Site site={site} key={site._id}/>) : null }
-            {props.vip ? props.vip.map(site => <Site site={site} key={site._id}/>) : null}
-            {props.premium ? props.premium.map(site => <Site site={site} key={site._id}/>):null}
-            {props.standart ? props.standart.map(site => <Site site={site} key={site._id}/>):null}
+            {props.sites[0] ? props.sites[0].superVip.map(
+                (site) => <Site site={site} key={site._id}/>) : null}
+            {props.sites[0] ? props.sites[0].vip.map(
+                site => <Site site={site} key={site._id}/>) : null}
+            {props.sites[0] ? props.sites[0].premium.map(
+                site => <Site site={site} key={site._id}/>) : null}
+            {props.sites[0] ? props.sites[0].standart.map(
+                site => <Site site={site} key={site._id}/>) : null}
         </div>
     );
 };
 
-export default ThisMonth;
+export default JustOpened;

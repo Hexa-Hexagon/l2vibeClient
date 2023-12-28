@@ -38,11 +38,14 @@ const BannerEdit = ({...props}) => {
                     link: link
                 }, props.banner._id);
             }
-            // props.update();
         } else {
             if (banner && link) {
                 await createBanner(data);
             }
+        }
+        props.update();
+        if (link) {
+            props.update();
         }
     }
 

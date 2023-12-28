@@ -21,7 +21,7 @@ const CreateStatements = ({...props}) => {
             await createArticle({
                 articleName: values.name
             });
-            // props.update();
+            props.update();
             props.setCreateActive(false);
         },
     });

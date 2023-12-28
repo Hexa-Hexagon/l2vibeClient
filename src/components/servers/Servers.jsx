@@ -7,6 +7,7 @@ import JustOpened from "../justOpened/JustOpened";
 import BonusStarted from "../bonusStarted/BonusStarted";
 import Started from "../started/Started";
 import {Link} from "react-router-dom";
+import StartingThisMonth from "../startingThisMonth/StartingThisMonth";
 
 const Servers = ({ ...props }) => {
     return (
@@ -17,7 +18,7 @@ const Servers = ({ ...props }) => {
                         sites={props.startingThisWeek}
                         starting={props.selectLan.StartingThisWeek}
                     />
-                    <ThisMonth
+                    <StartingThisMonth
                         sites={props.startingThisMonth}
                         starting={props.selectLan.StartingThisMonth}
                     />
