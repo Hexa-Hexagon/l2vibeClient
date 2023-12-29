@@ -3,7 +3,6 @@ import Site from "../site/Site";
 import classes from "./justOpened.module.scss";
 
 const JustOpened = ({...props}) => {
-    console.log({...props});
     return (
         <div className={classes.form}>
             <h1 style={{textAlign: "center"}}>{props.starting}</h1>

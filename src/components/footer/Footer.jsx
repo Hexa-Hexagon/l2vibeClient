@@ -2,10 +2,10 @@ import React from "react";
 import classes from "../../app.module.scss";
 import {prices} from "../../languages";
 import kingVip from "../../images/kingVip.png";
-import vip from "../../images/vip.png";
+import vipFooter from "../../images/vipFooter.png";
 import superVip from "../../images/superVip.png";
-import premium from "../../images/premium.png";
-import standart from "../../images/standart.png";
+import premiumFooter from "../../images/premiumFooter.png";
+import standartFooter from "../../images/standartFooter.png";
 import {postPassword, setAuthHeader} from "../../api";
 
 
@@ -39,18 +39,6 @@ const Footer = ({...props}) => {
             });
         }
     }
-
-    // const inputChangeHandler = (e) => {
-    //     const regexp = /[^A-Za-z0-9]+/g;
-    //     const rawValue = e.target.value;
-    //     props.setErrorStyle({});
-    //     const trimmedValue = rawValue.trim();
-    //     if (regexp.test(trimmedValue)) { //проверка
-    //         console.log("Да");
-    //         props.setPassword(trimmedValue);
-    //         console.log(trimmedValue);
-    //     }
-    // };
 
     return (
         <footer className={classes.footer}>
@@ -126,7 +114,7 @@ const Footer = ({...props}) => {
                     </div>
                     <div className={classes.serverPrice}>
                         <div className={classes.imgForm}>
-                            <img src={vip} className={classes.kingVipForm} alt="kingvip"/>
+                            <img src={vipFooter} className={classes.kingVipForm} alt="kingvip"/>
                         </div>
                         <h3 className={classes.serverText}>L2VIBE.COM – VIP
                             – {props.selectLan.Status}:</h3>
@@ -140,7 +128,7 @@ const Footer = ({...props}) => {
                 <div className={classes.serverPriceStandart}>
                     <div className={classes.standartPrice}>
                         <div className={classes.imgSecondForm}>
-                            <img src={premium} className={classes.kingVipForm} alt="kingvip"/>
+                            <img src={premiumFooter} className={classes.kingVipForm} alt="kingvip"/>
                         </div>
                         <h3 className={classes.serverText}>L2VIBE.COM
                             – {props.selectLan.Premium} – {props.selectLan.Status}</h3>
@@ -153,7 +141,7 @@ const Footer = ({...props}) => {
 
                     <div className={classes.standartPrice}>
                         <div className={classes.imgThirdForm}>
-                            <img src={standart} className={classes.kingVipForm} alt="kingvip"/>
+                            <img src={standartFooter} className={classes.kingVipForm} alt="kingvip"/>
                         </div>
                         <h3 className={classes.serverText}>L2VIBE.COM
                             – {props.selectLan.Standard} – {props.selectLan.Status}</h3>

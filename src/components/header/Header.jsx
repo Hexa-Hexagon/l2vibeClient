@@ -31,7 +31,7 @@ const Header = ({...props}) => {
                         props.isEdit === true ?
                             <div>
                                 <input type={"submit"} onClick={() => {
-                                    window.location.reload();
+                                    props.setIsEdit(false);
                                 }} value={""} className={classes.homeButton}/>
                             </div>
                             :

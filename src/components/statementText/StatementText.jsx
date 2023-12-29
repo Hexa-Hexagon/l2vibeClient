@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import classes from "../../app.module.scss";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import { getArticle } from "../../api";
 
 const StatementText = ({...props}) => {
@@ -20,15 +20,21 @@ const StatementText = ({...props}) => {
     }, []);
 
     return (
-        <div className={classes.statementsTextWrapper}>
-            {
-                completedArticle.map((article) =>
-                    <div key={article._id} style={{width: '100%', minHeight:'400px'}}>
-                        <h1 className={classes.statementTitle} >{article.articleName}</h1>
-                        <div dangerouslySetInnerHTML={{__html: text}} className={classes.statementText} />
-                    </div>
-                )
-            }
+        <div className={classes.article}>
+            <div className={classes.homeButtonWrapper}>
+                <Link className={classes.homeTextButton} to="/statements"></Link>
+            </div>
+            <div className={classes.statementsTextWrapper}>
+                {
+                    completedArticle.map((article) =>
+                        <div key={article._id} style={{width: '100%', minHeight: '400px'}}>
+                            <h1 className={classes.statementTitle}>{article.articleName}</h1>
+                            <div dangerouslySetInnerHTML={{__html: text}}
+                                 className={classes.statementText}/>
+                        </div>
+                    )
+                }
+            </div>
         </div>
     );
 };
