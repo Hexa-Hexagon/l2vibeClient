@@ -1,12 +1,13 @@
 import classes from "./app.module.scss";
 import {getArticles, getBanners, getServers} from "./api";
-import React, {useEffect,useState} from "react";
+import React, {useEffect, useState} from "react";
 import Site from "./components/site/Site";
 import {lan} from "./languages";
 import Header from "./components/header/Header";
 import EditBlockForm from "./components/editBlockForm/EditBlockForm";
 import Main from "./components/main/Main";
 import Footer from "./components/footer/Footer";
+import "./normalize.css";
 
 function App() {
     const [languages, setLanguages] = useState(localStorage.getItem("language") || "en");

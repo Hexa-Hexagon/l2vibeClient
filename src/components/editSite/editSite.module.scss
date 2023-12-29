@@ -206,8 +206,8 @@ option {
     background-position: center;
     background-size: 100%;
     background-repeat: no-repeat;
-    width: var(--imageSize);
-    height: var(--imageSize);
+    width: calc(35px + 1 * (100vw / 1280));
+    height: calc(35px + 1 * (100vw / 1280));
     margin-left: var(--imageLeft);
 }
 
@@ -216,8 +216,8 @@ option {
     background-position: center;
     background-size: 100%;
     background-repeat: no-repeat;
-    width: var(--imageSize);
-    height: var(--imageSize);
+    width: calc(35px + 1 * (100vw / 1280));
+    height: calc(35px + 1 * (100vw / 1280));
     margin-left: var(--imageLeft);
 }
 
@@ -226,8 +226,8 @@ option {
     background-position: center;
     background-size: 100%;
     background-repeat: no-repeat;
-    width: var(--imageSize);
-    height: var(--imageSize);
+    width: calc(35px + 1 * (100vw / 1280));
+    height: calc(35px + 1 * (100vw / 1280));
     margin-left: var(--imageLeft);
 }
 
@@ -236,8 +236,8 @@ option {
     background-position: center;
     background-size: 90%;
     background-repeat: no-repeat;
-    width: var(--imageSize);
-    height: var(--imageSize);
+    width: calc(35px + 1 * (100vw / 1280));
+    height: calc(35px + 1 * (100vw / 1280));
     margin-left: var(--imageLeft);
 }
 
@@ -246,8 +246,8 @@ option {
     background-position: center;
     background-size: 90%;
     background-repeat: no-repeat;
-    width: var(--imageSize);
-    height: var(--imageSize);
+    width: calc(35px + 1 * (100vw / 1280));
+    height: calc(35px + 1 * (100vw / 1280));
     margin-left: var(--imageLeft);
 }
 
@@ -257,9 +257,9 @@ option {
     text-align: start;
     display: flex;
     justify-content: flex-start;
-    font-size: 16px;
+    font-size: calc(14px + 1 * (100vw / 1280));
     align-items: center;
-    font-family: 'Manrope';
+    font-family: 'Manrope',sans-serif;
 }
 
 .difficulty {
@@ -270,8 +270,8 @@ option {
     justify-content: flex-start;
     align-items: center;
     margin-left: 45px;
-    font-size: 16px;
-    font-family: 'Manrope';
+    font-size: calc(14px + 1 * (100vw / 1280));
+    font-family: 'Manrope',sans-serif;
 }
 
 .nameSite {
@@ -282,7 +282,7 @@ option {
     align-items: center;
     margin-left: 5px;
     text-decoration: underline;
-    font-size: 18px;
+    font-size: calc(18px + 1 * (100vw / 1280));
 }
 
 .date {
@@ -293,8 +293,8 @@ option {
     justify-content: flex-start;
     align-items: center;
     margin-left: 5px;
-    font-size: 16px;
-    font-family: 'Manrope';
+    font-size: calc(13px + 1 * (100vw / 1280));
+    font-family: 'Manrope',sans-serif;
 }
 
 @media screen and (max-width: 3000px) and (min-width: 2400px) {
@@ -308,22 +308,6 @@ option {
         margin-top: 30px;
         margin-bottom: 30px;
         height: 100px;
-    }
-    .nameSite {
-        width: 200px;
-        font-size: 30px;
-    }
-    .date {
-        width: 160px;
-        font-size: 30px;
-    }
-    .version {
-        width: 130px;
-        font-size: 30px;
-    }
-    .difficulty {
-        width: 100px;
-        font-size: 25px;
     }
 }
 
@@ -365,22 +349,6 @@ option {
     .form {
         width: 80%;
     }
-    .nameSite {
-        width: 200px;
-        font-size: 22px;
-    }
-    .date {
-        width: 200px;
-        font-size: 18px;
-    }
-    .version {
-        width: 150px;
-        font-size: 18px;
-    }
-    .difficulty {
-        width: 150px;
-        font-size: 18px;
-    }
     .input {
         width: 175px;
         height: 100%;
@@ -409,22 +377,6 @@ option {
     }
     .site {
         width: 100%;
-    }
-    .nameSite {
-        width: 200px;
-        font-size: 22px;
-    }
-    .date {
-        width: 200px;
-        font-size: 18px;
-    }
-    .version {
-        width: 200px;
-        font-size: 18px;
-    }
-    .difficulty {
-        width: 200px;
-        font-size: 18px;
     }
     .createForm {
         width: 100%;
@@ -475,22 +427,6 @@ option {
         width: 100%;
         justify-content: center;
     }
-    .nameSite {
-        width: 150px;
-        font-size: 20px;
-    }
-    .date {
-        width: 150px;
-        font-size: 18px;
-    }
-    .version {
-        width: 100px;
-        font-size: 18px;
-    }
-    .difficulty {
-        width: 100px;
-        font-size: 18px;
-    }
     .input {
         font-size: 17px;
         height: 60px;
@@ -516,23 +452,6 @@ option {
     }
     .form {
         width: 100%;
-    }
-
-    .nameSite {
-        width: 120px;
-        font-size: 16px;
-    }
-    .difficulty {
-        width: 50px;
-        font-size: 12px;
-    }
-    .version {
-        width: 80px;
-        font-size: 12px;
-    }
-    .date {
-        width: 120px;
-        font-size: 12px;
     }
     .input {
         width: 150px;
@@ -577,24 +496,5 @@ option {
     }
     .createForm {
         grid-template-columns: 100px 100px auto;
-    }
-}
-
-@media screen and (max-width: 400px) {
-    .nameSite {
-        width: 120px;
-        font-size: 14px;
-    }
-    .difficulty {
-        width: 50px;
-        font-size: 10px;
-    }
-    .version {
-        width: 80px;
-        font-size: 10px;
-    }
-    .date {
-        width: 120px;
-        font-size: 10px;
     }
 }
