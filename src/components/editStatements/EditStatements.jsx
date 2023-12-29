@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import classes from "../../app.module.scss";
 import {Editor} from "react-draft-wysiwyg";
-import {ContentState, EditorState, convertFromHTML, convertToRaw} from "draft-js";
+import {ContentState, EditorState, convertToRaw} from "draft-js";
 import buttonClass from "../editSite/editSite.module.scss";
 import {editArticle, getArticle} from "../../api";
 import draftToHtml from "draftjs-to-html";

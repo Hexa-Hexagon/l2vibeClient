@@ -1,11 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import classes from "../../app.module.scss";
 import Servers from "../servers/Servers";
-import {Route, Routes, useParams} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import MainStatements from "../mainStatements/MainStatements";
 import StatementText from "../statementText/StatementText";
-import EditStatements from "../editStatements/EditStatements";
-import {getArticle} from "../../api";
 
 const Main = ({...props}) => {
     return (

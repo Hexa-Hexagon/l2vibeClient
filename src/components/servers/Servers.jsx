@@ -1,7 +1,6 @@
 import React from "react";
 import classes from "../../app.module.scss";
 import ThisWeek from "../startingThisWeek/StartingThisWeek";
-import ThisMonth from "../justOpened/JustOpened";
 import Later from "../startsLater/StartsLater";
 import JustOpened from "../justOpened/JustOpened";
 import BonusStarted from "../bonusStarted/BonusStarted";
