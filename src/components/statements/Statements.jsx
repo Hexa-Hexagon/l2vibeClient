@@ -1,13 +1,21 @@
 import React from "react";
 import classes from "../../app.module.scss";
-import {Link, Route, Routes} from "react-router-dom";
 import inputClass from "../createNewSite/createNewSite.module.scss";
 import buttonClass from "../editSite/editSite.module.scss";
-import accept from "../../images/acccept.png";
-import CreateStatements from "../textEditor/CreateStatements";
-import EditStatements from "../editStatements/EditStatements";
+import CreateStatements from "../createArticle/CreateStatements";
+import {deleteArticle} from "../../api";
+import {Link} from "react-router-dom";
 
 const Statements = ({...props}) => {
+
+
+    const get = (id) => {
+        if (!props.editStatements) {
+            props.setEditStatements(true);
+        }
+        props.setArticleId(id);
+    };
+
     return (
         <div className={!props.editStatements ? classes.statementWrapper : classes.disableWrapper}>
 
@@ -20,17 +28,20 @@ const Statements = ({...props}) => {
                 <CreateStatements
                     createActive={props.createActive}
                     setCreateActive={props.setCreateActive}
+                    update={props.update}
                 />
             </div>
 
             <div className={classes.statements}>
                 {props.articles.map((article) =>
-                    <div className={classes.statementsMain} key={article.id}>
-                        <a className={classes.statementLink} href={"#"}>{article.name}</a>
-                        <button className={buttonClass.delete}/>
-                        <button className={buttonClass.editButton}
-                                onClick={() => !props.editStatements ? props.setEditStatements
-                                (true) : null}/>
+                    <div className={classes.statementsMain} key={article._id}>
+                        <a className={classes.statementLink} href={"#"}>{article.articleName}</a>
+                        <button className={buttonClass.delete} onClick={() => {
+                            deleteArticle(article._id);
+                            props.update();
+                        }}/>
+                        <Link to={`statements/${article._id}`} className={buttonClass.editButton}
+                                onClick={() => get(article._id)}/>
                     </div>
                 )
                 }

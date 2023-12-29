@@ -2,28 +2,21 @@ import React from "react";
 import Site from "../site/Site";
 import classes from "./justOpened.module.scss";
 
-const ThisMonth = (props) => {
-    const superVip = props.sites.filter((site) => {
-        return site.status === "Super VIP";
-    });
-    const vip = props.sites.filter((site) => {
-        return site.status === "VIP";
-    });
-    const premium = props.sites.filter((site) => {
-        return site.status === "Premium";
-    });
-    const standart = props.sites.filter((site) => {
-        return site.status === "Standart";
-    });
+const JustOpened = ({...props}) => {
+    console.log({...props});
     return (
         <div className={classes.form}>
             <h1 style={{textAlign: "center"}}>{props.starting}</h1>
-            {superVip.map(site => <Site site={site} key={site._id}/>)}
-            {vip.map(site => <Site site={site} key={site._id}/>)}
-            {premium.map(site => <Site site={site} key={site._id}/>)}
-            {standart.map(site => <Site site={site} key={site._id}/>)}
+            {props.sites[0] ? props.sites[0].superVip.map(
+                (site) => <Site site={site} key={site._id}/>) : null}
+            {props.sites[0] ? props.sites[0].vip.map(
+                site => <Site site={site} key={site._id}/>) : null}
+            {props.sites[0] ? props.sites[0].premium.map(
+                site => <Site site={site} key={site._id}/>) : null}
+            {props.sites[0] ? props.sites[0].standart.map(
+                site => <Site site={site} key={site._id}/>) : null}
         </div>
     );
 };
 
-export default ThisMonth;
+export default JustOpened;

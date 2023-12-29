@@ -1,9 +1,8 @@
 import classes from "./app.module.scss";
 import * as moment from "moment";
 import {getArticles, getBanners, getServers} from "./api";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useLayoutEffect, useState} from "react";
 import Site from "./components/site/Site";
-import api from "./api";
 import {lan} from "./languages";
 import Header from "./components/header/Header";
 import EditBlockForm from "./components/editBlockForm/EditBlockForm";
@@ -13,51 +12,46 @@ import Footer from "./components/footer/Footer";
 function App() {
     const [languages, setLanguages] = useState(localStorage.getItem("language") || "en");
     const [selectLan, setSelectLan] = useState(lan.EN);
-    const [banners, setBanners] = useState([
-        {id: "1", name: "Test"},
-        {id: "2", name: "Test"},
-        {id: "3", name: "Test"},]
-    );
-    const [articles, setArticles] = useState([
-        {
-            id: "1",
-            name: "Test",
-            text: "Test asfasdfsf fdsgggsdgsd gsdfg dfgdsfg fggfhdfhdfh gfhdfgh"
-        },
-        {id: "2", name: "Test"},
-        {id: "3", name: "Test"},
-        {id: "4", name: "Test"},
-        {id: "5", name: "Test"},
-        {id: "6", name: "Test"}
-    ]);
+    const [banners, setBanners] = useState([]);
+    const [articles, setArticles] = useState([]);
     const [isEdit, setIsEdit] = useState(false);
     const [statements, setStatements] = useState(false);
     const [editStatements, setEditStatements] = useState(false);
     const [password, setPassword] = useState("");
-    const [kingVip, setKingVip] = useState([
-        {id: "1", nameSite: "Test"},
-
-    ]);
-    const [servers, setServers] = useState([
-        {id: "1", name: "Test"},
-        {id: "2", name: "Test"},
-        {id: "3", name: "Test"},]);
+    const [kingVip, setKingVip] = useState([]);
     const [started, setStarted] = useState([]);
     const [startingThisMonth, setStartingThisMonth] = useState([]);
     const [startingThisWeek, setStartingThisWeek] = useState([]);
-    const [justOpened, setJustOpened] = useState([
-        {id: "1", name: "Test"},
-
-    ]);
+    const [justOpened, setJustOpened] = useState([]);
     const [startsLater, setStartsLater] = useState([]);
     const [bonusStarted, setBonusStarted] = useState([]);
     const [errorStyle, setErrorStyle] = useState({});
+    const [loading, setLoading] = useState(true);
 
-    // useEffect(() => {
-    //     getServers().then(res => setServers(res.data));
-    //     getBanners().then(res => setBanners(res.data));
-    //     getArticles().then(res => setArticles(res.data));
-    // }, []);
+    const get = async () => {
+        try {
+            const servers = await getServers();
+            setKingVip(servers.kingVip || []);
+            setJustOpened([servers.justOpened]);
+            setStarted([servers.timeTested]);
+            setStartingThisWeek([servers.thisWeek]);
+            setStartingThisMonth([servers.thisMonth]);
+            setStartsLater([servers.startLater]);
+            setBonusStarted([servers.bonusStarted]);
+            getBanners().then(res => setBanners(res.data));
+            getArticles().then(res => setArticles(res.data));
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        } finally {
+            setLoading(false);
+        }
+
+
+    };
+
+    useEffect(() => {
+        get();
+    }, []);
 
     useEffect(() => {
         localStorage.setItem("language", languages);
@@ -69,6 +63,11 @@ function App() {
             setSelectLan(lan.RU);
         }
     }, [languages]);
+
+    if (loading) {
+        return (<h1>Loading...</h1>);
+    }
+
     return (
         <div className={classes.App}>
 
@@ -86,10 +85,20 @@ function App() {
                         statements={statements}
                         kingVip={kingVip}
                         banners={banners}
+                        setKingVip={setKingVip}
+                        selectLan={selectLan}
+                        startingThisWeek={startingThisWeek}
+                        startingThisMonth={startingThisMonth}
+                        startsLater={startsLater}
+                        justOpened={justOpened}
+                        started={started}
+                        bonusStarted={bonusStarted}
                         setBanners={setBanners}
                         articles={articles}
                         editStatements={editStatements}
                         setEditStatements={setEditStatements}
+                        update={get}
+                        isEdit={isEdit}
                     />
                     :
                     <div style={{
@@ -113,8 +122,8 @@ function App() {
                         </div>
 
                         <Main
-                            startingThisWeek={startingThisWeek}
                             selectLan={selectLan}
+                            startingThisWeek={startingThisWeek}
                             startingThisMonth={startingThisMonth}
                             startsLater={startsLater}
                             justOpened={justOpened}
@@ -122,8 +131,9 @@ function App() {
                             bonusStarted={bonusStarted}
                             banners={banners}
                             articles={articles}
-                            setStatements={setStatements}
                             statements={statements}
+                            setStatements={setStatements}
+                            isEdit={isEdit}
                         />
 
                         <Footer

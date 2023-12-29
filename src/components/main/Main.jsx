@@ -1,16 +1,11 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import classes from "../../app.module.scss";
-import ThisWeek from "../startingThisWeek/StartingThisWeek";
-import ThisMonth from "../startingThisMonth/StartingThisMonth";
-import Later from "../startsLater/StartsLater";
-import JustOpened from "../justOpened/JustOpened";
-import Started from "../started/Started";
-import BonusStarted from "../bonusStarted/BonusStarted";
 import Servers from "../servers/Servers";
-import {Link, Route, Routes} from "react-router-dom";
+import {Route, Routes, useParams} from "react-router-dom";
 import MainStatements from "../mainStatements/MainStatements";
 import StatementText from "../statementText/StatementText";
 import EditStatements from "../editStatements/EditStatements";
+import {getArticle} from "../../api";
 
 const Main = ({...props}) => {
     return (
@@ -31,11 +26,9 @@ const Main = ({...props}) => {
                     <MainStatements articles={props.articles} setStatements={props.setStatements}
                                     statements={props.statements}/>
                 }/>
-                <Route path="/statements/:id" element={
-                    <StatementText articles={props.articles}/>
-                }/>
-
-
+                    <Route path="/statements/:id" element={
+                        <StatementText articles={props.articles} isEdit={props.isEdit}/>
+                    }/>
             </Routes>
         </main>
     );

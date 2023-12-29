@@ -3,6 +3,7 @@ import classes from "../../app.module.scss";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import {useFormik} from "formik";
 import * as yup from "yup";
+import { createArticle } from "../../api";
 
 const CreateStatements = ({...props}) => {
 
@@ -17,13 +18,17 @@ const CreateStatements = ({...props}) => {
         },
         validationSchema: createSchema,
         onSubmit: async (values) => {
-
+            await createArticle({
+                articleName: values.name
+            });
+            props.update();
+            props.setCreateActive(false);
         },
     });
     return (
         <div className={props.createActive ? classes.createStatements : classes.disableStatements}>
 
-            <form onSubmit={handleSubmit} className={classes.inputWrapper} autoComplete="off">
+            <form onSubmit={handleSubmit} className={classes.inputWrapper} autoComplete="off" >
                 <div>
                     <div className={classes.form}>
                         <input

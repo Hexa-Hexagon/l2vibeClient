@@ -7,8 +7,9 @@ import JustOpened from "../justOpened/JustOpened";
 import BonusStarted from "../bonusStarted/BonusStarted";
 import Started from "../started/Started";
 import {Link} from "react-router-dom";
+import StartingThisMonth from "../startingThisMonth/StartingThisMonth";
 
-const Servers = ({...props}) => {
+const Servers = ({ ...props }) => {
     return (
         <>
             <div className={classes.mainServers}>
@@ -17,7 +18,7 @@ const Servers = ({...props}) => {
                         sites={props.startingThisWeek}
                         starting={props.selectLan.StartingThisWeek}
                     />
-                    <ThisMonth
+                    <StartingThisMonth
                         sites={props.startingThisMonth}
                         starting={props.selectLan.StartingThisMonth}
                     />
@@ -43,8 +44,8 @@ const Servers = ({...props}) => {
             </div>
             <div className={classes.bannerMain}>
                 {
-                    props.banners.map(banner => <Link key={banner._id} to="/statements">
-                            <input type="image" src={banner.banner}
+                    props.banners.map(banner => <Link key={banner._id} to={banner.bannerLink}>
+                            <input type="image" src={`https://api.l2vibe.com/banners/images/${banner.bannerFileName}`}
                             className={classes.bannerImage} alt="banner"/></Link>)
                 }
             </div>

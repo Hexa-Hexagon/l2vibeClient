@@ -1,6 +1,6 @@
 export const lan = {
     UK: {
-        Anons: "ТОП СЕРВЕРІВ LINEAGE II ГРАЙ ІЗ ЗАДОВОЛЕННЯМ",
+        Anons: <p>ТОП СЕРВЕРІВ LINEAGE II <br />ГРАЙ ІЗ ЗАДОВОЛЕННЯМ</p>,
         Started: "Перевірені часом",
         StartingThisWeek: "Відкриваються цього тижня",
         StartingThisMonth: "Відкриваються цього місяця",
@@ -31,7 +31,7 @@ export const lan = {
         StandardDdescriptionSecond: "При встановленні будь-яких видів редиректів (перенаправлень) користувачів на сайті сервера та порушень умов 'Стандартного' розміщення - для сервера анулюються всі платні сервіси, і він розміщується в чорному списку без повернення коштів."
     },
     EN: {
-        Anons: "LINEAGE II SERVERS THAT FITS THE VIBE",
+        Anons: <p>LINEAGE II SERVERS THAT<br />FITS THE VIBE</p>,
         Started: "Time-tested",
         StartingThisWeek: "Opens this week",
         StartingThisMonth: "Opens this month",
@@ -62,7 +62,7 @@ export const lan = {
         StandardDdescriptionSecond: "When setting any types of redirects of users on the site and violating the terms of the 'Standard' placement, all paid services are canceled for the server, and it is placed on the black list without a refund."
     },
     RU: {
-        Anons: "ТОП СЕРВЕРОВ LINEAGE II ИГРАЙ С УДОВОЛЬСТВИЕМ",
+        Anons: <p>ТОП СЕРВЕРОВ LINEAGE II <br />ИГРАЙ С УДОВОЛЬСТВИЕМ</p>,
         Started: "Проверенные временем",
         StartingThisWeek: "Открываются на этой неделе",
         StartingThisMonth: "Открываются в этом месяце",

@@ -1,44 +1,35 @@
 import React, {useState} from "react";
 import classes from "../../app.module.scss";
-import inputClass from "../createNewSite/createNewSite.module.scss";
-import buttonClass from "../editSite/editSite.module.scss";
 import CreateNewSite from "../createNewSite/CreateNewSite";
-import Edit from "../editSite/EditSite";
-import BannerEdit from "../bannerEdit/BannerEdit";
-import {Editor} from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import EditorState from "draft-js/lib/EditorState";
-import accept from "../../images/acccept.png";
 import EditServer from "../editServer/EditServer";
-import CreateStatements from "../textEditor/CreateStatements";
-import {Link, Route, Routes} from "react-router-dom";
 import Statements from "../statements/Statements";
 import EditStatements from "../editStatements/EditStatements";
+import {Route, Routes} from "react-router-dom";
 
 const EditBlockForm = ({...props}) => {
 
-
-    const removeKingVip = (site) => {
-        props.setKingVip(props.kingVip.filter(s => s._id !== site._id));
-    };
-
     const [createActive, setCreateActive] = useState(false);
+    const [articleId, setArticleId] = useState("");
 
     return (
         <div className={classes.editBlockFormAndCreateNewSite}>
 
-            <CreateNewSite/>
+            {!props.statements ? <CreateNewSite update={props.update}/> : null}
             <div className={classes.editBlockForm}>
                 {
-                    props.statements === true ?
+                    props.statements !== true ?
                         <EditServer
-                            removeKingVip={removeKingVip}
                             kingVip={props.kingVip}
-                            superVip={props.superVip}
-                            vip={props.vip}
-                            premium={props.premium}
-                            standart={props.standart}
+                            startingThisWeek={props.startingThisWeek}
+                            selectLan={props.selectLan}
+                            startingThisMonth={props.startingThisMonth}
+                            startsLater={props.startsLater}
+                            justOpened={props.justOpened}
+                            started={props.started}
+                            bonusStarted={props.bonusStarted}
                             banners={props.banners}
+                            update={props.update}
                         />
                         :
                         <Statements
@@ -47,12 +38,22 @@ const EditBlockForm = ({...props}) => {
                             setCreateActive={setCreateActive}
                             setEditStatements={props.setEditStatements}
                             editStatements={props.editStatements}
+                            setArticleId={setArticleId}
+                            update={props.update}
                         />
                 }
-                <EditStatements
-                    setEditStatements={props.setEditStatements}
-                    editStatements={props.editStatements}
-                />
+                <Routes>
+                    <Route path="statements/:id" element={
+                        <EditStatements
+                            update={props.update}
+                            articles={props.articles}
+                            setEditStatements={props.setEditStatements}
+                            editStatements={props.editStatements}
+                        />
+                    }/>
+                </Routes>
+
+
             </div>
         </div>
 

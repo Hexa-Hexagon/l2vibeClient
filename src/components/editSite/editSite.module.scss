@@ -43,7 +43,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-right: 60px;
+    margin-right: 110px;
     margin-bottom: 30px;
 }
 
@@ -212,7 +212,7 @@ option {
 }
 
 .imageStatusSuperVip {
-    background-image: url('../../images/vip.png');
+    background-image: url('../../images/superVip.png');
     background-position: center;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -222,7 +222,7 @@ option {
 }
 
 .imageStatusVip {
-    background-image: url('../../images/premium.png');
+    background-image: url('../../images/vip.png');
     background-position: center;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -231,7 +231,17 @@ option {
     margin-left: var(--imageLeft);
 }
 
-.imageStatusPremiumStandart {
+.imageStatusPremium {
+    background-image: url('../../images/premium.png');
+    background-position: center;
+    background-size: 90%;
+    background-repeat: no-repeat;
+    width: var(--imageSize);
+    height: var(--imageSize);
+    margin-left: var(--imageLeft);
+}
+
+.imageStatusStandart {
     background-image: url('../../images/standart.png');
     background-position: center;
     background-size: 90%;
@@ -249,6 +259,7 @@ option {
     justify-content: flex-start;
     font-size: 16px;
     align-items: center;
+    font-family: 'Manrope';
 }
 
 .difficulty {
@@ -260,6 +271,7 @@ option {
     align-items: center;
     margin-left: 45px;
     font-size: 16px;
+    font-family: 'Manrope';
 }
 
 .nameSite {
@@ -282,6 +294,7 @@ option {
     align-items: center;
     margin-left: 5px;
     font-size: 16px;
+    font-family: 'Manrope';
 }
 
 @media screen and (max-width: 3000px) and (min-width: 2400px) {

@@ -1,32 +1,56 @@
 import React from "react";
 import classes from "../../app.module.scss";
 import {prices} from "../../languages";
-import api from "../../api";
 import kingVip from "../../images/kingVip.png";
 import vip from "../../images/vip.png";
 import superVip from "../../images/superVip.png";
 import premium from "../../images/premium.png";
 import standart from "../../images/standart.png";
+import {postPassword, setAuthHeader} from "../../api";
 
 
 const Footer = ({...props}) => {
+    let message = "";
 
-    async function getPassword() {
-        if (props.password) {
-            const res = await api.get(`/password/${props.password}`);
-            if (res.data) {
-                props.setIsEdit(!props.isEdit);
+    async function login() {
+        try {
+            if (props.password) {
+                const res = await postPassword(props.password);
+                if (res.status > 199 && res.status < 300) {
+                    props.setIsEdit(!props.isEdit);
+                    setAuthHeader(res.data.token);
+                    return res.data;
+                } else {
+                    props.setErrorStyle({
+                        border: "3px solid #660000"
+                    });
+                }
             } else {
                 props.setErrorStyle({
                     border: "3px solid #660000"
                 });
             }
-        } else {
+        } catch (e) {
+            message = e.response.data.msg;
+        }
+        if (message === "Password is incorrect") {
             props.setErrorStyle({
                 border: "3px solid #660000"
             });
         }
     }
+
+    // const inputChangeHandler = (e) => {
+    //     const regexp = /[^A-Za-z0-9]+/g;
+    //     const rawValue = e.target.value;
+    //     props.setErrorStyle({});
+    //     const trimmedValue = rawValue.trim();
+    //     if (regexp.test(trimmedValue)) { //проверка
+    //         console.log("Да");
+    //         props.setPassword(trimmedValue);
+    //         console.log(trimmedValue);
+    //     }
+    // };
 
     return (
         <footer className={classes.footer}>
@@ -145,17 +169,20 @@ const Footer = ({...props}) => {
                         </div>
                     </div>
                 </div>
-                <div className={classes.editForm}>
+                <form className={classes.editForm} onSubmit={(e) => {
+                    e.preventDefault();
+                    login();
+                    props.setPassword("");
+                }}>
                     <input className={classes.editInput} style={props.errorStyle}
-                           type="password" value={props.password} onChange={e => {
-                        props.setPassword(e.target.value);
-                        props.setErrorStyle({});
-                    }} placeholder="PASSWORD"/>
-                    <button onClick={() => {
-                        getPassword();
-                        props.setPassword("");
-                    }} className={classes.editButton}/>
-                </div>
+                           type="password" value={props.password}
+                           onChange={e => {
+                               props.setPassword(e.target.value);
+                               props.setErrorStyle({});
+                           }
+                           } placeholder="PASSWORD"/>
+                    <input type="submit" value={""} className={classes.editButton}/>
+                </form>
             </div>
         </footer>
     );
