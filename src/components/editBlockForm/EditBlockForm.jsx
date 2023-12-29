@@ -5,16 +5,17 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import EditServer from "../editServer/EditServer";
 import Statements from "../statements/Statements";
 import EditStatements from "../editStatements/EditStatements";
+import {Route, Routes} from "react-router-dom";
 
 const EditBlockForm = ({...props}) => {
 
     const [createActive, setCreateActive] = useState(false);
     const [articleId, setArticleId] = useState("");
- 
+
     return (
         <div className={classes.editBlockFormAndCreateNewSite}>
 
-            { !props.statements ? <CreateNewSite update={props.update} /> : null}
+            {!props.statements ? <CreateNewSite update={props.update}/> : null}
             <div className={classes.editBlockForm}>
                 {
                     props.statements !== true ?
@@ -41,13 +42,18 @@ const EditBlockForm = ({...props}) => {
                             update={props.update}
                         />
                 }
-                <EditStatements
-                    update={props.update}
-                    articles={props.articles}
-                    setEditStatements={props.setEditStatements}
-                    editStatements={props.editStatements}
-                    id={articleId}
-                />
+                <Routes>
+                    <Route path="statements/:id" element={
+                        <EditStatements
+                            update={props.update}
+                            articles={props.articles}
+                            setEditStatements={props.setEditStatements}
+                            editStatements={props.editStatements}
+                        />
+                    }/>
+                </Routes>
+
+
             </div>
         </div>
 

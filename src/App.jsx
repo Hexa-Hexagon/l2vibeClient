@@ -32,9 +32,7 @@ function App() {
         try {
             const servers = await getServers();
             setKingVip(servers.kingVip || []);
-            console.log(servers);
             setJustOpened([servers.justOpened]);
-            console.log([servers.thisWeek]);
             setStarted([servers.timeTested]);
             setStartingThisWeek([servers.thisWeek]);
             setStartingThisMonth([servers.thisMonth]);
@@ -100,6 +98,7 @@ function App() {
                         editStatements={editStatements}
                         setEditStatements={setEditStatements}
                         update={get}
+                        isEdit={isEdit}
                     />
                     :
                     <div style={{
@@ -134,6 +133,7 @@ function App() {
                             articles={articles}
                             statements={statements}
                             setStatements={setStatements}
+                            isEdit={isEdit}
                         />
 
                         <Footer

@@ -4,6 +4,7 @@ import inputClass from "../createNewSite/createNewSite.module.scss";
 import buttonClass from "../editSite/editSite.module.scss";
 import CreateStatements from "../createArticle/CreateStatements";
 import {deleteArticle} from "../../api";
+import {Link} from "react-router-dom";
 
 const Statements = ({...props}) => {
 
@@ -39,7 +40,7 @@ const Statements = ({...props}) => {
                             deleteArticle(article._id);
                             props.update();
                         }}/>
-                        <button className={buttonClass.editButton}
+                        <Link to={`statements/${article._id}`} className={buttonClass.editButton}
                                 onClick={() => get(article._id)}/>
                     </div>
                 )

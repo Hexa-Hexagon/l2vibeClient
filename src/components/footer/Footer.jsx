@@ -40,6 +40,18 @@ const Footer = ({...props}) => {
         }
     }
 
+    // const inputChangeHandler = (e) => {
+    //     const regexp = /[^A-Za-z0-9]+/g;
+    //     const rawValue = e.target.value;
+    //     props.setErrorStyle({});
+    //     const trimmedValue = rawValue.trim();
+    //     if (regexp.test(trimmedValue)) { //проверка
+    //         console.log("Да");
+    //         props.setPassword(trimmedValue);
+    //         console.log(trimmedValue);
+    //     }
+    // };
+
     return (
         <footer className={classes.footer}>
             <div className={classes.contactsForm}>
@@ -163,10 +175,12 @@ const Footer = ({...props}) => {
                     props.setPassword("");
                 }}>
                     <input className={classes.editInput} style={props.errorStyle}
-                           type="password" value={props.password} onChange={e => {
-                        props.setPassword(e.target.value);
-                        props.setErrorStyle({});
-                    }} placeholder="PASSWORD"/>
+                           type="password" value={props.password}
+                           onChange={e => {
+                               props.setPassword(e.target.value);
+                               props.setErrorStyle({});
+                           }
+                           } placeholder="PASSWORD"/>
                     <input type="submit" value={""} className={classes.editButton}/>
                 </form>
             </div>

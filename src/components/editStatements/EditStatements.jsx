@@ -5,14 +5,18 @@ import {ContentState, EditorState, convertFromHTML, convertToRaw} from "draft-js
 import buttonClass from "../editSite/editSite.module.scss";
 import {editArticle, getArticle} from "../../api";
 import draftToHtml from "draftjs-to-html";
+import {Link, useNavigate, useParams} from "react-router-dom";
+import htmlToDraft from 'html-to-draftjs';
 
 
 const EditStatements = ({...props}) => {
+    const navigate = useNavigate();
+    let {id} = useParams();
     const [editorState, setEditorState] = useState(
         EditorState.createEmpty()
     );
-    const [name, setName] = useState("");
-    const [text, setText] = useState("");
+    const [name, setName] = useState({});
+    const [text, setText] = useState(``);
     const onEditorStateChange = (editorState) => {
         setEditorState(editorState, {
             allowUndo: true,
@@ -20,71 +24,41 @@ const EditStatements = ({...props}) => {
     };
 
     const get = async () => {
-        await getArticle(props.id).then(response => {
-            setText(response.data.articleHtml);
+        await getArticle(id).then(response => {
             setName(response.data.articleName);
+            setEditorState(EditorState.createWithContent(
+                ContentState.createFromBlockArray(htmlToDraft(response.data.articleHtml).contentBlocks)));
         });
     };
 
     useEffect(() => {
         get();
-        if (text) {
-            const contentBlocks = convertFromHTML(text);
-
-            if (contentBlocks) {
-                const contentState = ContentState.createFromBlockArray(contentBlocks);
-                setEditorState(EditorState.createWithContent(contentState));
-            } else {
-                console.error("Error converting HTML to content blocks");
-            }
-        } else {
-            console.error("No articleHtml in the response data");
-        }
     }, []);
 
     return (
         <div className={props.editStatements ? classes.editStatements : classes.disableWrapper}>
             <div className={classes.editStatementForm}>
-                    <input value={props.articles[0].articleName} onChange={e =>
-                        setName(e.target.value)} className={classes.input}/>
-                
-
+                <input value={name} onChange={e =>
+                    setName(e.target.value)} className={classes.input}/>
             </div>
             <div className={classes.editor}>
                 <Editor
                     editorState={editorState}
                     onEditorStateChange={onEditorStateChange}
-                    toolbar={{
-                        image: {
-                            className: undefined,
-                            component: undefined,
-                            popupClassName: undefined,
-                            urlEnabled: true,
-                            uploadEnabled: true,
-                            alignmentEnabled: true,
-                            uploadCallback: undefined,
-                            previewImage: true,
-                            inputAccept: "image/gif,image/jpeg,image/jpg,image/png,image/svg",
-                            alt: {present: false, mandatory: false},
-                            defaultSize: {
-                                height: "auto",
-                                width: "auto",
-                            },
-                        },
-                    }}
                 />
 
 
             </div>
             <div className={buttonClass.editStatementsButtons}>
-                <button className={buttonClass.cancel}
-                        onClick={() => props.setEditStatements(false)}/>
+                <Link to="/statements" className={buttonClass.cancel}
+                      onClick={() => props.setEditStatements(false)}/>
                 <button className={classes.accept} onClick={async () => {
                     await editArticle({
                         articleName: name,
                         articleHtml: draftToHtml(convertToRaw(editorState.getCurrentContent()))
-                    }, props.id);
+                    }, id);
                     props.setEditStatements(false);
+                    navigate("/statements", {replace: true});
                 }}/>
             </div>
 
