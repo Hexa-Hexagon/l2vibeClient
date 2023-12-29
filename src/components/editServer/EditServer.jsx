@@ -2,7 +2,6 @@ import React from "react";
 import classes from "../../app.module.scss";
 import Edit from "../editSite/EditSite";
 import BannerEdit from "../bannerEdit/BannerEdit";
-import Site from "../site/Site";
 
 const EditServer = ({...props}) => {
     console.log(props);

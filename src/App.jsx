@@ -1,7 +1,6 @@
 import classes from "./app.module.scss";
-import * as moment from "moment";
 import {getArticles, getBanners, getServers} from "./api";
-import React, {useEffect, useLayoutEffect, useState} from "react";
+import React, {useEffect,useState} from "react";
 import Site from "./components/site/Site";
 import {lan} from "./languages";
 import Header from "./components/header/Header";
