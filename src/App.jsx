@@ -8,6 +8,7 @@ import EditBlockForm from "./components/editBlockForm/EditBlockForm";
 import Main from "./components/main/Main";
 import Footer from "./components/footer/Footer";
 import "./normalize.css";
+import {BrowserRouter} from "react-router-dom";
 
 function App() {
     const [languages, setLanguages] = useState(localStorage.getItem("language") || "en");
@@ -81,25 +82,28 @@ function App() {
             />
             {
                 isEdit === true ?
-                    <EditBlockForm
-                        statements={statements}
-                        kingVip={kingVip}
-                        banners={banners}
-                        setKingVip={setKingVip}
-                        selectLan={selectLan}
-                        startingThisWeek={startingThisWeek}
-                        startingThisMonth={startingThisMonth}
-                        startsLater={startsLater}
-                        justOpened={justOpened}
-                        started={started}
-                        bonusStarted={bonusStarted}
-                        setBanners={setBanners}
-                        articles={articles}
-                        editStatements={editStatements}
-                        setEditStatements={setEditStatements}
-                        update={get}
-                        isEdit={isEdit}
-                    />
+                    <BrowserRouter>
+                        <EditBlockForm
+                            statements={statements}
+                            kingVip={kingVip}
+                            banners={banners}
+                            setKingVip={setKingVip}
+                            selectLan={selectLan}
+                            startingThisWeek={startingThisWeek}
+                            startingThisMonth={startingThisMonth}
+                            startsLater={startsLater}
+                            justOpened={justOpened}
+                            started={started}
+                            bonusStarted={bonusStarted}
+                            setBanners={setBanners}
+                            articles={articles}
+                            editStatements={editStatements}
+                            setEditStatements={setEditStatements}
+                            update={get}
+                            isEdit={isEdit}
+                        />
+                    </BrowserRouter>
+
                     :
                     <div style={{
                         display: "flex",
