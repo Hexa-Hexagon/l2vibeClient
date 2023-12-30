@@ -5,7 +5,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import EditServer from "../editServer/EditServer";
 import Statements from "../statements/Statements";
 import EditStatements from "../editStatements/EditStatements";
-import {Route, Routes} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const EditBlockForm = ({...props}) => {
 
@@ -42,16 +42,19 @@ const EditBlockForm = ({...props}) => {
                             update={props.update}
                         />
                 }
-                <Routes>
-                    <Route path="statements/:id" element={
-                        <EditStatements
-                            update={props.update}
-                            articles={props.articles}
-                            setEditStatements={props.setEditStatements}
-                            editStatements={props.editStatements}
-                        />
-                    }/>
-                </Routes>
+                <Router>
+                    <Routes>
+                        <Route path="statements/:id" element={
+                            <EditStatements
+                                update={props.update}
+                                articles={props.articles}
+                                setEditStatements={props.setEditStatements}
+                                editStatements={props.editStatements}
+                            />
+                        }/>
+                    </Routes>
+                </Router>
+
 
 
             </div>
