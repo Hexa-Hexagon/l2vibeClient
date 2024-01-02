@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import classes from "../../app.module.scss";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import {useFormik} from "formik";
 import * as yup from "yup";
-import { createArticle } from "../../api";
+import {createArticle, createBanner, editBanner, editImageArticle, editLinkBanner} from "../../api";
+
 
 const CreateStatements = ({...props}) => {
 
@@ -11,24 +12,67 @@ const CreateStatements = ({...props}) => {
         name: yup.string().required("name required"),
     });
 
-
     const {values, errors, touched, handleBlur, handleChange, handleSubmit} = useFormik({
         initialValues: {
             name: "",
         },
         validationSchema: createSchema,
         onSubmit: async (values) => {
-            await createArticle({
-                articleName: values.name
-            });
+            await post(values);
             props.update();
             props.setCreateActive(false);
         },
     });
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [articleImage, setArticleImage] = useState(props.banner);
+
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        setArticleImage(e.target.files[0]);
+
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = () => {
+                setSelectedImage(reader.result);
+            };
+
+            reader.readAsDataURL(file);
+        }
+    };
+
+    async function post(values) {
+        try {
+            const data = new FormData();
+            data.append("avatar", articleImage);
+            data.append("articleName", values.name);
+            if (articleImage && values.name) {
+                await createArticle(data);
+            }
+        } catch (e) {
+            console.error(e.message);
+        }
+
+    }
+
     return (
         <div className={props.createActive ? classes.createStatements : classes.disableStatements}>
+            <div className={classes.addImage}>
+                {
+                    articleImage === "" || articleImage === null ? "" :
+                        <img
+                            src={selectedImage}
+                            className={classes.image} alt=""/>
+                }
+                <div className={classes.choseForm}>
+                    <input className={classes.choseFormInput} type="file"
+                           onChange={e => handleImageChange(e)}/>
+                    <span>Выберете файл</span>
+                </div>
+            </div>
 
-            <form onSubmit={handleSubmit} className={classes.inputWrapper} autoComplete="off" >
+            <form onSubmit={handleSubmit} className={classes.inputWrapper} autoComplete="off">
                 <div>
                     <div className={classes.form}>
                         <input
@@ -49,6 +93,7 @@ const CreateStatements = ({...props}) => {
                         <div className={classes.label}>{errors.name}</div> : null}
                 </div>
             </form>
+
         </div>
     );
 };

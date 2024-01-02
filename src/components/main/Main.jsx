@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "../../app.module.scss";
 import Servers from "../servers/Servers";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import MainStatements from "../mainStatements/MainStatements";
 import StatementText from "../statementText/StatementText";
 
@@ -14,8 +14,14 @@ const Main = ({...props}) => {
                         <StatementText articles={props.articles} isEdit={props.isEdit}/>
                     }/>
                     <Route path="/statements" element={
-                        <MainStatements articles={props.articles} setStatements={props.setStatements}
-                                        statements={props.statements}/>
+                        <MainStatements
+                            articles={props.articles}
+                            pageCount={props.pageCount}
+                            setPageCount={props.setPageCount}
+                            setArticles={props.setArticles}
+                            setStatements={props.setStatements}
+                            statements={props.statements}
+                        />
                     }/>
                     <Route path="/" element={
                         <Servers

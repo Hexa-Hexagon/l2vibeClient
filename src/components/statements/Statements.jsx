@@ -1,13 +1,24 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import classes from "../../app.module.scss";
 import inputClass from "../createNewSite/createNewSite.module.scss";
 import buttonClass from "../editSite/editSite.module.scss";
 import CreateStatements from "../createArticle/CreateStatements";
-import {deleteArticle} from "../../api";
+import {deleteArticle, getArticles} from "../../api";
 import {Link} from "react-router-dom";
+import {Container, Pagination, Stack, Link as PageLink} from "@mui/material";
+
 
 const Statements = ({...props}) => {
+    const [page, setPage] = useState(1);
 
+    useEffect(() => {
+        getArticles(page).then((res) => {
+            if (res) {
+                props.setPageCount(res.data.count);
+                props.setArticles(res.data.articles);
+            }
+        });
+    }, [page]);
 
     const get = (id) => {
         if (!props.editStatements) {
@@ -34,18 +45,45 @@ const Statements = ({...props}) => {
 
             <div className={classes.statements}>
                 {props.articles.map((article) =>
-                    <div className={classes.statementsMain} key={article._id}>
-                        <a className={classes.statementLink} href={"#"}>{article.articleName}</a>
-                        <button className={buttonClass.delete} onClick={() => {
-                            deleteArticle(article._id);
-                            props.update();
-                        }}/>
-                        <Link to={`statements/${article._id}`} className={buttonClass.editButton}
-                                onClick={() => get(article._id)}/>
-                    </div>
+                    <PageLink className={classes.statementsMain} key={article._id}>
+                        <div className={classes.editWrapper}>
+                            <Link to={`/statements/${article._id}`}
+                                  className={classes.imageWrapper}>
+                                <img className={classes.articleImage}
+                                     src={`https://api.l2vibe.com/images/${article.articleImage}`}
+                                />
+                                <p className={classes.statementLink}>{article.articleName}</p>
+                            </Link>
+                            <div className={classes.editButtonWrapper}>
+                                <button className={buttonClass.delete} onClick={async () => {
+                                    await deleteArticle(article._id);
+                                    props.update();
+                                }}/>
+                                <Link to={`statements/${article._id}`}
+                                      className={buttonClass.editButton}
+                                      onClick={() => get(article._id)}/>
+                            </div>
+                        </div>
+
+                    </PageLink>
                 )
                 }
             </div>
+            <Container>
+                <Stack spacing={2}>
+                    {
+                        props.pageCount > 1 ?
+                            <Pagination
+                                count={props.pageCount}
+                                page={page}
+                                onChange={(_, pageNum) => setPage(pageNum)}
+                                className={classes.pagination}
+                            />
+                            : null
+                    }
+
+                </Stack>
+            </Container>
 
         </div>
     );

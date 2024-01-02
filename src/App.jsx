@@ -28,6 +28,7 @@ function App() {
     const [bonusStarted, setBonusStarted] = useState([]);
     const [errorStyle, setErrorStyle] = useState({});
     const [loading, setLoading] = useState(true);
+    const [pageCount, setPageCount] = useState();
 
     const get = async () => {
         try {
@@ -39,8 +40,14 @@ function App() {
             setStartingThisMonth([servers.thisMonth]);
             setStartsLater([servers.startLater]);
             setBonusStarted([servers.bonusStarted]);
-            getBanners().then(res => setBanners(res.data));
-            getArticles().then(res => setArticles(res.data));
+            getBanners().then(res => res ? setBanners(res.data):null);
+            getArticles().then(res => {
+                if (res) {
+                    setArticles(res.data.articles);
+                    setPageCount(res.data.count);
+                }
+            });
+            console.log(articles);
         } catch (error) {
             console.error("Error fetching data:", error);
         } finally {
@@ -97,10 +104,13 @@ function App() {
                             bonusStarted={bonusStarted}
                             setBanners={setBanners}
                             articles={articles}
+                            pageCount={pageCount}
+                            setPageCount={setPageCount}
                             editStatements={editStatements}
                             setEditStatements={setEditStatements}
                             update={get}
                             isEdit={isEdit}
+                            setArticles={setArticles}
                         />
                     </BrowserRouter>
 
@@ -135,8 +145,11 @@ function App() {
                             bonusStarted={bonusStarted}
                             banners={banners}
                             articles={articles}
+                            setArticles={setArticles}
                             statements={statements}
                             setStatements={setStatements}
+                            pageCount={pageCount}
+                            setPageCount={setPageCount}
                             isEdit={isEdit}
                         />
 

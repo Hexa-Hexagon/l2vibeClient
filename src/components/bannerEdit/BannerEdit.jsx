@@ -3,17 +3,17 @@ import classes from "./bannerEdit.module.scss";
 import {createBanner, deleteBanner, editBanner, editLinkBanner} from "../../api";
 
 const BannerEdit = ({...props}) => {
-    let [bannerExists, setBannerExists] = useState(!!props.banner);
-    let [link, setLink] = useState(
+    const [bannerExists, setBannerExists] = useState(!!props.banner);
+    const [link, setLink] = useState(
         bannerExists ? props.banner.bannerLink ? props.banner.bannerLink : "" : "");
-    let [banner, setBanner] = useState(
+    const [banner, setBanner] = useState(
         bannerExists ? props.banner.bannerFileName ? props.banner.bannerFileName : null : null);
 
     const [selectedImage, setSelectedImage] = useState(null);
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
-        setBanner(e.target.files[0])
+        setBanner(e.target.files[0]);
 
         if (file) {
             const reader = new FileReader();
@@ -27,26 +27,31 @@ const BannerEdit = ({...props}) => {
     };
 
     async function postOrPut() {
-        const data = new FormData();
-        data.append("avatar", banner);
-        data.append("link", link);
-        if (bannerExists) {
-            if (banner && link) {
-                await editBanner(data, props.banner._id);
-            } else if (link) {
-                await editLinkBanner({
-                    link: link
-                }, props.banner._id);
+        try {
+            const data = new FormData();
+            data.append("avatar", banner);
+            data.append("link", link);
+            if (bannerExists) {
+                if (banner && link) {
+                    await editBanner(data, props.banner._id);
+                } else if (link) {
+                    await editLinkBanner({
+                        link: link
+                    }, props.banner._id);
+                }
+            } else {
+                if (banner && link) {
+                    await createBanner(data);
+                }
             }
-        } else {
-            if (banner && link) {
-                await createBanner(data);
-            }
-        }
-        props.update();
-        if (link) {
             props.update();
+            if (link) {
+                props.update();
+            }
+        } catch (e) {
+            console.error(e.message);
         }
+
     }
 
     async function del() {
@@ -67,7 +72,7 @@ const BannerEdit = ({...props}) => {
             {
                 banner === "" || banner === null ? "" :
                     <img
-                        src={bannerExists ?`https://api.l2vibe.com/banners/images/${banner}` :selectedImage}
+                        src={bannerExists ?`https://api.l2vibe.com/images/${banner}` :selectedImage}
                         className={classes.image} alt=""/>
             }
             <div className={classes.choseForm}>
