@@ -14,83 +14,174 @@ export const setAuthHeader = (accessToken) => {
     localStorage.setItem("accessToken", accessToken);
 };
 
-export const getArticles = async () => {
-    return await api.get("/articles");
+export const getArticles = async (page) => {
+    try {
+        return await api.get(`/articles/${page - 1}`);
+
+    } catch (e) {
+        console.error(e.message);
+    }
 };
 
 export const getArticle = async (id) => {
-    return await api.get(`/articles/${id}`);
+    try {
+        return await api.get(`/articles/id/${id}`);
+    } catch (e) {
+        console.error(e.message);
+    }
 };
 
 export const getServers = async () => {
-    return (await api.get("/servers")).data;
+    try {
+        return (await api.get("/servers")).data;
+    } catch (e) {
+        console.error(e.message);
+    }
 };
 export const getBanners = async () => {
-    return await api.get("/banners");
+    try {
+        return await api.get("/banners");
+
+    } catch (e) {
+        console.error(e.message);
+    }
 };
 export const postPassword = async (password) => {
-    return api.post(`/password`, {
-        password: password,
-        token: token
-    });
+    try {
+        return api.post(`/password`, {
+            password: password,
+            token: token
+        });
+    } catch (e) {
+        console.error(e.message);
+    }
+
 };
 
 export const createServer = async (data) => {
-    setAuthHeader(localStorage.getItem("accessToken"));
-    await api.post("/servers", data);
+    try {
+        setAuthHeader(token);
+        await api.post("/servers", data);
+    } catch (e) {
+        console.error(e.message);
+    }
+
 };
 
 export const createArticle = async (data) => {
-    setAuthHeader(localStorage.getItem("accessToken"));
-    await api.post("/articles", data);
+    try {
+        setAuthHeader(token);
+        await api.post("/articles", data, {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        });
+    } catch (e) {
+        console.error(e.message);
+    }
+
 };
 
 export const createBanner = async (data) => {
-    setAuthHeader(token);
-    await api.post("/banners", data, {
-        headers: {
-            "Content-Type": "multipart/form-data"
-        }
-    });
+    try {
+        setAuthHeader(token);
+        await api.post("/banners", data, {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        });
+    } catch (e) {
+        console.error(e.message);
+    }
+
 };
 
 export const editServer = async (newData, id) => {
-    setAuthHeader(token);
-    return await api.patch(`/servers/${id}`, newData);
+    try {
+        setAuthHeader(token);
+        return await api.patch(`/servers/${id}`, newData);
+    } catch (e) {
+        console.error(e.message);
+    }
+
 };
 
 export const editBanner = async (newData, id) => {
-    setAuthHeader(token);
-    return await api.put(`/banners/${id}`, newData, {
-        headers: {
-            "Content-Type": "multipart/form-data"
-        }
-    });
+    try {
+        setAuthHeader(token);
+        return await api.put(`/banners/${id}`, newData, {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        });
+    } catch (e) {
+        console.error(e.message);
+    }
+
 };
 
 export const editArticle = async (newData, id) => {
-    setAuthHeader(token);
-    return await api.patch(`/articles/${id}`, newData);
+    try {
+        setAuthHeader(token);
+        return await api.patch(`/articles/${id}`, newData);
+    } catch (e) {
+        console.error(e.message);
+    }
+
+};
+
+export const editImageArticle = async (newData, id) => {
+    try {
+        setAuthHeader(token);
+        return await api.put(`/articles/${id}`, newData, {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        });
+    } catch (e) {
+        console.error(e.message);
+    }
+
 };
 
 export const editLinkBanner = async (newData, id) => {
-    setAuthHeader(token);
-    return await api.patch(`/banners/${id}`, newData);
+    try {
+        setAuthHeader(token);
+        return await api.patch(`/banners/${id}`, newData);
+    } catch (e) {
+        console.error(e.message);
+    }
+
 };
 
 export const deleteServer = async (id) => {
-    setAuthHeader(token);
-    return await api.delete(`/servers/${id}`);
+    try {
+        setAuthHeader(token);
+        return await api.delete(`/servers/${id}`);
+    } catch (e) {
+        console.error(e.message);
+    }
+
 };
 
 export const deleteBanner = async (id) => {
-    setAuthHeader(token);
-    return await api.delete(`/banners/${id}`);
+    try {
+        setAuthHeader(token);
+        return await api.delete(`/banners/${id}`);
+    } catch (e) {
+        console.error(e.message);
+    }
+
 };
 
 export const deleteArticle = async (id) => {
-    setAuthHeader(token);
-    return await api.delete(`/articles/${id}`);
+    try {
+        setAuthHeader(token);
+        return await api.delete(`/articles/${id}`);
+    } catch (e) {
+        console.error(e.message);
+    }
+
 };
 
 

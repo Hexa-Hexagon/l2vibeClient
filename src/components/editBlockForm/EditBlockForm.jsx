@@ -35,6 +35,9 @@ const EditBlockForm = ({...props}) => {
                         :
                         <Statements
                             articles={props.articles}
+                            setArticles={props.setArticles}
+                            setPageCount={props.setPageCount}
+                            pageCount={props.pageCount}
                             createActive={createActive}
                             setCreateActive={setCreateActive}
                             setEditStatements={props.setEditStatements}

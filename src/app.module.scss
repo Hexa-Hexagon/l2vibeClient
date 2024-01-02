@@ -119,6 +119,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  padding-bottom: 30px;
 }
 
 .article {
@@ -312,6 +313,37 @@ a {
   font-size: 16px;
 }
 
+.choseForm {
+  width: 200px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  margin: 20px auto;
+}
+
+.choseFormInput {
+  cursor: pointer;
+}
+
+.choseForm span {
+  background-color: #35155d;
+  color: #8CABFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 50px;
+  border-radius: 15px;
+}
+
+.choseForm input {
+  opacity: 0;
+  width: 159px;
+  height: 50px;
+  position: absolute;
+}
+
 .formButton,
 .accept {
   display: flex;
@@ -337,10 +369,12 @@ a {
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding-bottom: 30px;
 }
 
 .editStatements {
   display: block;
+  padding-top: 30px;
 }
 
 .disableWrapper {
@@ -525,6 +559,14 @@ a {
   display: none;
 }
 
+.addImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
 .footer a {
   color: white;
 }
@@ -533,6 +575,12 @@ a {
   .anons {
     font-size: calc(20px + 5 * (100vw / 1280));
   }
+
+  .image {
+    width: 400px;
+    height: 240px;
+  }
+
   .editInput {
     height: 50px;
   }
@@ -592,8 +640,11 @@ a {
   padding-top: 20px;
   padding-left: 20px;
   min-height: 400px;
+  padding-bottom: 30px;
+  place-items: center;
   display: grid;
-  grid-template-columns: 400px 400px 400px;
+  grid-template-columns: 450px 450px 450px;
+  grid-template-rows: 300px 300px 300px;
 }
 
 .statementsTextWrapper {
@@ -610,6 +661,17 @@ a {
   align-items: center;
   margin-bottom: 10px;
   justify-content: center;
+}
+
+.imageWrapper {
+  position: relative;
+}
+
+.articleImage {
+  width: 400px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 12px;
 }
 
 .statementTitle {
@@ -633,13 +695,34 @@ a {
 
 .statementLink {
   font-family: "Manrope", sans-serif;
+  font-size: calc(11px + 14 * (100vw / 1280));
   color: #000;
   text-decoration: none;
-  margin-right: 5px;
+  position:absolute;
+  z-index: 5;
+  bottom: 30px;
+  text-align: center;
+  width: 100%;
+}
+
+.editWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.editButtonWrapper {
+  display: flex;
+  justify-content: center;
 }
 
 .statementLink:hover {
   color: #8CABFF;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -697,10 +780,11 @@ a {
     font-size: calc(15px + 1 * (100vw / 1280));
   }
 }
-
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1460px) {
   .statements {
-    grid-template-columns: 400px 400px;
+    grid-template-columns: 500px 500px;
+    grid-template-rows: 300px 300px 300px 300px 300px;
+
   }
 }
 
@@ -887,6 +971,19 @@ a {
   }
 }
 
+@media screen and (max-width: 1050px) {
+  .statements {
+    grid-template-columns: 400px 400px;
+    grid-template-rows: 300px 300px 300px 300px 300px;
+
+  }
+  .articleImage {
+    width: 350px;
+    height: 170px;
+  }
+}
+
+
 @media screen and (max-width: 1000px) {
   .languageButton {
     width: 35px;
@@ -911,13 +1008,13 @@ a {
     grid-template-columns: 250px 250px auto;
     background-image: linear-gradient(transparent, #512B81bf);
   }
-
 }
 
 @media screen and (max-width: 870px) {
   .statements {
-    grid-template-columns: 600px;
-    place-items: center;
+    grid-template-columns: 400px;
+    grid-template-rows: 300px 300px 300px 300px 300px 300px 300px 300px 300px;
+
   }
 
 }
@@ -952,6 +1049,10 @@ a {
 @media screen and (max-width: 670px) {
   .statements {
     grid-template-columns: 400px;
+  }
+  .image {
+    width: 300px;
+    height: 140px;
   }
 }
 
@@ -1018,11 +1119,27 @@ a {
 
 @media screen and (max-width: 450px) {
   .statements {
-    grid-template-columns: 280px;
+    grid-template-columns: 320px;
     padding-left: 0;
   }
   .statementsMain {
     margin-left: 0;
   }
+  .articleImage {
+    width: 300px;
+
+  }
 }
+
+@media screen and (max-width: 350px) {
+  .statements {
+    grid-template-columns: 240px;
+  }
+  .articleImage {
+    width: 200px;
+    height: 110px;
+
+  }
+}
+
 
