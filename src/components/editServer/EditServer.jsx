@@ -4,7 +4,6 @@ import Edit from "../editSite/EditSite";
 import BannerEdit from "../bannerEdit/BannerEdit";
 
 const EditServer = ({...props}) => {
-    console.log(props);
     return (
         <>
             <div className={classes.editSite}>
@@ -67,11 +66,11 @@ const EditServer = ({...props}) => {
                     site => <Edit update={props.update} site={site} key={site._id}/>) : null}
             </div>
             <div className={classes.editBannerForm}>
-                <BannerEdit banner={props.banners[0]} update={props.update}/>
-                <BannerEdit banner={props.banners[1]} update={props.update}/>
-                <BannerEdit banner={props.banners[2]} update={props.update}/>
-                <BannerEdit banner={props.banners[3]} update={props.update}/>
-                <BannerEdit banner={props.banners[4]} update={props.update}/>
+                <BannerEdit banner={props.banners[0]} updateBanners={props.updateBanners}/>
+                <BannerEdit banner={props.banners[1]} updateBanners={props.updateBanners}/>
+                <BannerEdit banner={props.banners[2]} updateBanners={props.updateBanners}/>
+                <BannerEdit banner={props.banners[3]} updateBanners={props.updateBanners}/>
+                <BannerEdit banner={props.banners[4]} updateBanners={props.updateBanners}/>
             </div>
         </>
     );

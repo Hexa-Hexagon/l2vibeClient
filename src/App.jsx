@@ -1,5 +1,5 @@
 import classes from "./app.module.scss";
-import {getArticles, getBanners, getServers} from "./api";
+import {createArticle, deleteArticle, getArticles, getBanners, getServers} from "./api";
 import React, {useEffect, useState} from "react";
 import Site from "./components/site/Site";
 import {lan} from "./languages";
@@ -31,6 +31,7 @@ function App() {
     const [pageCount, setPageCount] = useState();
 
     const get = async () => {
+
         try {
             const servers = await getServers();
             setKingVip(servers.kingVip || []);
@@ -40,25 +41,39 @@ function App() {
             setStartingThisMonth([servers.thisMonth]);
             setStartsLater([servers.startLater]);
             setBonusStarted([servers.bonusStarted]);
-            getBanners().then(res => res ? setBanners(res.data):null);
-            getArticles().then(res => {
-                if (res) {
-                    setArticles(res.data.articles);
-                    setPageCount(res.data.count);
-                }
-            });
-            console.log(articles);
         } catch (error) {
             console.error("Error fetching data:", error);
         } finally {
             setLoading(false);
         }
 
-
     };
 
+    const updateArticles = async () => {
+        try {
+            getArticles().then(res => {
+                if (res) {
+                    setArticles(res.data.articles);
+                    setPageCount(res.data.count);
+                }
+            });
+        } catch (e) {
+            console.error(e.message);
+        }
+    }
+
+    const updateBanners = async () => {
+        try {
+            getBanners().then(res => res ? setBanners(res.data) : null);
+        } catch (e) {
+            console.error(e.message);
+        }
+    }
+
     useEffect(() => {
-        get();
+        get()
+        updateArticles()
+        updateBanners()
     }, []);
 
     useEffect(() => {
@@ -80,6 +95,7 @@ function App() {
         <div className={classes.App}>
 
             <Header
+                update={get}
                 languages={languages}
                 setLanguages={setLanguages}
                 isEdit={isEdit}
@@ -111,6 +127,8 @@ function App() {
                             update={get}
                             isEdit={isEdit}
                             setArticles={setArticles}
+                            updateArticles={updateArticles}
+                            updateBanners={updateBanners}
                         />
                     </BrowserRouter>
 

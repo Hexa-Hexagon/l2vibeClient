@@ -40,7 +40,6 @@ const EditStatements = ({...props}) => {
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         setArticleImage(e.target.files[0]);
-        console.log(articleImage);
 
         if (file) {
             const reader = new FileReader();

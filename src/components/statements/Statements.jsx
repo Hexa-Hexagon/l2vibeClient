@@ -40,6 +40,7 @@ const Statements = ({...props}) => {
                     createActive={props.createActive}
                     setCreateActive={props.setCreateActive}
                     update={props.update}
+                    updateArticles={props.updateArticles}
                 />
             </div>
 
@@ -55,10 +56,10 @@ const Statements = ({...props}) => {
                                 <p className={classes.statementLink}>{article.articleName}</p>
                             </Link>
                             <div className={classes.editButtonWrapper}>
-                                <button className={buttonClass.delete} onClick={async () => {
-                                    await deleteArticle(article._id);
-                                    props.update();
-                                }}/>
+                                <input type="submit" value={""} className={buttonClass.delete}
+                                       onClick={() => {
+                                           deleteArticle(article._id).then(() => props.updateArticles())
+                                       }}/>
                                 <Link to={`statements/${article._id}`}
                                       className={buttonClass.editButton}
                                       onClick={() => get(article._id)}/>

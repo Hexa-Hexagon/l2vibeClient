@@ -42,9 +42,10 @@ const BannerEdit = ({...props}) => {
             } else {
                 if (banner && link) {
                     await createBanner(data);
+                    props.updateBanners();
                 }
             }
-            props.update();
+            props.updateBanners();
             if (link) {
                 props.update();
             }
@@ -60,7 +61,7 @@ const BannerEdit = ({...props}) => {
             setBanner(null);
             setLink("");
             await deleteBanner(props.banner ? props.banner._id: null);
-            props.update();
+            props.updateBanners();
         } catch (e) {
             console.log(e.message);
         }
