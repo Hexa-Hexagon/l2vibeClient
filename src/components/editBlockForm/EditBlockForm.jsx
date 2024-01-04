@@ -31,6 +31,7 @@ const EditBlockForm = ({...props}) => {
                             bonusStarted={props.bonusStarted}
                             banners={props.banners}
                             update={props.update}
+                            updateBanners={props.updateBanners}
                         />
                         :
                         <Statements
@@ -44,6 +45,7 @@ const EditBlockForm = ({...props}) => {
                             editStatements={props.editStatements}
                             setArticleId={setArticleId}
                             update={props.update}
+                            updateArticles={props.updateArticles}
                         />
 
                 }
@@ -51,7 +53,6 @@ const EditBlockForm = ({...props}) => {
                 <Routes>
                     <Route path="statements/:id" element={
                         <EditStatements
-                            update={props.update}
                             articles={props.articles}
                             setEditStatements={props.setEditStatements}
                             editStatements={props.editStatements}

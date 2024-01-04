@@ -3,7 +3,14 @@ import classes from "../../app.module.scss";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import {useFormik} from "formik";
 import * as yup from "yup";
-import {createArticle, createBanner, editBanner, editImageArticle, editLinkBanner} from "../../api";
+import {
+    createArticle,
+    createBanner,
+    editBanner,
+    editImageArticle,
+    editLinkBanner,
+    getArticles
+} from "../../api";
 
 
 const CreateStatements = ({...props}) => {
@@ -19,7 +26,7 @@ const CreateStatements = ({...props}) => {
         validationSchema: createSchema,
         onSubmit: async (values) => {
             await post(values);
-            props.update();
+            props.updateArticles();
             props.setCreateActive(false);
         },
     });
@@ -48,7 +55,7 @@ const CreateStatements = ({...props}) => {
             data.append("avatar", articleImage);
             data.append("articleName", values.name);
             if (articleImage && values.name) {
-                await createArticle(data);
+                 await createArticle(data)
             }
         } catch (e) {
             console.error(e.message);
