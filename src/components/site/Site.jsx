@@ -17,10 +17,10 @@ const Site = ({...props}) => {
                                 <div className={classes.imageStatusPremium}/> :
                                 <div className={classes.imageStatusStandart}/>
                     }
-                    <p className={classes.nameSite}>{props.site.serverName.includes(
+                    <h2 className={classes.nameSite}>{props.site.serverName.includes(
                         "//") ? String(
                         props.site.serverName.split("//")[1])
-                        .split(".")[0] : props.site.serverName}</p>
+                        .split(".")[0] : props.site.serverName}</h2>
                     <p className={classes.difficulty}>x{props.site.difficulty}</p>
                     <p className={classes.version}>{props.site.version}</p>
                     <p className={classes.date}>{props.site.dateOfStartingServer.split("T")[0]}</p>

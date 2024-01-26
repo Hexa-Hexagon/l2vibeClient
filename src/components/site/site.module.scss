@@ -1,19 +1,100 @@
-:root {
-    --imageSize: 40px;
-    --imageLeft: 40px;
-    --triangle: 10px;
+.site {
+    width: 100%;
+    height: 5vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
-.site {
-    width: 500px;
-    height: 75px;
+.triangleUp {
+    width: 0;
+    height: 0;
+    border-left: 0.8vw solid transparent;
+    border-right: 0.8vw solid transparent;
+    border-bottom: 0.8vw solid #8CABFF;
+}
+
+.center {
+    width: 80%;
+    height: 50%;
+    clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%);
+    background-color: #ffffffbf;
+    border-bottom: 2px solid #35155D;
+    border-top: 2px solid #35155D;
     display: flex;
-    align-items: center;
-    flex-direction: column;
+    justify-content: center;
     text-decoration: none;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    color: black;
+    color: #35155D;
+}
+
+.triangleDown {
+    width: 0;
+    height: 0;
+    border-left: 0.8vw solid transparent;
+    border-right: 0.8vw solid transparent;
+    border-top: 0.8vw solid #8CABFF;
+}
+
+.infoBlock {
+    height: 100%;
+    width: 80%;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 10% 40% 10% 20% 20%;
+}
+
+.infoBlock * {
+    font-family: 'Manrope';
+    font-size: 0.8vw;
+}
+
+.infoBlock h2 {
+    font-size: 1vw;
+}
+
+.imageStatusKingVip {
+    background-image: url('../../images/kingVip.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 100%;
+    width: 100%;
+}
+
+.imageStatusSuperVip {
+    background-image: url('../../images/superVip.png');
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+}
+
+.imageStatusVip {
+    background-image: url('../../images/vip.png');
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+}
+
+.imageStatusPremium {
+    background-image: url('../../images/premium.png');
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+}
+.imageStatusStandart {
+    background-image: url('../../images/standart.png');
+    background-position: center;
+    background-size: 75%;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: auto;
 }
 
 .center:hover {
@@ -38,281 +119,76 @@
     border-bottom: var(--triangle) solid #4477CE;
 }
 
-.triangleUp {
-    width: 0;
-    height: 0;
-    border-left: var(--triangle) solid transparent;
-    border-right: var(--triangle) solid transparent;
-    border-bottom: var(--triangle) solid #8CABFF;
-}
 
-.triangleDown {
-    width: 0;
-    height: 0;
-    border-left: var(--triangle) solid transparent;
-    border-right: var(--triangle) solid transparent;
-    border-top: var(--triangle) solid #8CABFF;
-}
-
-.center {
-    width: 100%;
-    height: 100%;
-    font-family: Arial,sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%);
-    border-top: 3px solid #35155D;
-    border-bottom: 3px solid #35155D;
-    background-color: #ffffffbf;
-}
-
-.infoBlock {
-    display: grid;
-    width: 100%;
-    height: 100%;
-    grid-template-columns: 10% 30% 25% 17% 20%;
-    padding: 0 10%;
-}
-
-.imageStatusKingVip {
-    background-image: url('../../images/kingVip.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    width: calc(35px + 1 * (100vw / 1280));
-    height: calc(35px + 1 * (100vw / 1280));
-}
-
-.imageStatusSuperVip {
-    background-image: url('../../images/superVip.png');
-    background-position: center;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    width: calc(35px + 1 * (100vw / 1280));
-    height: calc(35px + 1 * (100vw / 1280));
-}
-
-.imageStatusVip {
-    background-image: url('../../images/vip.png');
-    background-position: center;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    width: calc(35px + 1 * (100vw / 1280));
-    height: calc(35px + 1 * (100vw / 1280));
-}
-
-.imageStatusPremium {
-    background-image: url('../../images/premium.png');
-    background-position: center;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    width: calc(35px + 1 * (100vw / 1280));
-    height: calc(35px + 1 * (100vw / 1280));
-}
-
-.imageStatusStandart {
-    background-image: url('../../images/standart.png');
-    background-position: center;
-    background-size: 75%;
-    background-repeat: no-repeat;
-    width: calc(35px + 1 * (100vw / 1280));
-    height: calc(35px + 1 * (100vw / 1280));
-}
-.version {
-    height: 100%;
-    display: flex;
-    justify-content: flex-start;
-    font-size: calc(13px + 1 * (100vw / 1280));
-    align-items: center;
-    word-wrap: break-word;
-    font-family: 'Manrope',sans-serif;
-}
-
-.difficulty {
-    height: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-left: 35px;
-    font-size: calc(13px + 1 * (100vw / 1280));
-    word-wrap: break-word;
-    font-family: 'Manrope',sans-serif;
-}
-
-.nameSite {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    margin-left: 5px;
-    font-size: calc(14px + 1 * (100vw / 1280));
-    word-wrap: break-word;
-}
-
-.date {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    margin-right: 5px;
-    font-size: calc(12px + 1 * (100vw / 1280));
-    word-wrap: break-word;
-    font-family: 'Manrope',sans-serif;
-}
-
-@media screen and (max-width: 3000px) and (min-width: 2400px) {
-     :root {
-        --imageSize: 60px;
-        --triangle: 20px;
-    }
+@media screen and (max-width: 1300px) {
     .site {
-        width: 900px;
-        margin-top: 30px;
-        margin-bottom: 30px;
-        height: 100px;
+        height: 5vw;
+    }
+    .infoBlock * {
+        font-family: 'Manrope';
+        font-size: 50%;
+    }
+    
+    .infoBlock h2 {
+        font-size: 70%;
+    }
+    .imageStatusKingVip {
+        height: 100%;
+        width: 50%;
+    }
+    
+    .imageStatusSuperVip {
+        height: 100%;
+        width: 50%;
+    }
+    
+    .imageStatusVip {
+        height: 100%;
+        width: 50%;
+    }
+    
+    .imageStatusPremium {
+        height: 100%;
+        width: 50%;
+    }
+    .imageStatusStandart {
+        height: 100%;
+        width: 50%;
     }
 }
-
-@media screen and (max-width: 2000px) {
+@media screen and (orientation: portrait) {
     .site {
-        margin-top: 5px;
-        margin-bottom: 5px;
+        height: 6vh;
     }
-}
-
-@media screen and (max-width: 2000px) and (orientation: portrait) {
-    .site {
-        height: 125px;
+    .infoBlock * {
+        font-family: 'Manrope';
+        font-size: 50%;
     }
-     :root {
-        --triangle: 25px;
-    }
-    .site * {
-        font-size: calc(35px + 1 * (100vh / 1280));
-    }
-    .nameSite {
-        font-size: calc(40px + 1 * (100vh / 1280));
-    }
-}
-
-@media screen and (max-width: 1500px) and (orientation: portrait) {
-    .site {
-        height: 80px;
-    }
-    .site * {
-        font-size: calc(20px + 1 * (100vh / 1280));
-    }
-    .site .nameSite {
-        font-size: calc(25px + 1 * (100vh / 1280));
-    }
-}
-
-@media screen and (max-width: 1370px) {
-     :root {
-        --triangle: 15px;
-        --imageSize: 50px;
-        --imageLeft: 50px;
-    }
-    .infoBlock {
-        grid-template-columns: 5% 40% 25% 15% 20%;
-    }
-    .site {
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-    .nameSite {
-        margin-left: 20px;
-    }
-}
-
-@media screen and (max-width: 900px) {
-     :root {
-        --imageSize: 30px;
-        --triangle: 10px;
+    .infoBlock h2 {
+        font-size: 70%;
     }
 
-}
-
-@media screen and (max-width: 700px) {
-    .site {
-        height: 60px;
+    .imageStatusKingVip {
+        height: 100%;
+        width: 80%;
     }
-}
-
-@media screen and (max-width: 500px) {
-     :root {
-        --imageSize: 30px;
-        --imageLeft: 25px;
-        --triangle: 10px;
+    
+    .imageStatusSuperVip {
+        height: 100%;
+        width: 80%;
     }
-    .site {
-        height: 50px;
+    
+    .imageStatusVip {
+        height: 100%;
+        width: 80%;
     }
-    .infoBlock {
-        grid-template-columns: 5% 35% 25% 15% 20%;
+    
+    .imageStatusPremium {
+        height: 100%;
+        width: 80%;
     }
-    .nameSite{
-        margin-left: 25px;
-    }
-}
-
-@media screen and (max-width: 840px) and (orientation: portrait) {
-    .site * {
-        font-size: calc(15px + 1 * (100vh / 1280));
-    }
-    .site .nameSite {
-        font-size: calc(15px + 1 * (100vh / 1280));
-    }
-}
-
-
-@media screen and (max-width: 800px) and (orientation: portrait) {
-    .infoBlock {
-        grid-template-columns: 5% 30% 25% 20% 20%;
-    }
-    .site * {
-        font-size: calc(15px + 1 * (100vh / 1280));
-    }
-    .site .nameSite {
-        font-size: calc(15px + 1 * (100vh / 1280));
-    }
-}
-
-@media screen and (max-width: 600px) and (orientation: portrait) {
-    .infoBlock {
-        grid-template-columns: 5% 30% 25% 20% 20%;
-    }
-    .site * {
-        font-size: calc(14px + 1 * (100vh / 1280));
-    }
-    .site .nameSite {
-        font-size: calc(14px + 1 * (100vh / 1280));
-    }
-}
-
-@media screen and (max-width: 540px) and (orientation: portrait) {
-    .difficulty {
-        margin-left: 10px;
-    }
-    .site {
-        height: 55px;
-        width: 100%;
-    }
-}
-
-@media screen and (max-width: 440px) and (orientation: portrait) {
-    .difficulty {
-        margin-left: 0;
-    }
-
-    .date {
-        font-size: calc(9px + 1 * (100vh / 1280));
-        width: 61px;
-    }
-
-    .site * {
-        font-size: calc(11px + 1 * (100vh / 1280));
-    }
-    .site .nameSite {
-        font-size: calc(11px + 1 * (100vh / 1280));
+    .imageStatusStandart {
+        height: 100%;
+        width: 80%;
     }
 }
